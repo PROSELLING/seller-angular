@@ -1,0 +1,13 @@
+.sidenav-menu { // View Encapsulation is off
+  .sidenav-logo {
+    width: 150px;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+
+  .mat-nav-list .mat-list-item .mat-list-item-content {
+    padding: 0 16px 0 24px;
+  }
+}

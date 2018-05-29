@@ -1,0 +1,21 @@
+<div class="sidenav-menu">
+  <img class="app-responsive-img sidenav-logo" src="/assets/logo-black-300x200.jpg">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let menuItem of menuItems">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{menuItem.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let child of menuItem.children">
+          <mat-icon>arrow_right_alt</mat-icon>
+          <a [routerLink]="child.link" class="app-text-default">
+            {{child.name}}
+          </a>
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" *ngIf="authService.isLoggedIn">
+  <button mat-button (click)="toggleSidenav($event)" class="toolbar-toggle" fxHide.gt-sm="true">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+  <button mat-button (click)="logout()" class="toolbar-toggle">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
+</mat-toolbar>

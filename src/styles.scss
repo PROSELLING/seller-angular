@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/variables';
+
+@import './styles/app-theme';
+
+@import "~ngx-toastr/toastr.css";
+
+@import './styles/layout';
+
+@import './styles/text';
+
+@import './styles/loading';
+
+@import './styles/app';
+
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+

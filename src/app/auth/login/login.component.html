@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="login-container">
+  <form [formGroup]="loginForm" class="form">
+    <div class="header">
+      <div class="logo-container">
+        <img class="app-responsive-img" src="assets/logo-black-300x200.jpg" alt="">
+      </div>
+      <h5>Log in</h5>
+    </div>
+    <div class="content">
+      <div class="input-group input-lg">
+        <mat-form-field>
+          <input matInput formControlName="username" type="text" placeholder="Ingresa tu usuario">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error *ngIf="username.hasError('required')">
+            Nombre de usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-group input-lg">
+        <mat-form-field>
+          <input matInput formControlName="password" type="password" placeholder="Contraseña">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="password.hasError('minlength')">
+            La contraseña es muy corta
+          </mat-error>
+          <mat-error *ngIf="password.hasError('required')">
+            Contraseña es obligatoria
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="footer text-center">
+      <button mat-raised-button color="primary" (click)="login()" [disabled]="loginForm.invalid">Inicia Sesión</button>
+    </div>
+  </form>
+</div>

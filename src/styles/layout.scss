@@ -1,0 +1,99 @@
+.app-responsive-img {
+  max-width: 100%;
+}
+
+.component-container {
+  padding: 10px 20px;
+}
+
+/* ==========  Utility Classes ========== */
+
+// Pumps out classes for margins and padding. Examples:
+//
+// .l--m-t-10
+// .l--p-l-30
+//
+
+$props: (
+  margin: 'm',
+  padding: 'p'
+);
+
+$sides: (
+  all: 'a',
+  top: 't',
+  right: 'r',
+  bottom:'b',
+  left: 'l',
+  left-right: 'x',
+  top-bottom: 'y'
+);
+
+@each $prop, $prop-abbr in $props {
+  @each $side, $side-abbr in $sides {
+    @for $i from 0 through 10 {
+      // All
+      .l--#{$prop-abbr}-#{$side-abbr}-#{$i * 10} {
+        @if $side == 'all' {
+          #{$prop}: #{$i * 10}px !important;
+        } @else if $side == 'left-right' {
+          #{$prop}-left: #{$i * 10}px !important;
+          #{$prop}-right: #{$i * 10}px !important;
+        } @else if $side == 'top-bottom' {
+          #{$prop}-top: #{$i * 10}px !important;
+          #{$prop}-bottom: #{$i * 10}px !important;
+        } @else {
+          #{$prop}-#{$side}: #{$i * 10}px !important;
+        }
+      }
+      // Phone
+      @media (max-width: $grid-tablet-breakpoint - 1) {
+        .l--#{$prop-abbr}-#{$side-abbr}-#{$i * 10}-phone {
+          @if $side == 'all' {
+            #{$prop}: #{$i * 10}px !important;
+          } @else if $side == 'left-right' {
+            #{$prop}-left: #{$i * 10}px !important;
+            #{$prop}-right: #{$i * 10}px !important;
+          } @else if $side == 'top-bottom' {
+            #{$prop}-top: #{$i * 10}px !important;
+            #{$prop}-bottom: #{$i * 10}px !important;
+          } @else {
+            #{$prop}-#{$side}: #{$i * 10}px !important;
+          }
+        }
+      }
+      // Tablet
+      @media (min-width: $grid-tablet-breakpoint) and (max-width: $grid-desktop-breakpoint - 1) {
+        .l--#{$prop-abbr}-#{$side-abbr}-#{$i * 10}-tablet {
+          @if $side == 'all' {
+            #{$prop}: #{$i * 10}px !important;
+          } @else if $side == 'left-right' {
+            #{$prop}-left: #{$i * 10}px !important;
+            #{$prop}-right: #{$i * 10}px !important;
+          } @else if $side == 'top-bottom' {
+            #{$prop}-top: #{$i * 10}px !important;
+            #{$prop}-bottom: #{$i * 10}px !important;
+          } @else {
+            #{$prop}-#{$side}: #{$i * 10}px !important;
+          }
+        }
+      }
+      // Desktop
+      @media (min-width: $grid-desktop-breakpoint) {
+        .l--#{$prop-abbr}-#{$side-abbr}-#{$i * 10}-desktop {
+          @if $side == 'all' {
+            #{$prop}: #{$i * 10}px !important;
+          } @else if $side == 'left-right' {
+            #{$prop}-left: #{$i * 10}px !important;
+            #{$prop}-right: #{$i * 10}px !important;
+          } @else if $side == 'top-bottom' {
+            #{$prop}-top: #{$i * 10}px !important;
+            #{$prop}-bottom: #{$i * 10}px !important;
+          } @else {
+            #{$prop}-#{$side}: #{$i * 10}px !important;
+          }
+        }
+      }
+    }
+  }
+}
