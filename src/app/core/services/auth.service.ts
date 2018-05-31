@@ -5,6 +5,8 @@ import { environment } from '../../../environments/environment';
 import { BEARER_TOKEN, CURRENT_USER, StoreService, TOKEN_EXPIRATION } from './store.service';
 import * as moment from 'moment';
 
+const API_URL = 'login';
+
 @Injectable()
 export class AuthService {
   isLoggedIn: boolean;
@@ -13,8 +15,8 @@ export class AuthService {
     this.subscribeState();
   }
 
-  login(username: string, password: string) {
-    return this.http.post(environment.apiUrl, {username, password});
+  login(email: string, password: string) {
+    return this.http.post(environment.apiUrl + API_URL, {email, password});
   }
 
   setSession(authPayload: any) {

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: [
+      email: [
         '',
         Validators.required
       ],
@@ -38,16 +38,18 @@ export class LoginComponent implements OnInit {
   login() {
     const fields = this.loginForm.value;
 
-    if (fields.username && fields.password) {
-      /*this.authService.login(fields.username, fields.password)
+    if (fields.email && fields.password) {
+      this.authService.login(fields.email, fields.password)
         .subscribe(
           res => {
-            this.authService.setSession(res);
-            this.router.navigate(['admin']);
+            console.log('response', res);
+            /*this.authService.setSession(res);
+            this.router.navigate(['admin']);*/
           },
           error => {
-            this.alertService.error(error.message);
-          });*/
+            // this.alertService.error(error.message);
+            console.log('error', error);
+          });
       const date = new Date();
       date.setTime(date.getTime() + (36000 * 1000));
       const payload = {
@@ -60,13 +62,13 @@ export class LoginComponent implements OnInit {
           last_name: ''
         }
       };
-      this.authService.setSession(payload);
-      this.router.navigate(['admin']);
+      /*this.authService.setSession(payload);
+      this.router.navigate(['admin']);*/
     }
   }
 
-  get username() {
-    return this.loginForm.get('username');
+  get email() {
+    return this.loginForm.get('email');
   }
 
   get password() {
