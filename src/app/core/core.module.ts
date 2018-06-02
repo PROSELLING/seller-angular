@@ -10,6 +10,8 @@ import { AuthGuardService } from './services/guards/auth-guard.service';
 import { AlertService } from './services/alert.service';
 import { LayoutService } from './services/layout.service';
 import { StoreService } from './services/store.service';
+import { PermissionsService } from './services/permissions.service';
+import { RolesService } from './services/roles.service';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { StoreService } from './services/store.service';
     AuthGuardService,
     AuthService,
     LayoutService,
+    PermissionsService,
+    RolesService,
     StoreService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { BEARER_TOKEN, CURRENT_USER, StoreService, TOKEN_EXPIRATION } from './store.service';
 import * as moment from 'moment';
+import { UserModel } from '../models/user.model';
 
 const API_URL = 'login';
 
@@ -19,14 +20,14 @@ export class AuthService {
     return this.http.post(environment.apiUrl + API_URL, {email, password});
   }
 
-  setSession(authPayload: any) {
-    const expiresAt = moment().add(authPayload.expiresIn, 'second');
+  setSession(user: UserModel, token: string) {
+    // const expiresAt = moment().add(expiresIn, 'second');
 
-    localStorage.setItem(CURRENT_USER, JSON.stringify(authPayload.user));
-    localStorage.setItem(BEARER_TOKEN, JSON.stringify(authPayload.token));
-    localStorage.setItem(TOKEN_EXPIRATION, JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem(CURRENT_USER, JSON.stringify(user));
+    localStorage.setItem(BEARER_TOKEN, JSON.stringify(token));
+    // localStorage.setItem(TOKEN_EXPIRATION, JSON.stringify(expiresAt.valueOf()));
 
-    this.storeService.setSession(authPayload);
+    this.storeService.setSession(user, token);
   }
 
   logout() {

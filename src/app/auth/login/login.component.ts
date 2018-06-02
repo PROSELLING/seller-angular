@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { AlertService } from '../../core/services/alert.service';
+import { PermissionsService } from '../../core/services/permissions.service';
+import { RolesService } from '../../core/services/roles.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,8 @@ export class LoginComponent implements OnInit {
   (private formBuilder: FormBuilder,
    private router: Router,
    private authService: AuthService,
+   private permissionsService: PermissionsService,
+   private rolesService: RolesService,
    private alertService: AlertService) {
   }
 
@@ -41,10 +45,12 @@ export class LoginComponent implements OnInit {
     if (fields.email && fields.password) {
       this.authService.login(fields.email, fields.password)
         .subscribe(
-          res => {
+          (res: any) => {
             console.log('response', res);
-            /*this.authService.setSession(res);
-            this.router.navigate(['admin']);*/
+            this.authService.setSession(res.user, res.token);
+            this.permissionsService.setPermissions(res.permissions);
+            this.rolesService.setRoles(res.roles);
+            this.router.navigate(['admin']);
           },
           error => {
             // this.alertService.error(error.message);

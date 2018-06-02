@@ -1,8 +1,16 @@
-.toolbar-toggle {
-  padding: 0;
-  min-width: 46px;
-}
+.header-toolbar {
+  color: #ffffff;
 
-.example-spacer {
-  flex: 1 1 auto;
+  .toolbar-toggle {
+    padding: 0;
+    min-width: 46px;
+  }
+
+  .header-logo {
+    height: 60px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
 }

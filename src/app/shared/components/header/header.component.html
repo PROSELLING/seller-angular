@@ -1,8 +1,9 @@
-<mat-toolbar color="primary" *ngIf="authService.isLoggedIn">
+<mat-toolbar color="primary" class="header-toolbar" *ngIf="authService.isLoggedIn">
   <button mat-button (click)="toggleSidenav($event)" class="toolbar-toggle" fxHide.gt-sm="true">
     <mat-icon>menu</mat-icon>
   </button>
-  <span class="example-spacer"></span>
+  <img src="assets/logo-blanco-completo.png" class="header-logo">
+  <span class="spacer"></span>
   <button mat-button (click)="logout()" class="toolbar-toggle">
     <mat-icon>power_settings_new</mat-icon>
   </button>

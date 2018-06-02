@@ -7,7 +7,7 @@ import { BEARER_TOKEN } from './store.service';
 export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const bearerToken = localStorage.getItem(BEARER_TOKEN);
+    const bearerToken = JSON.stringify(localStorage.getItem(BEARER_TOKEN));
 
     if (bearerToken) {
       const cloned = req.clone({

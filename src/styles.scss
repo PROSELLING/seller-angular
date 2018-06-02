@@ -1,16 +1,18 @@
 @import '~ngx-toastr/toastr.css';
 
-@import './styles/variables';
+@import 'styles/template/main';
 
-@import './styles/app-theme';
+@import 'styles/custom/variables';
 
-@import './styles/layout';
+@import 'styles/custom/app-theme';
 
-@import './styles/text';
+@import 'styles/custom/layout';
 
-@import './styles/loading';
+@import 'styles/custom/text';
 
-@import './styles/app';
+@import 'styles/custom/loading';
+
+@import 'styles/custom/app';
 
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 

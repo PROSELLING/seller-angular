@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
-import { User } from '../models/user';
+import { UserModel } from '../models/user.model';
 
 
 export const CURRENT_USER = 'currentUser';
@@ -9,7 +9,7 @@ export const BEARER_TOKEN = 'bearer_token';
 export const TOKEN_EXPIRATION = 'token_expiration';
 
 export interface State {
-  user: User;
+  user: UserModel;
   token: string;
   expiration: string;
   loading: boolean;
@@ -21,9 +21,11 @@ export interface State {
 const state = {
   user: {
     id: null,
+    username: '',
     email: '',
     first_name: '',
-    last_name: ''
+    last_name: '',
+    imagen: ''
   },
   token: '',
   expiration: '',
@@ -46,7 +48,7 @@ export class StoreService {
     const newState = {
       user: JSON.parse(localStorage.getItem(CURRENT_USER)),
       token: JSON.parse(localStorage.getItem(BEARER_TOKEN)),
-      expiration: JSON.parse(localStorage.getItem(TOKEN_EXPIRATION)),
+      // expiration: JSON.parse(localStorage.getItem(TOKEN_EXPIRATION)),
       isAuthenticated: false
     };
 
@@ -69,11 +71,11 @@ export class StoreService {
     return this.store.getValue();
   }
 
-  setSession(payload: any) {
+  setSession(user: UserModel, token: string) {
     const newState = this.getState();
-    newState.user = payload.user;
+    newState.user = user;
 
-    if (payload.user && payload.user.id) {
+    if (user && user.id) {
       newState.isAuthenticated = true;
     } else {
       newState.isAuthenticated = false;
@@ -82,7 +84,7 @@ export class StoreService {
     this.setState(newState);
   }
 
-  getUser(): User {
+  getUser(): UserModel {
     if (this.getState().user && this.getState().user.id) {
       return this.getState().user;
     }
@@ -104,8 +106,10 @@ export class StoreService {
       user: {
         id: null,
         email: '',
+        username: '',
         first_name: '',
-        last_name: ''
+        last_name: '',
+        imagen: ''
       },
       token: '',
       expiration: '',

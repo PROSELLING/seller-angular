@@ -1,9 +1,16 @@
 <div class="sidenav-menu">
-  <img class="app-responsive-img sidenav-logo" src="/assets/logo-black-300x200.jpg">
+  <div class="user-info" *ngIf="user">
+    <div class="image"><a routerLink="/doctors/profile"><img src="http://via.placeholder.com/80x80" alt="User"></a></div>
+    <div class="detail">
+      <h4>{{user.first_name}}</h4>
+      <small>{{user.cargo}}</small>
+    </div>
+  </div>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let menuItem of menuItems">
       <mat-expansion-panel-header>
         <mat-panel-title>
+          <mat-icon>{{menuItem.icon}}</mat-icon>
           {{menuItem.name}}
         </mat-panel-title>
       </mat-expansion-panel-header>
