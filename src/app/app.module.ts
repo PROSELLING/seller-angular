@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './core/store';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     CoreModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../../../core/services/layout.service';
 import { AuthService } from '../../../core/services/auth.service';
-import { StoreService } from '../../../core/services/store.service';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../core/store';
+import * as LayoutActions from '../../../core/store/actions/layout.actions';
 
 
 @Component({
@@ -13,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor
   (public layoutService: LayoutService,
-   public authService: AuthService) {
+   public authService: AuthService,
+   private store: Store<fromRoot.State>) {
     this.authService.subscribeState();
   }
 
@@ -21,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleSidenav() {
-    this.layoutService.toggleSidenav.emit();
+    this.store.dispatch(new LayoutActions.ToggleSidenav());
   }
 
   logout() {

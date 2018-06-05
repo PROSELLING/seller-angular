@@ -1,5 +1,10 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav [opened]="opened && authService.isLoggedIn" [mode]="mode" [ngClass]="{'mat-elevation-z8': mode === 'side'}">
+<mat-sidenav-container (backdropClick)="closeSidenav()">
+  <mat-sidenav
+    #sidenav
+    [opened]="showSidenav$ | async"
+    [mode]="mode"
+    [ngClass]="{'mat-elevation-z8': mode === 'side'}"
+  >
     <app-sidenavmenu></app-sidenavmenu>
   </mat-sidenav>
   <mat-sidenav-content>
