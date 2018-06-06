@@ -5,6 +5,9 @@ import { AuthService } from '../../core/services/auth.service';
 import { AlertService } from '../../core/services/alert.service';
 import { PermissionsService } from '../../core/services/permissions.service';
 import { RolesService } from '../../core/services/roles.service';
+import { Store } from '@ngrx/store';
+import * as fromAuth from '../store/reducers/auth.reducer';
+import * as AuthActions from '../store/actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor
   (private formBuilder: FormBuilder,
+   private store: Store<fromAuth.State>,
    private router: Router,
    private authService: AuthService,
    private permissionsService: PermissionsService,
@@ -42,8 +46,10 @@ export class LoginComponent implements OnInit {
   login() {
     const fields = this.loginForm.value;
 
-    if (fields.email && fields.password) {
-      this.authService.login(fields.email, fields.password)
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+      this.store.dispatch(new AuthActions.Login(this.loginForm.value));
+      /*this.authService.login(fields.email, fields.password)
         .subscribe(
           (res: any) => {
             console.log('response', res);
@@ -68,8 +74,8 @@ export class LoginComponent implements OnInit {
           last_name: ''
         }
       };
-      /*this.authService.setSession(payload);
-      this.router.navigate(['admin']);*/
+      /!*this.authService.setSession(payload);
+      this.router.navigate(['admin']);*!/*/
     }
   }
 

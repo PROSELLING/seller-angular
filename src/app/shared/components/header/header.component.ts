@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor
   (public layoutService: LayoutService,
    public authService: AuthService,
-   private store: Store<fromRoot.State>) {
+   private store: Store<fromRoot.RootState>) {
     this.authService.subscribeState();
   }
 

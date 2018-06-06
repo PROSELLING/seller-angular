@@ -23,9 +23,9 @@ export class SidenavComponent implements OnInit {
   (public layoutService: LayoutService,
    private media: ObservableMedia,
    public authService: AuthService,
-   private store: Store<fromRoot.State>) {
+   private store: Store<fromRoot.RootState>) {
 
-    this.showSidenav$ = store.pipe(select(fromRoot.getShowSidenav));
+    this.showSidenav$ = this.store.pipe(select(fromRoot.getShowSidenav));
     this.authService.subscribeState();
     this.layoutService.toggleSidenav.subscribe(
       () => {

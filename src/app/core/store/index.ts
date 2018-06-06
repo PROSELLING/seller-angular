@@ -1,11 +1,11 @@
 import * as fromLayout from './reducers/layout.reducer';
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
-export interface State {
+export interface RootState {
   layout: fromLayout.State;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<RootState> = {
   layout: fromLayout.reducer
 };
 

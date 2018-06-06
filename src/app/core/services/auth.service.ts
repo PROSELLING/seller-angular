@@ -5,6 +5,9 @@ import { environment } from '../../../environments/environment';
 import { BEARER_TOKEN, CURRENT_USER, StoreService, TOKEN_EXPIRATION } from './store.service';
 import * as moment from 'moment';
 import { UserModel } from '../models/user.model';
+import { Authenticate } from '../../auth/store/models/user';
+import { Observable } from 'rxjs/internal/Observable';
+import { LoginModel } from '../models/login.model';
 
 const API_URL = 'login';
 
@@ -16,8 +19,8 @@ export class AuthService {
     this.subscribeState();
   }
 
-  login(email: string, password: string) {
-    return this.http.post(environment.apiUrl + API_URL, {email, password});
+  login({email, password}: Authenticate): Observable<LoginModel> {
+    return this.http.post<LoginModel>(environment.apiUrl + API_URL, {email, password});
   }
 
   setSession(user: UserModel, token: string) {
