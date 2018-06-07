@@ -11,7 +11,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './core/store';
-import { AuthModule } from './auth/auth.module';
+import { EffectsModule } from '@ngrx/effects';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(reducers),
-    AuthModule.forRoot()
+    EffectsModule.forRoot([]),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ToastrModule } from 'ngx-toastr';
-
 import { AuthService } from './services/auth.service';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
@@ -15,8 +13,7 @@ import { RolesService } from './services/roles.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ToastrModule.forRoot()
+    CommonModule
   ],
   providers: [
     AlertService,
