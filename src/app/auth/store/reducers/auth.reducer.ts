@@ -3,11 +3,13 @@ import { UserModel } from '../../../core/models/user.model';
 
 export interface State {
   loggedIn: boolean;
+  token: string;
   user: UserModel | null;
 }
 
 export const initialState: State = {
   loggedIn: false,
+  token: '',
   user: null,
 };
 
@@ -23,6 +25,13 @@ export function reducer(state = initialState, action: AuthActionsUnion): State {
 
     case AuthActionTypes.Logout: {
       return initialState;
+    }
+
+    case AuthActionTypes.SetBearerToken: {
+      return {
+        ...state,
+        token: action.payload
+      }
     }
 
     default: {

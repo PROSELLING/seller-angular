@@ -9,7 +9,9 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatPaginatorModule,
   MatSidenavModule,
+  MatSortModule,
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -24,7 +26,9 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatPaginatorModule,
     MatSidenavModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule
   ],
@@ -37,7 +41,9 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatPaginatorModule,
     MatSidenavModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule
   ],

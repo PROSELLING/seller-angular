@@ -1,5 +1,5 @@
 <div class="sidenav-menu">
-  <div class="user-info" *ngIf="user">
+  <div class="user-info" *ngIf="user$ | async as user">
     <div class="image"><a routerLink="/doctors/profile"><img src="http://via.placeholder.com/80x80" alt="User"></a></div>
     <div class="detail">
       <h4>{{user.first_name}}</h4>
@@ -7,15 +7,24 @@
     </div>
   </div>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let menuItem of menuItems">
-      <mat-expansion-panel-header>
+    <mat-expansion-panel *ngFor="let menuItem of menuItems; let i = index">
+      <mat-expansion-panel-header
+        [ngStyle]="{'background-color': hovered === i ? menuItem.color : 'inherit'}"
+        (mouseover)="hovered = i"
+        (mouseout)="hovered = -1"
+      >
         <mat-panel-title>
           <mat-icon>{{menuItem.icon}}</mat-icon>
           {{menuItem.name}}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <mat-list-item *ngFor="let child of menuItem.children">
+        <mat-list-item
+          *ngFor="let child of menuItem.children; let j = index"
+          [ngStyle]="{'background-color': hoveredChild === j ? menuItem.color : 'inherit'}"
+          (mouseover)="hoveredChild = j"
+          (mouseout)="hoveredChild = -1"
+        >
           <mat-icon>arrow_right_alt</mat-icon>
           <a [routerLink]="child.link" class="app-text-default">
             {{child.name}}

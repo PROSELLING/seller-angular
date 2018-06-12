@@ -1,7 +1,7 @@
 import { RoleModel } from './role.model';
+import { BaseModel } from './base.model';
 
-export interface UserModel {
-  id: number;
+export interface UserModel extends BaseModel {
   email: string;
   username: string;
   first_name: string;
@@ -10,9 +10,7 @@ export interface UserModel {
   birthday?: string;
   cargo?: string;
   cellphone?: string;
-  created_at?: string;
   deleted?: string;
-  deleted_at?: string;
   dni?: string;
   facebook?: string;
   gender?: string;
@@ -29,6 +27,5 @@ export interface UserModel {
   roles?: RoleModel[];
   status?: string;
   token?: string;
-  updated_at?: string;
 }
 

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, mergeMap, tap } from 'rxjs/operators';
 
 import {
   AuthActionTypes,
   Login,
   LoginFailure,
-  LoginSuccess,
+  LoginSuccess, SetBearerToken,
 } from '../actions/auth.actions';
 import { Authenticate } from '../models/user';
 import { AuthService } from '../../../core/services/auth.service';
@@ -24,7 +24,10 @@ export class AuthEffects {
       this.authService
         .login(auth)
         .pipe(
-          map(res => new LoginSuccess({ user: res.user })),
+          mergeMap(res => [
+            new LoginSuccess({ user: res.user }),
+            new SetBearerToken(res.token)
+          ]),
           catchError(error => of(new LoginFailure(error)))
         )
     )
@@ -33,14 +36,14 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$.pipe(
     ofType(AuthActionTypes.LoginSuccess),
-    tap(() => this.router.navigate(['/']))
+    tap(() => this.router.navigate(['/admin']))
   );
 
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$.pipe(
     ofType(AuthActionTypes.LoginRedirect, AuthActionTypes.Logout),
     tap(authed => {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     })
   );
 

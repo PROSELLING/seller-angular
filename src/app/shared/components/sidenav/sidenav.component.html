@@ -1,7 +1,7 @@
 <mat-sidenav-container (backdropClick)="closeSidenav()">
   <mat-sidenav
     #sidenav
-    [opened]="showSidenav$ | async"
+    [opened]="(showSidenav$ | async) && (loggedIn$ | async)"
     [mode]="mode"
     [ngClass]="{'mat-elevation-z8': mode === 'side'}"
   >

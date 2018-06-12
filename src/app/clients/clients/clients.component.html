@@ -1,0 +1,28 @@
+<div class="component-container" *ngIf="clients$ | async">
+  <mat-form-field>
+    <input matInput placeholder="Filtrar" #input>
+  </mat-form-field>
+
+  <mat-table mat-table [dataSource]="clientsCopy$" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} {{element.last_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="client_contact">
+      <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.contactInfo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="origin">
+      <mat-header-cell *matHeaderCellDef> Origen </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.origin.origin}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="resultsLength$ | async" [pageSize]="15"></mat-paginator>
+</div>

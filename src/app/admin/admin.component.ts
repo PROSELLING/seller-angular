@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ClientModel } from '../core/models/client.model';
-import { RolesService } from '../core/services/roles.service';
 
-const CLIENT_DATA: ClientModel[] = [
+const CLIENT_DATA = [
   {id: 1, name: 'Claudia', contact: 'Contacts', status: 'test status', channel: 'Cliente', antiquity: 'hace 3 meses', transaction: 'test'},
   {id: 2, name: 'Hugo', contact: 'More contacts', status: 'another status', channel: 'Cliente', antiquity: 'hace 4 meses', transaction: 'test'}
 ];
@@ -17,11 +16,10 @@ export class AdminComponent implements OnInit {
   displayedColumns = ['name', 'contact', 'status', 'channel', 'transaction', 'antiquity'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
 
-  constructor(private rolesService: RolesService) {
+  constructor() {
   }
 
   ngOnInit() {
-    console.log('permissions', this.rolesService.roles);
   }
 
   applyFilter(filterValue: string) {
@@ -29,5 +27,4 @@ export class AdminComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-
 }

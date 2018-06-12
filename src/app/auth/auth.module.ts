@@ -12,7 +12,7 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 
 
-import { reducers } from './store/reducers';
+import { reducers } from './store';
 import { AuthEffects } from './store/effects/auth.effects';
 
 @NgModule({

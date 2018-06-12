@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserModel } from '../../../core/models/user.model';
-import { StoreService } from '../../../core/services/store.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { select, Store } from '@ngrx/store';
+import * as fromRoot from '../../../core/store';
+import * as fromAuth from '../../../auth/store';
+import * as fromLayout from '../../../core/store';
+import { MenuColorModel } from '../../../core/models/menu-color.model';
 
 @Component({
   selector: 'app-sidenavmenu',
@@ -10,12 +15,14 @@ import { StoreService } from '../../../core/services/store.service';
 })
 export class SidenavMenuComponent implements OnInit {
   menuItems: Array<any>;
-  user: UserModel;
+  hovered: number;
+  hoveredChild: number;
+  user$: Observable<UserModel>;
+  menuColor$: Observable<MenuColorModel>;
 
-  constructor(public storeService: StoreService) {
-    this.storeService.getObservable().subscribe(() => {
-      this.user = this.storeService.getUser();
-    });
+  constructor(public store: Store<fromRoot.RootState>) {
+    this.user$ = this.store.pipe(select(fromAuth.getUser));
+    this.menuColor$ = this.store.pipe(select(fromLayout.getMenuColor));
   }
 
   ngOnInit() {
@@ -23,8 +30,17 @@ export class SidenavMenuComponent implements OnInit {
       {
         name: 'Administración',
         icon: 'show_chart',
+        color: '#00A65A',
         children: [
           {name: 'Convencional', link: 'admin'}
+        ]
+      },
+      {
+        name: 'Gestión de Clientes',
+        icon: 'group',
+        color: '#dd4b39',
+        children: [
+          {name: 'Clientes', link: 'clients'}
         ]
       }
     ];

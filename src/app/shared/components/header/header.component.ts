@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from '../../../core/services/layout.service';
-import { AuthService } from '../../../core/services/auth.service';
-import { Store } from '@ngrx/store';
-import * as fromRoot from '../../../core/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs/internal/Observable';
+
+import { AuthActions } from '../../../auth/store/actions';
 import * as LayoutActions from '../../../core/store/actions/layout.actions';
+import * as fromRoot from '../../../core/store';
+import * as fromAuth from '../../../auth/store';
 
 
 @Component({
@@ -12,12 +14,11 @@ import * as LayoutActions from '../../../core/store/actions/layout.actions';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  loggedIn$: Observable<boolean>;
 
   constructor
-  (public layoutService: LayoutService,
-   public authService: AuthService,
-   private store: Store<fromRoot.RootState>) {
-    this.authService.subscribeState();
+  (private store: Store<fromRoot.RootState>) {
+    this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
   }
 
   ngOnInit() {
@@ -28,7 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.store.dispatch(new AuthActions.Logout());
   }
-
 }
