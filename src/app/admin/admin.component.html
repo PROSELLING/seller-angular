@@ -6,37 +6,52 @@
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Position Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <ng-container matColumnDef="saleDate">
+      <th mat-header-cell *matHeaderCellDef> Fecha Venta </th>
+      <td mat-cell *matCellDef="let element"> {{element.saleDate}} </td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="contact">
-      <th mat-header-cell *matHeaderCellDef> contacto </th>
-      <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+    <ng-container matColumnDef="seller">
+      <th mat-header-cell *matHeaderCellDef> Vendedor </th>
+      <td mat-cell *matCellDef="let element"> {{element.seller}} </td>
     </ng-container>
 
     <!-- Weight Column -->
+    <ng-container matColumnDef="client">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.client}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="business">
+      <th mat-header-cell *matHeaderCellDef> Negocio </th>
+      <td mat-cell *matCellDef="let element"> {{element.business}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef> Estatus </th>
       <td mat-cell *matCellDef="let element"> {{element.status}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="channel">
-      <th mat-header-cell *matHeaderCellDef> Canal </th>
-      <td mat-cell *matCellDef="let element"> {{element.channel}} </td>
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Monto Negocio </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="transaction">
-      <th mat-header-cell *matHeaderCellDef> Canal </th>
-      <td mat-cell *matCellDef="let element"> {{element.transaction}} </td>
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef> Saldo </th>
+      <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="antiquity">
-      <th mat-header-cell *matHeaderCellDef> Canal </th>
-      <td mat-cell *matCellDef="let element"> {{element.antiquity}} </td>
+    <ng-container matColumnDef="deliveryEstimate">
+      <th mat-header-cell *matHeaderCellDef> Entrega Estimada </th>
+      <td mat-cell *matCellDef="let element"> {{element.deliveryEstimate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delivery">
+      <th mat-header-cell *matHeaderCellDef> Entrega Acordada </th>
+      <td mat-cell *matCellDef="let element"> {{element.delivery}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

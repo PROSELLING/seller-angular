@@ -78,3 +78,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+/***************************************************************************************************
+ *  AWS-SDK WORKAROUND (REMOVE AFTER FIX IS IMPLEMENTED)
+ */
+(window as any).global = window;

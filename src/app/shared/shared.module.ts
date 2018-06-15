@@ -4,8 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppMaterialModule } from './modules/app-material.module';
-import { CovalentLayoutModule } from '@covalent/core/layout';
-import { CovalentStepsModule } from '@covalent/core/steps';
+import { AppCovalentModule } from './modules/app-covalent.module';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 
 import { AlertComponent } from './components/alert/alert.component';
@@ -17,8 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   imports: [
     AppMaterialModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
+    AppCovalentModule,
     CommonModule,
     FlexLayoutModule,
     FormsModule,
@@ -28,8 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   exports: [
     AppMaterialModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
+    AppCovalentModule,
     FlexLayoutModule,
     FormsModule,
     NgHttpLoaderModule,

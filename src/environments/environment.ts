@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://34.201.39.70/cloud9/workspace/endpoint/public/api/'
+  apiUrl: 'http://34.201.39.70/cloud9/workspace/endpoint/public/api/',
+  aws: {
+    region: 'us-east-1',
+    bucketName: 'samshel-library',
+    identityPoolId: 'us-east-1:8ae6abb0-353d-439f-a4e9-cae14307b60e'
+  }
 };
 
 /*

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { ClientModel } from '../core/models/client.model';
 
 const CLIENT_DATA = [
-  {id: 1, name: 'Claudia', contact: 'Contacts', status: 'test status', channel: 'Cliente', antiquity: 'hace 3 meses', transaction: 'test'},
-  {id: 2, name: 'Hugo', contact: 'More contacts', status: 'another status', channel: 'Cliente', antiquity: 'hace 4 meses', transaction: 'test'}
+  {saleDate: '28 Dic', seller: 'Miguel López', client: 'Juan Pérez', business: 'Ranger XL 2.2 Diesel DC Azul Mediterraneo (VIN serie negrita, nº stock Fact)', status: 'En Proceso', amount: '$390,000', balance: '$20,000', deliveryEstimate: '10 Ago', delivery: '12 Ago'},
+  {saleDate: '28 Ene', seller: 'Miguel López', client: 'Claudio Gianmateo', business: 'Ecosport', status: 'Entregado', amount: '$380,000', balance: '$0', deliveryEstimate: '20 Ago', delivery: '25 Ago'}
+
 ];
 
 @Component({
@@ -13,8 +13,9 @@ const CLIENT_DATA = [
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  displayedColumns = ['name', 'contact', 'status', 'channel', 'transaction', 'antiquity'];
+  displayedColumns = ['saleDate', 'seller', 'client', 'business', 'status', 'amount', 'balance', 'deliveryEstimate', 'delivery'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
+
 
   constructor() {
   }
