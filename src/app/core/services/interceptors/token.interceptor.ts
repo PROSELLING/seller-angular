@@ -3,7 +3,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
-export class HttpInterceptorService implements HttpInterceptor {
+export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const storedAuth = JSON.parse(localStorage.getItem('auth'));
