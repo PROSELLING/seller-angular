@@ -1,11 +1,20 @@
-<mat-sidenav-container (backdropClick)="closeSidenav()">
+<mat-sidenav-container (backdropClick)="closeSidenav($event)">
   <mat-sidenav
     #sidenav
-    [opened]="(showSidenav$ | async) && (loggedIn$ | async)"
+    *ngIf="loggedIn$ | async"
+    [opened]="showSidenav$ | async"
     [mode]="mode"
     [ngClass]="{'mat-elevation-z8': mode === 'side'}"
   >
     <app-sidenavmenu></app-sidenavmenu>
+  </mat-sidenav>
+  <mat-sidenav
+    *ngIf="loggedIn$ | async"
+    [opened]="showRightSidenav$ | async"
+    mode="over"
+    position="end"
+  >
+    <router-outlet name="rightSidenav"></router-outlet>
   </mat-sidenav>
   <mat-sidenav-content>
     <ng-content></ng-content>

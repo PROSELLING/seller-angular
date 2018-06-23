@@ -12,6 +12,7 @@ import * as fromAuth from '../store';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  wallpaperUrl: string;
 
   constructor
   (private formBuilder: FormBuilder,
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.wallpaperUrl = 'http://vunature.com/wp-content/uploads/2016/11/lakes-nevada-big-spain-sierra-trees-canyon-lake-snow-mountains-pine-photo-nature-hd-1920x1080.jpg';
     this.loginForm = this.formBuilder.group({
       email: [
         '',

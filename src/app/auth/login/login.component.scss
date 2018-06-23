@@ -1,6 +1,12 @@
 .login-container {
   height: 100%;
   text-align: center;
+
+  form {
+    background: white;
+    padding: 5px 25px 25px;
+    border-radius: 2px;
+  }
 }
 
 .logo-container {

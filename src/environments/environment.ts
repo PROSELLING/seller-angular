@@ -7,8 +7,8 @@ export const environment = {
   apiUrl: 'http://34.201.39.70/cloud9/workspace/endpoint/public/api/',
   aws: {
     region: 'us-east-1',
-    bucketName: 'samshel-library',
-    identityPoolId: 'us-east-1:8ae6abb0-353d-439f-a4e9-cae14307b60e'
+    bucketName: 'seller-archivos',
+    identityPoolId: 'us-east-1:9462865a-7f1b-4301-ab55-8ab8ab12b67a'
   }
 };
 

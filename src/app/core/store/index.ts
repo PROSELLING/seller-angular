@@ -53,6 +53,10 @@ export const getShowSidenav = createSelector(
   getLayoutState,
   fromLayout.getShowSidenav
 );
+export const getShowRightSidenav = createSelector(
+  getLayoutState,
+  fromLayout.getShowRightSidenav
+);
 
 export const getMenuColor = createSelector(
   getLayoutState,

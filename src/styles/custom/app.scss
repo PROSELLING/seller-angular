@@ -14,3 +14,14 @@ mat-sidenav-container {
 .container {
   padding: 10px;
 }
+
+a {
+  cursor: pointer;
+}
+
+.mat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}

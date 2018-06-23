@@ -31,7 +31,7 @@ export function reducer(state = initialState, action: AuthActionsUnion): State {
       return {
         ...state,
         token: action.payload
-      }
+      };
     }
 
     default: {

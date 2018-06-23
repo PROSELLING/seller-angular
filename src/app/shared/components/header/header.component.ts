@@ -30,5 +30,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.store.dispatch(new AuthActions.Logout());
+    this.store.dispatch(new LayoutActions.ResetLayoutState());
   }
 }

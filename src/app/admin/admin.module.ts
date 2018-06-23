@@ -5,6 +5,7 @@ import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
 import { httpInterceptorProviders } from '../core/services/interceptors';
 import { GanttComponent } from './gantt/gantt.component';
+import { BudgetComponent } from './budget/budget.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,12 @@ import { GanttComponent } from './gantt/gantt.component';
     CommonModule,
     SharedModule
   ],
-  declarations: [AdminComponent, GanttComponent],
+  declarations: [
+    AdminComponent,
+    GanttComponent,
+    BudgetComponent
+  ],
   providers: [httpInterceptorProviders]
 })
-export class AdminModule { }
+export class AdminModule {
+}

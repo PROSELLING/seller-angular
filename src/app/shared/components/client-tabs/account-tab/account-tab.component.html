@@ -1,0 +1,67 @@
+<form fxLayout="column" [formGroup]="accountForm">
+  <div class="input-row" fxLayout="row" fxlayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="0px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo de teléfono" formControlName="phoneTypes">
+        <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType.value">
+          {{ phoneType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Código de País" formControlName="countryCode">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Prefijo" formControlName="prefix">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Número" formControlName="phoneNumber">
+    </mat-form-field>
+
+    <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex>
+      <mat-checkbox formControlName="hasWhatsapp">Whatsapp</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="input-row" fxLayout="row" fxlayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="0px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo de Email" formControlName="emailTypes">
+        <mat-option *ngFor="let emailType of emailTypes" [value]="emailType.value">
+          {{ emailType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="email" placeholder="Email" formControlName="email">
+    </mat-form-field>
+
+    <div matTooltip="Indique si es el correo principal del cliente" matTooltipPosition="above" fxFlex>
+      <mat-checkbox formControlName="mainEmail">Principal</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="input-row" fxLayout="row" fxlayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="0px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Origen" formControlName="originList">
+        <mat-option *ngFor="let origin of originList" [value]="origin.value">
+          {{ origin.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Canal" formControlName="channels">
+        <mat-option *ngFor="let channel of channels" [value]="channel.value">
+          {{ channel.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div matTooltip="Indique si es reventa" matTooltipPosition="above" fxFlex>
+      <mat-checkbox formControlName="resell">Reventa</mat-checkbox>
+    </div>
+  </div>
+</form>

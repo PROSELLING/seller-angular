@@ -31,3 +31,8 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // that you are using.
 @include angular-material-theme($app-theme);
 @include covalent-theme($app-theme, $typography);
+
+// custom style for anchor elements
+a {
+  color: mat-color($app-primary);
+}

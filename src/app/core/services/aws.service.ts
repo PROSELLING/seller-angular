@@ -17,6 +17,8 @@ export interface BucketFile {
   key: string;
 }
 
+
+
 @Injectable()
 export class AwsService {
   s3: any;

@@ -1,11 +1,16 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="login-container">
-  <form [formGroup]="loginForm" class="form">
-    <div class="header">
-      <div class="logo-container">
-        <img class="app-responsive-img" src="assets/logo-negro-sin-fondo.png" alt="">
-      </div>
-      <h5>Log in</h5>
+<div
+  [appBackgroundImage]="wallpaperUrl"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="login-container"
+>
+  <div class="header">
+    <div class="logo-container">
+      <img class="app-responsive-img" src="assets/logo-negro-sin-fondo.png" alt="">
     </div>
+  </div>
+  <form [formGroup]="loginForm" class="form">
+    <h5>Log in</h5>
     <div class="content">
       <div class="input-group input-lg">
         <mat-form-field>

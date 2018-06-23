@@ -4,6 +4,9 @@
 
 .component-container {
   padding: 10px 20px;
+  z-index: 10;
+  position: relative;
+  background-color: white;
 }
 
 /* ==========  Utility Classes ========== */

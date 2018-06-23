@@ -29,7 +29,7 @@ export class SidenavMenuComponent implements OnInit {
     this.menuItems = [
       {
         name: 'Administración',
-        icon: 'show_chart',
+        icon: 'finance',
         color: '#00A65A',
         children: [
           {name: 'Convencional', link: 'admin'}
@@ -37,7 +37,7 @@ export class SidenavMenuComponent implements OnInit {
       },
       {
         name: 'Gestión de Clientes',
-        icon: 'group',
+        icon: 'account-group',
         color: '#dd4b39',
         children: [
           {name: 'Clientes', link: 'clients'}

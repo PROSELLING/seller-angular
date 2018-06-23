@@ -16,24 +16,29 @@ export class SidenavComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   mode = 'side';
   showSidenav$: Observable<boolean>;
+  showRightSidenav$: Observable<boolean>;
   loggedIn$: Observable<boolean>;
 
   constructor
   (private media: ObservableMedia,
    private store: Store<fromRoot.RootState>) {
+
+  }
+
+  ngOnInit() {
     this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
     this.showSidenav$ = this.store.pipe(select(fromRoot.getShowSidenav));
+    this.showRightSidenav$ = this.store.pipe(select(fromRoot.getShowRightSidenav));
     this.media.subscribe(() => {
       this.mode = this.getMode();
       this.getOpened();
     });
   }
 
-  ngOnInit() {
-  }
-
-  closeSidenav() {
+  closeSidenav(event: any) {
+    console.log('closeSidenav', event);
     this.store.dispatch(new LayoutActions.CloseSidenav());
+    this.store.dispatch(new LayoutActions.CloseRightSidenav());
   }
 
   private getMode(): string {

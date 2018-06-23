@@ -1,0 +1,58 @@
+<mat-tab-group (selectedTabChange)="tabChanged($event)" class="client-tabs">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="account"></mat-icon>
+      <span [hidden]="hideAccountLabel">Datos Básicos</span>
+    </ng-template>
+    <app-account-tab></app-account-tab>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="information"></mat-icon>
+      <span [hidden]="hideInfoLabel">Información Adicional</span>
+    </ng-template>
+    Content
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="phone"></mat-icon>
+      <span [hidden]="hidePhones">Teléfonos</span>
+    </ng-template>
+    Content
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="email"></mat-icon>
+      <span [hidden]="hideEmails">Emails</span>
+    </ng-template>
+    Content
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="share-variant"></mat-icon>
+      <span [hidden]="hideSocial">Redes Sociales</span>
+    </ng-template>
+    Content
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="map-marker"></mat-icon>
+      <span [hidden]="hideLocation">Ubicación</span>
+    </ng-template>
+    Content
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="account-group"></mat-icon>
+      <span [hidden]="hideRelations">Relaciones y Parentesco</span>
+    </ng-template>
+    Content
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="comment-text-multiple"></mat-icon>
+      <span [hidden]="hideComments">Comentarios</span>
+    </ng-template>
+    Content
+  </mat-tab>
+</mat-tab-group>

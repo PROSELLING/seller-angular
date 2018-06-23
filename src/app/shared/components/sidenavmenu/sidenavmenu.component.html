@@ -14,7 +14,7 @@
         (mouseout)="hovered = -1"
       >
         <mat-panel-title>
-          <mat-icon>{{menuItem.icon}}</mat-icon>
+          <mat-icon [svgIcon]="menuItem.icon"></mat-icon>
           {{menuItem.name}}
         </mat-panel-title>
       </mat-expansion-panel-header>

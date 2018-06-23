@@ -1,5 +1,7 @@
 .header-toolbar {
   color: #ffffff;
+  position: relative;
+  z-index: 10;
 
   .toolbar-toggle {
     padding: 0;
