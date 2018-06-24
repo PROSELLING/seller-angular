@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BackgroundImageDirective } from './directives/background-image.directive';
 import { ClientTabsComponent } from './components/client-tabs/client-tabs.component';
 import { AccountTabComponent } from './components/client-tabs/account-tab/account-tab.component';
+import { BlockHeaderComponent } from './components/block-header/block-header.component';
 
 @NgModule({
   imports: [
@@ -37,14 +38,16 @@ import { AccountTabComponent } from './components/client-tabs/account-tab/accoun
     NgHttpLoaderModule,
     Ng2GoogleChartsModule,
     ReactiveFormsModule,
-    AlertComponent,
     BackgroundImageDirective,
+    AlertComponent,
+    BlockHeaderComponent,
     ClientTabsComponent,
     HeaderComponent,
     SidenavComponent
   ],
   declarations: [
     AlertComponent,
+    BlockHeaderComponent,
     BackgroundImageDirective,
     HeaderComponent,
     SidenavComponent,

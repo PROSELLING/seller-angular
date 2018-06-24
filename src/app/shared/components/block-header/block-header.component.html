@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between" class="block-header">
+  <h2>{{title}}</h2>
+  <ul fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.lt-sm="start center" class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a fxLayout="row" fxLayoutAlign="center center" [routerLink]="home.link">
+        <mat-icon>home</mat-icon>
+        Seller
+      </a>
+    </li>
+    <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbs;"><a [routerLink]="[breadcrumb.link]">{{breadcrumb.label}}</a></li>
+    <li class="breadcrumb-item active">{{currentRoute.label}}</li>
+  </ul>
+
+</div>

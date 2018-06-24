@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AccountTabComponent implements OnInit {
   accountForm: FormGroup;
+
   phoneTypes = [
     {value: '0', viewValue: 'Hogar'},
     {value: '1', viewValue: 'Móvil'},
@@ -36,8 +37,8 @@ export class AccountTabComponent implements OnInit {
       emailTypes: '',
       email: '',
       mainEmail: '',
-      origin: '',
-      channel: '',
+      originList: '',
+      channels: '',
       resell: ''
     });
   }

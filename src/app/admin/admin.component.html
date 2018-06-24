@@ -1,15 +1,5 @@
 <section class="content">
-  <div fxLayout="row" fxLayoutAlign="space-between" class="block-header">
-    <div>
-      <h2>Oportunidad</h2>
-    </div>
-    <div>
-      <ul fxLayout="row" fxLayoutAlign="space-between center" class="breadcrumb">
-        <li class="breadcrumb-item"><a fxLayout="row" fxLayoutAlign="center center" routerLink="/"><mat-icon>home</mat-icon> Seller</a></li>
-        <li class="breadcrumb-item active">Administrador Simple</li>
-      </ul>
-    </div>
-  </div>
+  <app-block-header title="Administración simple" [breadcrumbs]="breadcrumbs"></app-block-header>
 
   <div class="component-container">
     <mat-form-field>

@@ -15,6 +15,20 @@ export class BudgetComponent implements OnInit {
   stateStep3: StepState = StepState.None;
   stateStep4: StepState = StepState.None;
   disabled = false;
+  breadcrumbs = [
+    {
+      label: 'Seller',
+      link: '/'
+    },
+    {
+      label: 'Administración Simple',
+      link: '/admin'
+    },
+    {
+      label: 'Oportunidad',
+      link: ''
+    }
+  ];
 
   constructor
   (private activatedRoute: ActivatedRoute,

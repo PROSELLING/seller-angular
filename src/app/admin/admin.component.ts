@@ -43,6 +43,16 @@ export class AdminComponent implements OnInit {
   dataSource = new MatTableDataSource(CLIENT_DATA);
   image: any;
   selectedRow: any;
+  breadcrumbs = [
+    {
+      label: 'Seller',
+      link: '/'
+    },
+    {
+      label: 'Administración Simple',
+      link: ''
+    }
+  ];
 
 
   constructor(

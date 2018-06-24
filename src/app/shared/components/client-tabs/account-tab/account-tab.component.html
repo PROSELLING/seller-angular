@@ -1,5 +1,5 @@
 <form fxLayout="column" [formGroup]="accountForm">
-  <div class="input-row" fxLayout="row" fxlayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="0px">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="phoneTypes">
         <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType.value">
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div class="input-row" fxLayout="row" fxlayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="0px">
+  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de Email" formControlName="emailTypes">
         <mat-option *ngFor="let emailType of emailTypes" [value]="emailType.value">
@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <div class="input-row" fxLayout="row" fxlayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.lt-md="0px">
+  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Origen" formControlName="originList">
         <mat-option *ngFor="let origin of originList" [value]="origin.value">
@@ -65,3 +65,4 @@
     </div>
   </div>
 </form>
+<br />
