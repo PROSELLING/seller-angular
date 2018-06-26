@@ -19,6 +19,7 @@ import { AccountTabComponent } from './components/client-tabs/account-tab/accoun
 import { BlockHeaderComponent } from './components/block-header/block-header.component';
 import { InfoTabComponent } from './components/client-tabs/info-tab/info-tab.component';
 import { PhoneTabComponent } from './components/client-tabs/phone-tab/phone-tab.component';
+import { EmailTabComponent } from './components/client-tabs/email-tab/email-tab.component';
 
 @NgModule({
   imports: [
@@ -56,8 +57,9 @@ import { PhoneTabComponent } from './components/client-tabs/phone-tab/phone-tab.
     SidenavMenuComponent,
     ClientTabsComponent,
     AccountTabComponent,
+    EmailTabComponent,
     InfoTabComponent,
-    PhoneTabComponent,
+    PhoneTabComponent
   ]
 })
 export class SharedModule {

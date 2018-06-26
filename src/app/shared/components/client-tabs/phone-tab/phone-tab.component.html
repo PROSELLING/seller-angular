@@ -1,4 +1,4 @@
-<form fxLayout="column" [formGroup]="phoneForm">
+<form [formGroup]="phoneForm">
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="id_type_phone">
@@ -24,7 +24,7 @@
       <input matInput type="number" placeholder="Número" formControlName="phone">
     </mat-form-field>
 
-    <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex>
+    <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="wsp">Whatsapp</mat-checkbox>
     </div>
   </div>

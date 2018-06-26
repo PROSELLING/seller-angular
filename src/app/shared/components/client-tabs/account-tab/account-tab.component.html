@@ -1,4 +1,4 @@
-<form fxLayout="column" [formGroup]="accountForm">
+<form [formGroup]="accountForm">
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="phoneTypes">
@@ -20,7 +20,7 @@
       <input matInput type="number" placeholder="Número" formControlName="phoneNumber">
     </mat-form-field>
 
-    <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex>
+    <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="hasWhatsapp">Whatsapp</mat-checkbox>
     </div>
   </div>
@@ -38,7 +38,7 @@
       <input matInput type="email" placeholder="Email" formControlName="email">
     </mat-form-field>
 
-    <div matTooltip="Indique si es el correo principal del cliente" matTooltipPosition="above" fxFlex>
+    <div matTooltip="Indique si es el correo principal del cliente" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="mainEmail">Principal</mat-checkbox>
     </div>
   </div>
@@ -60,7 +60,7 @@
       </mat-select>
     </mat-form-field>
 
-    <div matTooltip="Indique si es reventa" matTooltipPosition="above" fxFlex>
+    <div matTooltip="Indique si es reventa" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="resell">Reventa</mat-checkbox>
     </div>
   </div>
