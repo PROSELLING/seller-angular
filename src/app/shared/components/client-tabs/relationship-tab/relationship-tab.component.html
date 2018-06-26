@@ -1,0 +1,54 @@
+<form [formGroup]="relationshipForm">
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo de relación" formControlName="relationshipTypes">
+        <mat-option *ngFor="let relationshipType of relationshipTypes" [value]="relationshipType.value">
+          {{ relationshipType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Nombres" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Apellidos" formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button type="submit" (click)="addRelationship()">Agregar teléfono</button>
+</form>
+<br />
+<mat-divider class="l--m-y-10"></mat-divider>
+<br />
+<table mat-table [(dataSource)]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="relationshipType">
+    <th mat-header-cell *matHeaderCellDef>Relación</th>
+    <td mat-cell *matCellDef="let element">{{element.relationshipTypes}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombres y Apellidos</th>
+    <td mat-cell *matCellDef="let element">{{element.name}} {{element.lastName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="birthday">
+    <th mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</th>
+    <td mat-cell *matCellDef="let element">{{element.birthday | date:'shortDate'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="options">
+    <th mat-header-cell *matHeaderCellDef>Opciones</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <mat-icon svgIcon="close" (click)="deleteRelationship(i)" class="app-text-link"></mat-icon>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+</table>

@@ -49,7 +49,7 @@ export class InfoTabComponent implements OnInit {
       genderTypes: '',
       documentTypes: '',
       documentNumber: '',
-      birthday: new Date(),
+      birthday: '',
       civilStatusTypes: '',
       occupationTypes: '',
       company: '',

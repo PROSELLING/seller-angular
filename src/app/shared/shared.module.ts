@@ -22,6 +22,7 @@ import { PhoneTabComponent } from './components/client-tabs/phone-tab/phone-tab.
 import { EmailTabComponent } from './components/client-tabs/email-tab/email-tab.component';
 import { SocialTabComponent } from './components/client-tabs/social-tab/social-tab.component';
 import { LocationTabComponent } from './components/client-tabs/location-tab/location-tab.component';
+import { RelationshipTabComponent } from './components/client-tabs/relationship-tab/relationship-tab.component';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { LocationTabComponent } from './components/client-tabs/location-tab/loca
     InfoTabComponent,
     PhoneTabComponent,
     SocialTabComponent,
-    LocationTabComponent
+    LocationTabComponent,
+    RelationshipTabComponent
   ]
 })
 export class SharedModule {

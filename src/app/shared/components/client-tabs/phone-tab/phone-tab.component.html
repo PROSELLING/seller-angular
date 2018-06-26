@@ -31,6 +31,8 @@
   <button mat-raised-button type="submit" (click)="addPhoneNumber()">Agregar teléfono</button>
 </form>
 <br />
+<mat-divider class="l--m-y-10"></mat-divider>
+<br />
 <table mat-table [(dataSource)]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="type">
     <th mat-header-cell *matHeaderCellDef>Tipo</th>

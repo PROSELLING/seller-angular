@@ -29,7 +29,9 @@
     </mat-form-field>
   </div>
 
-  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+  <mat-divider class="l--m-y-10"></mat-divider>
+
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field>
       <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="birthday">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -53,7 +55,9 @@
     </mat-form-field>
   </div>
 
-  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+  <mat-divider class="l--m-y-10"></mat-divider>
+
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <input matInput type="text" placeholder="Empresa" formControlName="company">
     </mat-form-field>

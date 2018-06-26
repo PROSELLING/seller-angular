@@ -1,5 +1,5 @@
 <form [formGroup]="socialForm">
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field>
       <input matInput type="text" placeholder="Twitter" formControlName="twitter">
       <mat-icon matSuffix svgIcon="twitter-box"></mat-icon>
@@ -14,7 +14,9 @@
     </mat-form-field>
   </div>
 
-  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+  <mat-divider class="l--m-y-10"></mat-divider>
+
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field>
       <input matInput type="text" placeholder="Instagram" formControlName="instagram">
       <mat-icon matSuffix svgIcon="instagram"></mat-icon>

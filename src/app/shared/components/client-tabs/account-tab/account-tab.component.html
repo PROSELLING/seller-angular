@@ -1,5 +1,5 @@
 <form [formGroup]="accountForm">
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="phoneTypes">
         <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType.value">
@@ -23,9 +23,12 @@
     <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="hasWhatsapp">Whatsapp</mat-checkbox>
     </div>
+    <br />
   </div>
 
-  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+  <mat-divider class="l--m-y-10"></mat-divider>
+
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de Email" formControlName="emailTypes">
         <mat-option *ngFor="let emailType of emailTypes" [value]="emailType.value">
@@ -41,9 +44,12 @@
     <div matTooltip="Indique si es el correo principal del cliente" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="mainEmail">Principal</mat-checkbox>
     </div>
+    <br />
   </div>
 
-  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+  <mat-divider class="l--m-y-10"></mat-divider>
+
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Origen" formControlName="originList">
         <mat-option *ngFor="let origin of originList" [value]="origin.value">
@@ -63,6 +69,7 @@
     <div matTooltip="Indique si es reventa" matTooltipPosition="above" fxFlex fxLayoutAlign="start center">
       <mat-checkbox formControlName="resell">Reventa</mat-checkbox>
     </div>
+    <br />
   </div>
 </form>
 <br />
