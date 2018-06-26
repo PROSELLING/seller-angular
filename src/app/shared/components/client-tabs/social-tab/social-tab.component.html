@@ -1,0 +1,28 @@
+<form [formGroup]="socialForm">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Twitter" formControlName="twitter">
+      <mat-icon matSuffix svgIcon="twitter-box"></mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Facebook" formControlName="facebook">
+      <mat-icon matSuffix svgIcon="facebook-box"></mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Linkedin" formControlName="linkedin">
+      <mat-icon matSuffix svgIcon="linkedin-box"></mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Instagram" formControlName="instagram">
+      <mat-icon matSuffix svgIcon="instagram"></mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Google+" formControlName="googleplus">
+      <mat-icon matSuffix svgIcon="google-plus-box"></mat-icon>
+    </mat-form-field>
+  </div>
+</form>
+<br />

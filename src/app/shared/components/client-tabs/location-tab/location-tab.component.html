@@ -1,0 +1,91 @@
+<form [formGroup]="infoForm">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo ubicación" formControlName="locationTypes">
+        <mat-option *ngFor="let locationType of locationTypes" [value]="locationType.value">
+          {{ locationType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Provincia" formControlName="provinces">
+        <mat-option *ngFor="let province of provinces" [value]="province.value">
+          {{ province.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Calle" formControlName="street">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Número" formControlName="number">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Floor" formControlName="floor">
+    </mat-form-field>
+  </div>
+
+  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Sector" formControlName="sector">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Longitud" formControlName="long">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Latitud" formControlName="lat">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Google Place Id" formControlName="googlePlaceId">
+    </mat-form-field>
+  </div>
+  <button mat-raised-button type="submit" (click)="addPlace()">Agregar Lugar</button>
+</form>
+<br />
+<table mat-table [(dataSource)]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Tipo</th>
+    <td mat-cell *matCellDef="let element">{{element.locationTypes}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="province">
+    <th mat-header-cell *matHeaderCellDef>Provincia</th>
+    <td mat-cell *matCellDef="let element">{{element.provinces}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="street">
+    <th mat-header-cell *matHeaderCellDef>Calle</th>
+    <td mat-cell *matCellDef="let element">{{element.street}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>Número</th>
+    <td mat-cell *matCellDef="let element">{{element.number}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="floor">
+    <th mat-header-cell *matHeaderCellDef>Piso</th>
+    <td mat-cell *matCellDef="let element">{{element.floor}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="sector">
+    <th mat-header-cell *matHeaderCellDef>Sector</th>
+    <td mat-cell *matCellDef="let element">{{element.sector}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="options">
+    <th mat-header-cell *matHeaderCellDef>Opciones</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <mat-icon svgIcon="close" (click)="deleteEmail(i)" class="app-text-link"></mat-icon>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+</table>

@@ -8,6 +8,7 @@ import { RolesService } from './services/roles.service';
 import { ClientsService } from './services/clients.service';
 import { httpInterceptorProviders } from './services/interceptors';
 import { AwsService } from './services/aws.service';
+import { FormsService } from './services/forms.service';
 
 @NgModule()
 export class CoreModule {
@@ -27,6 +28,7 @@ export class CoreModule {
         AuthService,
         AwsService,
         ClientsService,
+        FormsService,
         PermissionsService,
         RolesService,
         httpInterceptorProviders

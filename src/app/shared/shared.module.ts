@@ -20,6 +20,8 @@ import { BlockHeaderComponent } from './components/block-header/block-header.com
 import { InfoTabComponent } from './components/client-tabs/info-tab/info-tab.component';
 import { PhoneTabComponent } from './components/client-tabs/phone-tab/phone-tab.component';
 import { EmailTabComponent } from './components/client-tabs/email-tab/email-tab.component';
+import { SocialTabComponent } from './components/client-tabs/social-tab/social-tab.component';
+import { LocationTabComponent } from './components/client-tabs/location-tab/location-tab.component';
 
 @NgModule({
   imports: [
@@ -59,7 +61,9 @@ import { EmailTabComponent } from './components/client-tabs/email-tab/email-tab.
     AccountTabComponent,
     EmailTabComponent,
     InfoTabComponent,
-    PhoneTabComponent
+    PhoneTabComponent,
+    SocialTabComponent,
+    LocationTabComponent
   ]
 })
 export class SharedModule {

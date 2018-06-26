@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
+import { FormsService } from '../../../../core/services/forms.service';
 
 @Component({
   selector: 'app-email-tab',
@@ -17,7 +18,7 @@ export class EmailTabComponent implements OnInit {
     {value: '0', viewValue: 'Personal'},
     {value: '1', viewValue: 'Trabajo'}
   ];
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private formsService: FormsService) {
   }
 
   ngOnInit() {
@@ -29,30 +30,11 @@ export class EmailTabComponent implements OnInit {
   }
 
   private addEmail() {
-    if (this.emailForm.valid) {
-      this.emails.push(this.emailForm.value);
-      this.dataSource.filter = '';
-      this.emailForm.reset();
-    } else {
-      this.validateAllFormFields(this.emailForm);
-    }
-
-  }
-
-  private validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
+    this.formsService.addTableItem(this.emailForm, this.emails, this.dataSource);
   }
 
   private deleteEmail(index) {
-    this.emails.splice(index, 1);
-    this.dataSource.filter = '';
+    this.formsService.deleteTableItem(this.emails, this.dataSource, index);
   }
 
 }
