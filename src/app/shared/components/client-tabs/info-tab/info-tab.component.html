@@ -1,0 +1,74 @@
+<form fxLayout="column" [formGroup]="infoForm">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo de Persona" formControlName="personTypes">
+        <mat-option *ngFor="let personType of personTypes" [value]="personType.value">
+          {{ personType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Sexo" formControlName="genderTypes">
+        <mat-option *ngFor="let genderType of genderTypes" [value]="genderType.value">
+          {{ genderType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo de Documento" formControlName="documentTypes">
+        <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.value">
+          {{ documentType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Número de Documento" formControlName="documentNumber">
+    </mat-form-field>
+  </div>
+
+  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Estado Cívil" formControlName="civilStatusTypes">
+        <mat-option *ngFor="let civilStatusType of civilStatusTypes" [value]="civilStatusType.value">
+          {{ civilStatusType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Ocupación" formControlName="occupationTypes">
+        <mat-option *ngFor="let occupationType of occupationTypes" [value]="occupationTypes.value">
+          {{ occupationTypes.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="input-row" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="10px">
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Empresa" formControlName="company">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Cargo" formControlName="positionTypes">
+        <mat-option *ngFor="let positionType of positionTypes" [value]="positionType.value">
+          {{ positionType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Ingreso Bruto" formControlName="netSalary">
+    </mat-form-field>
+  </div>
+</form>
+<br />

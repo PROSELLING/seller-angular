@@ -27,12 +27,17 @@ export class AccountTabComponent implements OnInit {
     {value: '1', viewValue: 'Web'},
     {value: '2', viewValue: 'Telefonico'}
   ];
+
   constructor(private fb: FormBuilder) {
-    this.accountForm = fb.group({
+
+  }
+
+  ngOnInit() {
+    this.accountForm = this.fb.group({
       phoneTypes: '',
-      countryCode : '',
-      prefix : '',
-      phoneNumber : '',
+      countryCode: '',
+      prefix: '',
+      phoneNumber: '',
       hasWhatsapp: '',
       emailTypes: '',
       email: '',
@@ -41,10 +46,6 @@ export class AccountTabComponent implements OnInit {
       channels: '',
       resell: ''
     });
-  }
-
-  ngOnInit() {
-
   }
 
 }

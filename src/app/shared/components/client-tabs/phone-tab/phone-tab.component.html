@@ -1,0 +1,58 @@
+<form fxLayout="column" [formGroup]="phoneForm">
+  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Tipo de teléfono" formControlName="id_type_phone">
+        <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType.value">
+          {{ phoneType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Código de País" formControlName="id_paises">
+        <mat-option *ngFor="let countryCode of coutryCodes" [value]="countryCode.value">
+          {{ countryCode.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Prefijo" formControlName="area_code">
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput type="number" placeholder="Número" formControlName="phone">
+    </mat-form-field>
+
+    <div matTooltip="Indique si este teléfono dispone de Whatsapp" matTooltipPosition="above" fxFlex>
+      <mat-checkbox formControlName="wsp">Whatsapp</mat-checkbox>
+    </div>
+  </div>
+  <button mat-raised-button type="submit" (click)="addPhoneNumber()">Agregar teléfono</button>
+</form>
+<br />
+<table mat-table [(dataSource)]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Tipo</th>
+    <td mat-cell *matCellDef="let element">{{element.id_type_phone}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="prefix">
+    <th mat-header-cell *matHeaderCellDef>Prefijo</th>
+    <td mat-cell *matCellDef="let element">{{element.id_paises + element.area_code}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>Número</th>
+    <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="options">
+    <th mat-header-cell *matHeaderCellDef>Opciones</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <mat-icon svgIcon="close" (click)="deletePhone(i)" class="app-text-link"></mat-icon>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+</table>

@@ -17,6 +17,8 @@ import { BackgroundImageDirective } from './directives/background-image.directiv
 import { ClientTabsComponent } from './components/client-tabs/client-tabs.component';
 import { AccountTabComponent } from './components/client-tabs/account-tab/account-tab.component';
 import { BlockHeaderComponent } from './components/block-header/block-header.component';
+import { InfoTabComponent } from './components/client-tabs/info-tab/info-tab.component';
+import { PhoneTabComponent } from './components/client-tabs/phone-tab/phone-tab.component';
 
 @NgModule({
   imports: [
@@ -53,7 +55,9 @@ import { BlockHeaderComponent } from './components/block-header/block-header.com
     SidenavComponent,
     SidenavMenuComponent,
     ClientTabsComponent,
-    AccountTabComponent
+    AccountTabComponent,
+    InfoTabComponent,
+    PhoneTabComponent,
   ]
 })
 export class SharedModule {
