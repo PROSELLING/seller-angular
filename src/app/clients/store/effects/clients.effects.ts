@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
-import { ClientsActionTypes, Load, LoadFail, LoadSuccess } from '../actions/clients.actions';
+import { ClientsActionTypes, Load, LoadClientsSuccess, LoadFail, LoadPageSuccess } from '../actions/clients.actions';
 
 import { ClientsService } from '../../../core/services/clients.service';
 import { ClientsResponse } from '../../../core/models/client.model';
@@ -20,7 +20,10 @@ export class ClientsEffects {
       this.clientsService
         .getClients(params)
         .pipe(
-          map((res: ClientsResponse) => new LoadSuccess(res)),
+          mergeMap((res: ClientsResponse) => [
+            new LoadPageSuccess(res),
+            new LoadClientsSuccess(res.data)
+          ]),
           catchError(error => of(new LoadFail(error)))
         )
     )

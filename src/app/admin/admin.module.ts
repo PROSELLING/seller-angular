@@ -6,17 +6,21 @@ import { SharedModule } from '../shared/shared.module';
 import { httpInterceptorProviders } from '../core/services/interceptors';
 import { GanttComponent } from './gantt/gantt.component';
 import { BudgetComponent } from './budget/budget.component';
+import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
+import { ClientsModule } from '../clients/clients.module';
 
 @NgModule({
   imports: [
     AdminRoutingModule,
     CommonModule,
-    SharedModule
+    SharedModule,
+    ClientsModule
   ],
   declarations: [
     AdminComponent,
     GanttComponent,
-    BudgetComponent
+    BudgetComponent,
+    ClientSidenavComponent
   ],
   providers: [httpInterceptorProviders]
 })

@@ -23,7 +23,15 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="client">
         <th mat-header-cell *matHeaderCellDef>Cliente</th>
-        <td mat-cell *matCellDef="let element">{{element.client}}</td>
+        <td mat-cell *matCellDef="let element">
+          <a
+            [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.clientId]}}]"
+            class="mat-accent"
+            (click)="openRightSidenav()"
+          >
+            {{element.client}}
+          </a>
+        </td>
       </ng-container>
 
       <!-- Symbol Column -->
@@ -38,7 +46,7 @@
           <a
             [routerLink]="['/admin', {outlets: {rightSidenav: ['budget', element.id]}}]"
             class="mat-accent"
-            (click)="openGantt()"
+            (click)="openRightSidenav()"
           >
             {{element.status}}
           </a>

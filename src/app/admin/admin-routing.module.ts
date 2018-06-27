@@ -4,6 +4,7 @@ import { AuthGuardService } from '../core/services/guards/auth-guard.service';
 import { AdminComponent } from './admin.component';
 import { BudgetComponent } from './budget/budget.component';
 import { GanttComponent } from './gantt/gantt.component';
+import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'budget/:id',
     component: GanttComponent,
+    outlet: 'rightSidenav'
+  },
+  {
+    path: 'client/:id',
+    component: ClientSidenavComponent,
     outlet: 'rightSidenav'
   }
 ];

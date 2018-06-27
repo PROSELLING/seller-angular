@@ -11,6 +11,7 @@ const CLIENT_DATA = [
     saleDate: '28 Dic',
     seller: 'Miguel López',
     client: 'Juan Pérez',
+    clientId: 17,
     business: 'Ranger XL 2.2 Diesel DC Azul Mediterraneo (VIN serie negrita, nº stock Fact)',
     status: 'En Proceso',
     amount: '$390,000',
@@ -23,6 +24,7 @@ const CLIENT_DATA = [
     saleDate: '28 Ene',
     seller: 'Miguel López',
     client: 'Claudio Gianmateo',
+    clientId: 94,
     business: 'Ecosport',
     status: 'Entregado',
     amount: '$380,000',
@@ -88,7 +90,7 @@ export class AdminComponent implements OnInit {
     this.selectedRow = row;
   }
 
-  openGantt() {
-    this.store.dispatch(new LayoutActions.ToggleRightSidenav());
+  openRightSidenav() {
+    this.store.dispatch(new LayoutActions.OpenRightSidenav());
   }
 }

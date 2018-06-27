@@ -17,6 +17,7 @@ import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 })
 export class ClientsComponent implements AfterViewInit, OnInit {
   clients$: Observable<ClientModel[]>;
+  test$: Observable<any>;
   clientsCopy$: ClientModel[];
   displayedColumns = ['name', 'client_contact', 'origin'];
   resultsLength$: Observable<number>;
@@ -36,7 +37,7 @@ export class ClientsComponent implements AfterViewInit, OnInit {
     );
 
     this.clients$ = this.store.pipe(
-      select(fromClients.getClients),
+      select(fromClients.getAllClients),
       tap(clients => {
         this.setClientsCopy(clients);
       })
@@ -68,6 +69,9 @@ export class ClientsComponent implements AfterViewInit, OnInit {
       page: (this.paginator.pageIndex + 1),
       filter: this.input.nativeElement.value
     }));
+    this.store.pipe(
+      select(fromClients.getAllClients)
+    ).subscribe(data => console.log('test', data));
   }
 
   setClientsCopy(clients: ClientModel[]) {

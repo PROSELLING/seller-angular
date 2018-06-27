@@ -1,11 +1,13 @@
 import { Action } from '@ngrx/store';
-import { ClientsResponse } from '../../../core/models/client.model';
+import { ClientModel, ClientsResponse } from '../../../core/models/client.model';
 
 
 export enum ClientsActionTypes {
   Load = '[Clients] Load',
-  LoadSuccess = '[Clients] Load Success',
-  LoadFail = '[Clients] Load Fail'
+  LoadPageSuccess = '[Clients] Load Success',
+  LoadClientsSuccess = '[Clients] Load Clients Success',
+  LoadFail = '[Clients] Load Fail',
+  Select = '[Clients] Select'
 }
 
 export class Load implements Action {
@@ -15,10 +17,17 @@ export class Load implements Action {
   }
 }
 
-export class LoadSuccess implements Action {
-  readonly type = ClientsActionTypes.LoadSuccess;
+export class LoadPageSuccess implements Action {
+  readonly type = ClientsActionTypes.LoadPageSuccess;
 
   constructor(public payload: ClientsResponse) {
+  }
+}
+
+export class LoadClientsSuccess implements Action {
+  readonly type = ClientsActionTypes.LoadClientsSuccess;
+
+  constructor(public payload: ClientModel[]) {
   }
 }
 
@@ -29,7 +38,16 @@ export class LoadFail implements Action {
   }
 }
 
+export class Select implements Action {
+  readonly type = ClientsActionTypes.Select;
+
+  constructor(public payload: string) {
+  }
+}
+
 export type ClientsActionsUnion =
   | Load
-  | LoadSuccess
-  | LoadFail;
+  | LoadPageSuccess
+  | LoadClientsSuccess
+  | LoadFail
+  | Select;

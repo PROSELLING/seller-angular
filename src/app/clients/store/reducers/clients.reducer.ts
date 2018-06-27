@@ -1,26 +1,29 @@
 import { ClientsActionsUnion, ClientsActionTypes } from '../actions/clients.actions';
 import { ClientModel } from '../../../core/models/client.model';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface State {
-  clients: ClientModel[];
-  currentPage: number;
-  total: number;
+export const adapter: EntityAdapter<ClientModel> = createEntityAdapter<ClientModel>({
+  selectId: (client: ClientModel) => client.id
+});
+
+export interface State extends EntityState<ClientModel> {
+  selectedClientId: string | null;
 }
 
-export const initialState: State = {
-  clients: [],
-  currentPage: 1,
-  total: 0
-};
+export const initialState: State = adapter.getInitialState({
+  selectedClientId: null
+});
 
 export function reducer(state = initialState, action: ClientsActionsUnion): State {
   switch (action.type) {
-    case ClientsActionTypes.LoadSuccess: {
+    case ClientsActionTypes.LoadClientsSuccess: {
+      return adapter.addMany(action.payload, state);
+    }
+    case ClientsActionTypes.Select: {
+      console.log('Select action', action.payload);
       return {
         ...state,
-        clients: action.payload.data,
-        currentPage: action.payload.current_page,
-        total: action.payload.total
+        selectedClientId: action.payload
       };
     }
     default: {
@@ -29,6 +32,4 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
   }
 }
 
-export const getClients = (state: State) => state.clients;
-export const getCurrentPage = (state: State) => state.currentPage;
-export const getTotal = (state: State) => state.total;
+export const getSelectedId = (state: State) => state.selectedClientId;
