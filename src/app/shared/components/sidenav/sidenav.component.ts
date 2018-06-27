@@ -3,7 +3,7 @@ import { MatSidenav } from '@angular/material';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Observable } from 'rxjs/internal/Observable';
 import { select, Store } from '@ngrx/store';
-import * as LayoutActions from '../../../core/store/actions/layout.actions';
+import { LayoutActions } from '../../../core/store/actions';
 import * as fromRoot from '../../../core/store';
 import * as fromAuth from '../../../auth/store';
 

@@ -29,3 +29,13 @@ a {
 .mat-tab-body-content {
   padding: 0 10px;
 }
+
+@media(max-width: 800px) {
+  .responsive_table {
+    overflow-x: auto !important;
+  }
+
+  .mat-table {
+    min-width:800px;
+  }
+}

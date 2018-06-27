@@ -34,3 +34,15 @@ body {
 .app-text-link {
   cursor: pointer;
 }
+
+.app-text-uppercase {
+  text-transform: uppercase;
+}
+
+.app-text-lowercase {
+  text-transform: lowercase;
+}
+
+.app-text-capitalize {
+  text-transform: capitalize;
+}

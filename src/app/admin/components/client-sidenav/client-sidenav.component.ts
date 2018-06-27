@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import * as fromClients from '../../../clients/store';
 import { ActivatedRoute } from '@angular/router';
 import { ClientsActions } from '../../../clients/store/actions';
+import { LayoutActions } from '../../../core/store/actions';
 
 @Component({
   selector: 'app-client-sidenav',
@@ -27,4 +28,7 @@ export class ClientSidenavComponent implements OnInit {
     this.user$ = this.store.pipe(select(fromClients.getSelectedClient));
   }
 
+  closeSidenav() {
+    this.store.dispatch(new LayoutActions.CloseRightSidenav());
+  }
 }
