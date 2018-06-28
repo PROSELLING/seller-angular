@@ -29,11 +29,11 @@ export class EmailTabComponent implements OnInit {
     });
   }
 
-  private addEmail() {
+  addEmail() {
     this.formsService.addTableItem(this.emailForm, this.emails, this.dataSource);
   }
 
-  private deleteEmail(index) {
+  deleteEmail(index) {
     this.formsService.deleteTableItem(this.emails, this.dataSource, index);
   }
 

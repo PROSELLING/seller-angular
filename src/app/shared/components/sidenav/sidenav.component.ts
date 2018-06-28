@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { ObservableMedia } from '@angular/flex-layout';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, zip } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { LayoutActions } from '../../../core/store/actions';
 import * as fromRoot from '../../../core/store';
@@ -35,10 +35,21 @@ export class SidenavComponent implements OnInit {
     });
   }
 
-  closeSidenav(event: any) {
-    console.log('closeSidenav', event);
-    this.store.dispatch(new LayoutActions.CloseSidenav());
-    this.store.dispatch(new LayoutActions.CloseRightSidenav());
+  closeSidenav() {
+    const leftSidenav$ = this.store.pipe(select(fromRoot.getShowSidenav));
+    const rightSidenav$ = this.store.pipe(select(fromRoot.getShowRightSidenav));
+    zip(leftSidenav$, rightSidenav$)
+      .subscribe(pair => {
+        const left = pair[0];
+        const right = pair[1];
+        if ((left && right) || (!left && right)) {
+          this.store.dispatch(new LayoutActions.CloseRightSidenav());
+        }
+        if (left && !right) {
+          this.store.dispatch(new LayoutActions.CloseSidenav());
+        }
+        console.log('testZip', pair);
+      }).unsubscribe();
   }
 
   private getMode(): string {

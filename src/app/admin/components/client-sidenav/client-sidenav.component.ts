@@ -28,7 +28,7 @@ export class ClientSidenavComponent implements OnInit {
     this.user$ = this.store.pipe(select(fromClients.getSelectedClient));
   }
 
-  closeSidenav() {
+  closeSide() {
     this.store.dispatch(new LayoutActions.CloseRightSidenav());
   }
 }

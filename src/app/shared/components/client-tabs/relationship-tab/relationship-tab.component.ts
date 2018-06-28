@@ -34,7 +34,7 @@ export class RelationshipTabComponent implements OnInit {
     });
   }
 
-  private addRelationship() {
+  addRelationship() {
     this.formsService.addTableItem(this.relationshipForm, this.relations, this.dataSource);
   }
 

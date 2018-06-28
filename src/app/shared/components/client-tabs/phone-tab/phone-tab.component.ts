@@ -37,7 +37,7 @@ export class PhoneTabComponent implements OnInit {
     });
   }
 
-  private addPhoneNumber() {
+  addPhoneNumber() {
     this.formsService.addTableItem(this.phoneForm, this.phones, this.dataSource);
   }
 

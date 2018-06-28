@@ -43,7 +43,7 @@ export class LocationTabComponent implements OnInit {
 
 
 
-  private addPlace() {
+  addPlace() {
     this.formsService.addTableItem(this.infoForm, this.places, this.dataSource);
   }
 
