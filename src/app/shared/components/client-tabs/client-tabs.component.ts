@@ -29,32 +29,32 @@ export class ClientTabsComponent implements OnInit {
 
   tabChanged(event) {
     this.resetLabelVisibility();
-    switch (event.index) {
-      case 0:
+    switch (event.tab.textLabel) {
+      case 'account':
         this.hideAccountLabel = false;
         break;
-      case 1:
+      case 'domain':
         this.hideCompanyLabel = false;
         break;
-      case 2:
+      case 'information':
         this.hideInfoLabel = false;
         break;
-      case 3:
+      case 'phone':
         this.hidePhones = false;
         break;
-      case 4:
+      case 'email':
         this.hideEmails = false;
         break;
-      case 5:
+      case 'social':
         this.hideSocial = false;
         break;
-      case 6:
+      case 'location':
         this.hideLocation = false;
         break;
-      case 7:
+      case 'relations':
         this.hideRelations = false;
         break;
-      case 8:
+      case 'comments':
         this.hideComments = false;
         break;
     }
@@ -62,6 +62,7 @@ export class ClientTabsComponent implements OnInit {
 
   resetLabelVisibility() {
     this.hideAccountLabel = true;
+    this.hideCompanyLabel = true;
     this.hideInfoLabel = true;
     this.hidePhones = true;
     this.hideEmails = true;

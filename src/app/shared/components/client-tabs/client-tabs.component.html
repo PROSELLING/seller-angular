@@ -2,63 +2,63 @@
   <app-client-card [user]="user$ | async" [(isNatural)]="isNatural"></app-client-card>
 </div>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" class="client-tabs">
-  <mat-tab>
+  <mat-tab label="account">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="account"></mat-icon>
       <span [hidden]="hideAccountLabel">Datos Básicos</span>
     </ng-template>
     <app-account-tab [isNatural]="isNatural"></app-account-tab>
   </mat-tab>
-  <mat-tab *ngIf="!isNatural">
+  <mat-tab label="domain" *ngIf="!isNatural">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="domain"></mat-icon>
       <span [hidden]="hideCompanyLabel">Datos Compañía</span>
     </ng-template>
     Info Compañía
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="information">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="information"></mat-icon>
       <span [hidden]="hideInfoLabel">Información Adicional</span>
     </ng-template>
     <app-info-tab></app-info-tab>
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="phone">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="phone"></mat-icon>
       <span [hidden]="hidePhones">Teléfonos</span>
     </ng-template>
     <app-phone-tab></app-phone-tab>
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="email">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="email"></mat-icon>
       <span [hidden]="hideEmails">Emails</span>
     </ng-template>
     <app-email-tab></app-email-tab>
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="social">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="share-variant"></mat-icon>
       <span [hidden]="hideSocial">Redes Sociales</span>
     </ng-template>
     <app-social-tab></app-social-tab>
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="location">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="map-marker"></mat-icon>
       <span [hidden]="hideLocation">Ubicación</span>
     </ng-template>
     <app-location-tab></app-location-tab>
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="relations">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="account-group"></mat-icon>
       <span [hidden]="hideRelations">Relaciones y Parentesco</span>
     </ng-template>
     <app-relationship-tab></app-relationship-tab>
   </mat-tab>
-  <mat-tab>
+  <mat-tab label="comments">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="database-search"></mat-icon>
       <span [hidden]="hideComments">Transacciones</span>
