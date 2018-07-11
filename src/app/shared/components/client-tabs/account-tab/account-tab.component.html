@@ -1,4 +1,7 @@
 <form [formGroup]="accountForm">
+  <ng-container *ngIf="!isNatural">
+    Persona Jurídica
+  </ng-container>
   <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="phoneTypes">

@@ -1,0 +1,17 @@
+@import 'main';
+
+.client-card {
+
+  .header {
+    min-height: 150px;
+  }
+  .client-img {
+    img {
+      @include border-radius(50%);
+      width: 100px;
+      border: 3px solid $white;
+      box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+    }
+
+  }
+}

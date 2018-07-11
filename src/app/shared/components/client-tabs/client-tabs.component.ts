@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ClientModel } from '../../../core/models/client.model';
 
 @Component({
   selector: 'app-client-tabs',
@@ -7,7 +9,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ClientTabsComponent implements OnInit {
+  user$: Observable<ClientModel>;
   hideAccountLabel = false;
+  hideCompanyLabel = true;
   hideInfoLabel = true;
   hidePhones = true;
   hideEmails = true;
@@ -15,6 +19,7 @@ export class ClientTabsComponent implements OnInit {
   hideLocation = true;
   hideRelations = true;
   hideComments = true;
+  isNatural = true;
 
   constructor() {
   }
@@ -29,24 +34,27 @@ export class ClientTabsComponent implements OnInit {
         this.hideAccountLabel = false;
         break;
       case 1:
-        this.hideInfoLabel = false;
+        this.hideCompanyLabel = false;
         break;
       case 2:
-        this.hidePhones = false;
+        this.hideInfoLabel = false;
         break;
       case 3:
-        this.hideEmails = false;
+        this.hidePhones = false;
         break;
       case 4:
-        this.hideSocial = false;
+        this.hideEmails = false;
         break;
       case 5:
-        this.hideLocation = false;
+        this.hideSocial = false;
         break;
       case 6:
-        this.hideRelations = false;
+        this.hideLocation = false;
         break;
       case 7:
+        this.hideRelations = false;
+        break;
+      case 8:
         this.hideComments = false;
         break;
     }

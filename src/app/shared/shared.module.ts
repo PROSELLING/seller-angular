@@ -23,6 +23,8 @@ import { EmailTabComponent } from './components/client-tabs/email-tab/email-tab.
 import { SocialTabComponent } from './components/client-tabs/social-tab/social-tab.component';
 import { LocationTabComponent } from './components/client-tabs/location-tab/location-tab.component';
 import { RelationshipTabComponent } from './components/client-tabs/relationship-tab/relationship-tab.component';
+import { ClientProfileComponent } from './components/client-profile/client-profile.component';
+import { ClientCardComponent } from './components/client-card/client-card.component';
 
 @NgModule({
   imports: [
@@ -47,6 +49,8 @@ import { RelationshipTabComponent } from './components/client-tabs/relationship-
     BackgroundImageDirective,
     AlertComponent,
     BlockHeaderComponent,
+    ClientCardComponent,
+    ClientProfileComponent,
     ClientTabsComponent,
     HeaderComponent,
     SidenavComponent
@@ -55,9 +59,11 @@ import { RelationshipTabComponent } from './components/client-tabs/relationship-
     AlertComponent,
     BlockHeaderComponent,
     BackgroundImageDirective,
+    ClientProfileComponent,
     HeaderComponent,
     SidenavComponent,
     SidenavMenuComponent,
+    ClientCardComponent,
     ClientTabsComponent,
     AccountTabComponent,
     EmailTabComponent,

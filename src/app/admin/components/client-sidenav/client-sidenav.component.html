@@ -2,16 +2,5 @@
   <mat-icon svgIcon="close"></mat-icon>
 </div>
 <div class="client-profile">
-  <div class="client-card" *ngIf="user$ | async as user">
-    <div fxLayout="row" fxLayoutAlign="center center" class="header app-bg-color-primary l--p-a-20">
-      <h4 class="m-t-10 app-heading-4 app-color-white app-text-capitalize">
-        {{user.name}} {{user.last_name}}
-      </h4>
-    </div>
-    <div class="client-img"><img src="http://via.placeholder.com/150x150" alt="User"></div>
-    <div class="detail" *ngIf="user.cargo">
-      {{user.cargo}} test
-      <mat-divider class="l--m-y-20"></mat-divider>
-    </div>
-  </div>
+  <app-client-profile [user]="user$ | async"></app-client-profile>
 </div>

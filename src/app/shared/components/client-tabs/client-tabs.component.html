@@ -1,10 +1,20 @@
+<div>
+  <app-client-card [user]="user$ | async" [(isNatural)]="isNatural"></app-client-card>
+</div>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" class="client-tabs">
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon svgIcon="account"></mat-icon>
       <span [hidden]="hideAccountLabel">Datos Básicos</span>
     </ng-template>
-    <app-account-tab></app-account-tab>
+    <app-account-tab [isNatural]="isNatural"></app-account-tab>
+  </mat-tab>
+  <mat-tab *ngIf="!isNatural">
+    <ng-template mat-tab-label>
+      <mat-icon svgIcon="domain"></mat-icon>
+      <span [hidden]="hideCompanyLabel">Datos Compañía</span>
+    </ng-template>
+    Info Compañía
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
