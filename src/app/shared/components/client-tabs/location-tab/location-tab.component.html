@@ -2,8 +2,8 @@
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo ubicación" formControlName="locationTypes">
-        <mat-option *ngFor="let locationType of locationTypes" [value]="locationType.value">
-          {{ locationType.viewValue }}
+        <mat-option *ngFor="let locationType of locationTypes$ | async" [value]="locationType.id">
+          {{ locationType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>

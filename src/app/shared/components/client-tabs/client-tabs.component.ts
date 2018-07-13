@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClientModel } from '../../../core/models/client.model';
 
@@ -9,7 +9,7 @@ import { ClientModel } from '../../../core/models/client.model';
   encapsulation: ViewEncapsulation.None
 })
 export class ClientTabsComponent implements OnInit {
-  user$: Observable<ClientModel>;
+  @Input() client: ClientModel;
   hideAccountLabel = false;
   hideCompanyLabel = true;
   hideInfoLabel = true;

@@ -74,12 +74,20 @@ export interface ClientsResponseModel {
   total: number;
 }
 
-export interface ClientPayloadModel {
-  clients: ClientsResponseModel;
+export interface ClientObjectModel {
+  id: string;
+  value: string;
 }
 
-export interface ClientsResponse {
-  current_page: number;
-  data: ClientModel[];
-  total: number;
+export interface ClientPayloadModel {
+  clients: ClientsResponseModel;
+  client_type_phone: ClientObjectModel[];
+  origins: ClientObjectModel[];
+  channels: ClientObjectModel[];
+  documents: ClientObjectModel[];
+  marital_status: ClientObjectModel[];
+  ocupations: ClientObjectModel[];
+  type_locations: ClientObjectModel[];
+  client_relations: ClientObjectModel[];
+  client_type_mails: ClientObjectModel[];
 }

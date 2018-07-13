@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ClientModel, ClientsResponse } from '../../../core/models/client.model';
+import { ClientModel, ClientPayloadModel } from '../../../core/models/client.model';
 
 
 export enum ClientsActionTypes {
@@ -7,7 +7,8 @@ export enum ClientsActionTypes {
   LoadPageSuccess = '[Clients] Load Success',
   LoadClientsSuccess = '[Clients] Load Clients Success',
   LoadFail = '[Clients] Load Fail',
-  Select = '[Clients] Select'
+  Select = '[Clients] Select',
+  ResetClientState = '[Clients] Reset Client State'
 }
 
 export class Load implements Action {
@@ -20,7 +21,7 @@ export class Load implements Action {
 export class LoadPageSuccess implements Action {
   readonly type = ClientsActionTypes.LoadPageSuccess;
 
-  constructor(public payload: ClientsResponse) {
+  constructor(public payload: ClientPayloadModel) {
   }
 }
 
@@ -45,9 +46,14 @@ export class Select implements Action {
   }
 }
 
+export class ResetClientState implements Action {
+  readonly type = ClientsActionTypes.ResetClientState;
+}
+
 export type ClientsActionsUnion =
   | Load
   | LoadPageSuccess
   | LoadClientsSuccess
   | LoadFail
-  | Select;
+  | Select
+  | ResetClientState;

@@ -2,8 +2,8 @@
   <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de relación" formControlName="relationshipTypes">
-        <mat-option *ngFor="let relationshipType of relationshipTypes" [value]="relationshipType.value">
-          {{ relationshipType.viewValue }}
+        <mat-option *ngFor="let relationshipType of clientRelations$ | async" [value]="relationshipType.id">
+          {{ relationshipType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>

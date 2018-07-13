@@ -18,8 +18,8 @@
 
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de Documento" formControlName="documentTypes">
-        <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.value">
-          {{ documentType.viewValue }}
+        <mat-option *ngFor="let documentType of documents$ | async" [value]="documentType.id">
+          {{ documentType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -40,16 +40,16 @@
 
     <mat-form-field fxFlex>
       <mat-select placeholder="Estado Cívil" formControlName="civilStatusTypes">
-        <mat-option *ngFor="let civilStatusType of civilStatusTypes" [value]="civilStatusType.value">
-          {{ civilStatusType.viewValue }}
+        <mat-option *ngFor="let maritalStatus of maritalStatus$ | async" [value]="maritalStatus.id">
+          {{ maritalStatus.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field fxFlex>
       <mat-select placeholder="Ocupación" formControlName="occupationTypes">
-        <mat-option *ngFor="let occupationType of occupationTypes" [value]="occupationTypes.value">
-          {{ occupationTypes.viewValue }}
+        <mat-option *ngFor="let occupation of ocupations$ | async" [value]="occupation.id">
+          {{ occupation.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>

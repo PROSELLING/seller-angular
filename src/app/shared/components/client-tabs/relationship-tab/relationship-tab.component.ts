@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormService } from '../../../../core/services/form.service';
-import { ClientContactModel } from '../../../../core/models/client.model';
+import { ClientContactModel, ClientObjectModel } from '../../../../core/models/client.model';
 import { MatTableDataSource } from '@angular/material';
+import * as fromClients from '../../../../clients/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-relationship-tab',
@@ -10,22 +13,23 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./relationship-tab.component.scss']
 })
 export class RelationshipTabComponent implements OnInit {
+  clientRelations$: Observable<ClientObjectModel[]>;
+
   relationshipForm: FormGroup;
   relations: ClientContactModel[] = [];
   dataSource = new MatTableDataSource(this.relations);
   tableColumns = ['relationshipType', 'name', 'birthday', 'options'];
 
-  relationshipTypes = [
-    {value: '0', viewValue: 'Amigo'},
-    {value: '1', viewValue: 'Conyugue'},
-    {value: '2', viewValue: 'Familia'}
-  ];
-
-  constructor(private fb: FormBuilder, private formService: FormService) {
+  constructor
+  (private fb: FormBuilder,
+   private formService: FormService,
+   private store: Store<fromClients.State>) {
 
   }
 
   ngOnInit() {
+    this.clientRelations$ = this.store.pipe(select(fromClients.getClientRelations));
+
     this.relationshipForm = this.fb.group({
       relationshipTypes: '',
       name: '',

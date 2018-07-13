@@ -58,3 +58,21 @@ export const getCurrentPage = createSelector(getClientsPageEntitiesState, fromCl
 /** Get total clients **/
 export const getTotal = createSelector(getClientsPageEntitiesState, fromClientsPage.getTotal);
 
+export const getPhoneNumberTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getPhonNumberTypes);
+
+export const getOrigins = createSelector(getClientsPageEntitiesState, fromClientsPage.getOrigins);
+
+export const getChannels = createSelector(getClientsPageEntitiesState, fromClientsPage.getChannels);
+
+export const getDocuments = createSelector(getClientsPageEntitiesState, fromClientsPage.getDocuments);
+
+export const getMaritalStatus = createSelector(getClientsPageEntitiesState, fromClientsPage.getMaritalStatus);
+
+export const getOccupations = createSelector(getClientsPageEntitiesState, fromClientsPage.getOccupations);
+
+export const getTypeLocations = createSelector(getClientsPageEntitiesState, fromClientsPage.getTypeLocations);
+
+export const getClientRelations = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientRelations);
+
+export const getClientMailTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientMailTypes);
+

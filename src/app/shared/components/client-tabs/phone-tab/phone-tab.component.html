@@ -2,8 +2,8 @@
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="id_type_phone">
-        <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType.value">
-          {{ phoneType.viewValue }}
+        <mat-option *ngFor="let phoneType of phoneTypes$ | async" [value]="phoneType.id">
+          {{ phoneType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>

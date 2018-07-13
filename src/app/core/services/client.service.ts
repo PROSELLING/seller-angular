@@ -18,7 +18,7 @@ export class ClientService {
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
-    return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENTS_ENDPOINT, {params: _params});
+    return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
   }
 
   searchClient(query: string) {

@@ -1,9 +1,9 @@
 <div class="client-card">
   <div class="client-img"><img src="http://via.placeholder.com/100x100" alt="User"></div>
   <ng-container *ngIf="user">
-    <h4 class="m-t-10 app-heading-4 app-color-white app-text-capitalize">
+    <span class="m-t-10 app-text-default app-text-capitalize">
       {{user.name}} {{user.last_name}}
-    </h4>
+    </span>
     <div class="detail" *ngIf="user.cargo">
       {{user.cargo}}
       <mat-divider class="l--m-y-20"></mat-divider>

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
 import { FormService } from '../../../../core/services/form.service';
+import * as fromClients from '../../../../clients/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ClientObjectModel } from '../../../../core/models/client.model';
 
 @Component({
   selector: 'app-location-tab',
@@ -9,25 +13,28 @@ import { FormService } from '../../../../core/services/form.service';
   styleUrls: ['./location-tab.component.scss']
 })
 export class LocationTabComponent implements OnInit {
+  locationTypes$: Observable<ClientObjectModel[]>;
+
   infoForm: FormGroup;
   places = [];
   dataSource = new MatTableDataSource(this.places);
   tableColumns = ['type', 'province', 'street', 'number', 'floor', 'sector', 'options'];
 
-  locationTypes = [
-    {value: '0', viewValue: 'Hogar'},
-    {value: '1', viewValue: 'Oficina'}
-  ];
   provinces = [
     {value: '0', viewValue: 'Alberta'},
     {value: '1', viewValue: 'Atlantico'}
   ];
 
-  constructor(private fb: FormBuilder, private formService: FormService) {
+  constructor
+  (private fb: FormBuilder,
+   private formService: FormService,
+   private store: Store<fromClients.State>) {
 
   }
 
   ngOnInit() {
+    this.locationTypes$ = this.store.pipe(select(fromClients.getTypeLocations));
+
     this.infoForm = this.fb.group({
       locationTypes: '',
       provinces: '',

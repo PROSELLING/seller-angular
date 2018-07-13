@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import * as fromClients from '../../../../clients/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ClientObjectModel } from '../../../../core/models/client.model';
 
 @Component({
   selector: 'app-account-tab',
@@ -8,32 +12,25 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AccountTabComponent implements OnInit {
   @Input() isNatural: boolean;
+  phoneTypes$: Observable<ClientObjectModel[]>;
+  origins$: Observable<ClientObjectModel[]>;
+  channels$: Observable<ClientObjectModel[]>;
+  emailTypes$: Observable<ClientObjectModel[]>;
+
   accountForm: FormGroup;
 
-  phoneTypes = [
-    {value: '0', viewValue: 'Hogar'},
-    {value: '1', viewValue: 'Móvil'},
-    {value: '2', viewValue: 'Trabajo'}
-  ];
-  emailTypes = [
-    {value: '0', viewValue: 'Personal'},
-    {value: '1', viewValue: 'Trabajo'}
-  ];
-  originList = [
-    {value: '0', viewValue: 'Autocosmos'},
-    {value: '1', viewValue: 'Autofoco'}
-  ];
-  channels = [
-    {value: '0', viewValue: 'Personal'},
-    {value: '1', viewValue: 'Web'},
-    {value: '2', viewValue: 'Telefonico'}
-  ];
-
-  constructor(private fb: FormBuilder) {
+  constructor
+  (private fb: FormBuilder,
+   private store: Store<fromClients.State>) {
 
   }
 
   ngOnInit() {
+    this.phoneTypes$ = this.store.pipe(select(fromClients.getPhoneNumberTypes));
+    this.origins$ = this.store.pipe(select(fromClients.getOrigins));
+    this.channels$ = this.store.pipe(select(fromClients.getChannels));
+    this.emailTypes$ = this.store.pipe(select(fromClients.getClientMailTypes));
+
     this.accountForm = this.fb.group({
       phoneTypes: '',
       countryCode: '',

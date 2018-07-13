@@ -20,11 +20,13 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
       return adapter.addMany(action.payload, state);
     }
     case ClientsActionTypes.Select: {
-      console.log('Select action', action.payload);
       return {
         ...state,
         selectedClientId: action.payload
       };
+    }
+    case ClientsActionTypes.ResetClientState: {
+      return initialState;
     }
     default: {
       return state;

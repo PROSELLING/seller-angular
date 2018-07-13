@@ -5,8 +5,8 @@
   <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="phoneTypes">
-        <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType.value">
-          {{ phoneType.viewValue }}
+        <mat-option *ngFor="let phoneType of phoneTypes$ | async" [value]="phoneType.id">
+          {{ phoneType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -34,8 +34,8 @@
   <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de Email" formControlName="emailTypes">
-        <mat-option *ngFor="let emailType of emailTypes" [value]="emailType.value">
-          {{ emailType.viewValue }}
+        <mat-option *ngFor="let emailType of emailTypes$ | async" [value]="emailType.id">
+          {{ emailType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -55,16 +55,16 @@
   <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Origen" formControlName="originList">
-        <mat-option *ngFor="let origin of originList" [value]="origin.value">
-          {{ origin.viewValue }}
+        <mat-option *ngFor="let origin of origins$ | async" [value]="origin.id">
+          {{ origin.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field fxFlex>
       <mat-select placeholder="Canal" formControlName="channels">
-        <mat-option *ngFor="let channel of channels" [value]="channel.value">
-          {{ channel.viewValue }}
+        <mat-option *ngFor="let channel of channels$ | async" [value]="channel.id">
+          {{ channel.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>

@@ -3,7 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { AuthActions } from '../../../auth/store/actions';
-import * as LayoutActions from '../../../core/store/actions/layout.actions';
+import { LayoutActions } from '../../../core/store/actions';
+import { ClientsActions } from '../../../clients/store/actions';
 import * as fromRoot from '../../../core/store';
 import * as fromAuth from '../../../auth/store';
 
@@ -31,5 +32,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.store.dispatch(new AuthActions.Logout());
     this.store.dispatch(new LayoutActions.ResetLayoutState());
+    this.store.dispatch(new ClientsActions.ResetClientState());
   }
 }

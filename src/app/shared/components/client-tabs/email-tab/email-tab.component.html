@@ -2,8 +2,8 @@
   <div class="input-row" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de Email" formControlName="emailTypes">
-        <mat-option *ngFor="let emailType of emailTypes" [value]="emailType.value">
-          {{ emailType.viewValue }}
+        <mat-option *ngFor="let emailType of emailTypes$ | async" [value]="emailType.id">
+          {{ emailType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
