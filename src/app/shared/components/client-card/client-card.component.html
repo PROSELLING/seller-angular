@@ -1,22 +1,22 @@
-<div class="client-card">
+<div class="client-card" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
   <div class="client-img"><img src="http://via.placeholder.com/100x100" alt="User"></div>
-  <ng-container *ngIf="user">
+  <div *ngIf="user">
     <span class="m-t-10 app-text-default app-text-capitalize">
-      {{user.name}} {{user.last_name}}
+      {{user.name}}<br />{{user.last_name}}
     </span>
     <div class="detail" *ngIf="user.cargo">
       {{user.cargo}}
       <mat-divider class="l--m-y-20"></mat-divider>
     </div>
-  </ng-container>
-  <div>
-    <mat-slide-toggle
+  </div>
+</div>
+<div class="l--m-y-10">
+  <mat-slide-toggle
     color="primary"
     (change)="toggled($event)"
     [checked]="isNatural"
-    >
-      <ng-container *ngIf="isNatural">Persona Natural</ng-container>
-      <ng-container *ngIf="!isNatural">Persona Jurídica</ng-container>
-    </mat-slide-toggle>
-  </div>
+  >
+    <ng-container *ngIf="isNatural">Persona Natural</ng-container>
+    <ng-container *ngIf="!isNatural">Persona Jurídica</ng-container>
+  </mat-slide-toggle>
 </div>
