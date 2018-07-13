@@ -14,7 +14,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService, ClientStoreGuardService]
   },
   {
-    path: 'budget/:id',
+    path: 'budget/:id/edit',
     component: BudgetComponent,
     canActivate: [AuthGuardService]
   },
