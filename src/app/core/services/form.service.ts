@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
 
 @Injectable()
-export class FormsService {
+export class FormService {
 
   constructor() { }
 

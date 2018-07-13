@@ -25,6 +25,7 @@ import { LocationTabComponent } from './components/client-tabs/location-tab/loca
 import { RelationshipTabComponent } from './components/client-tabs/relationship-tab/relationship-tab.component';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { ClientCardComponent } from './components/client-card/client-card.component';
+import { ClientSearchComponent } from './components/client-search/client-search.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { ClientCardComponent } from './components/client-card/client-card.compon
     BlockHeaderComponent,
     ClientCardComponent,
     ClientProfileComponent,
+    ClientSearchComponent,
     ClientTabsComponent,
     HeaderComponent,
     SidenavComponent
@@ -64,6 +66,7 @@ import { ClientCardComponent } from './components/client-card/client-card.compon
     SidenavComponent,
     SidenavMenuComponent,
     ClientCardComponent,
+    ClientSearchComponent,
     ClientTabsComponent,
     AccountTabComponent,
     EmailTabComponent,

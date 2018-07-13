@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PermissionModel } from '../models/permission.model';
 
 @Injectable()
-export class PermissionsService {
+export class PermissionService {
   permissions: PermissionModel[];
 
   constructor() { }

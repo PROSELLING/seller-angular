@@ -74,6 +74,10 @@ export interface ClientsResponseModel {
   total: number;
 }
 
+export interface ClientPayloadModel {
+  clients: ClientsResponseModel;
+}
+
 export interface ClientsResponse {
   current_page: number;
   data: ClientModel[];

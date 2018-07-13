@@ -5,9 +5,10 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ClientsResponseModel } from '../models/client.model';
 
 const CLIENTS_ENDPOINT = 'clients';
+const CLIENT_SEARCH = 'client_search';
 
 @Injectable()
-export class ClientsService {
+export class ClientService {
 
   constructor(private http: HttpClient) {
   }
@@ -18,5 +19,12 @@ export class ClientsService {
       .set('filter', params.filter)
       .set('sort', 'desc');
     return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENTS_ENDPOINT, {params: _params});
+  }
+
+  searchClient(query: string) {
+    const _params = new HttpParams()
+      .set('q', query)
+      .set('page', '1');
+    return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
   }
 }

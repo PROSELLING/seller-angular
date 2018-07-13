@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormsService } from '../../../../core/services/forms.service';
+import { FormService } from '../../../../core/services/form.service';
 import { ClientContactModel } from '../../../../core/models/client.model';
 import { MatTableDataSource } from '@angular/material';
 
@@ -21,7 +21,7 @@ export class RelationshipTabComponent implements OnInit {
     {value: '2', viewValue: 'Familia'}
   ];
 
-  constructor(private fb: FormBuilder, private formsService: FormsService) {
+  constructor(private fb: FormBuilder, private formService: FormService) {
 
   }
 
@@ -35,11 +35,11 @@ export class RelationshipTabComponent implements OnInit {
   }
 
   addRelationship() {
-    this.formsService.addTableItem(this.relationshipForm, this.relations, this.dataSource);
+    this.formService.addTableItem(this.relationshipForm, this.relations, this.dataSource);
   }
 
   private deleteRelationship(index) {
-    this.formsService.deleteTableItem(this.relations, this.dataSource, index);
+    this.formService.deleteTableItem(this.relations, this.dataSource, index);
   }
 
 }

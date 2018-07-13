@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
-import { FormsService } from '../../../../core/services/forms.service';
+import { FormService } from '../../../../core/services/form.service';
 
 @Component({
   selector: 'app-location-tab',
@@ -23,7 +23,7 @@ export class LocationTabComponent implements OnInit {
     {value: '1', viewValue: 'Atlantico'}
   ];
 
-  constructor(private fb: FormBuilder, private formsService: FormsService) {
+  constructor(private fb: FormBuilder, private formService: FormService) {
 
   }
 
@@ -44,11 +44,11 @@ export class LocationTabComponent implements OnInit {
 
 
   addPlace() {
-    this.formsService.addTableItem(this.infoForm, this.places, this.dataSource);
+    this.formService.addTableItem(this.infoForm, this.places, this.dataSource);
   }
 
   private deleteEmail(index) {
-    this.formsService.deleteTableItem(this.places, this.dataSource, index);
+    this.formService.deleteTableItem(this.places, this.dataSource, index);
   }
 
 }

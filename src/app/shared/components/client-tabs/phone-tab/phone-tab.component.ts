@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ClientContactModel } from '../../../../core/models/client.model';
 import { MatTableDataSource } from '@angular/material';
-import { FormsService } from '../../../../core/services/forms.service';
+import { FormService } from '../../../../core/services/form.service';
 
 @Component({
   selector: 'app-phone-tab',
@@ -24,7 +24,7 @@ export class PhoneTabComponent implements OnInit {
     {value: '1', viewValue: '55'},
     {value: '2', viewValue: '56'}
   ];
-  constructor(private fb: FormBuilder, private formsService: FormsService) {
+  constructor(private fb: FormBuilder, private formService: FormService) {
   }
 
   ngOnInit() {
@@ -38,11 +38,11 @@ export class PhoneTabComponent implements OnInit {
   }
 
   addPhoneNumber() {
-    this.formsService.addTableItem(this.phoneForm, this.phones, this.dataSource);
+    this.formService.addTableItem(this.phoneForm, this.phones, this.dataSource);
   }
 
   private deletePhone(index) {
-    this.formsService.deleteTableItem(this.phones, this.dataSource, index);
+    this.formService.deleteTableItem(this.phones, this.dataSource, index);
   }
 
 }

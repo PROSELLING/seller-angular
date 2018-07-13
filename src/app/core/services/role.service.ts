@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RoleModel } from '../models/role.model';
 
 @Injectable()
-export class RolesService {
+export class RoleService {
   roles: RoleModel[];
 
   constructor() { }

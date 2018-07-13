@@ -1,5 +1,6 @@
 <div>
   <app-client-card [user]="user$ | async" [(isNatural)]="isNatural"></app-client-card>
+  <!--<app-client-search></app-client-search>-->
 </div>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" class="client-tabs">
   <mat-tab label="account">

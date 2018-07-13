@@ -6,7 +6,7 @@ import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { ClientsActionTypes, Load, LoadClientsSuccess, LoadFail, LoadPageSuccess } from '../actions/clients.actions';
 
-import { ClientsService } from '../../../core/services/clients.service';
+import { ClientService } from '../../../core/services/client.service';
 import { ClientsResponse } from '../../../core/models/client.model';
 
 
@@ -17,7 +17,7 @@ export class ClientsEffects {
     ofType<Load>(ClientsActionTypes.Load),
     map(action => action.payload),
     switchMap((params: any) =>
-      this.clientsService
+      this.clientService
         .getClients(params)
         .pipe(
           mergeMap((res: ClientsResponse) => [
@@ -31,7 +31,7 @@ export class ClientsEffects {
 
   constructor(
     private actions$: Actions,
-    private clientsService: ClientsService,
+    private clientService: ClientService,
     private router: Router
   ) {
   }

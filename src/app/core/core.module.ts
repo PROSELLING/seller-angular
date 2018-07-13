@@ -3,12 +3,12 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { AlertService } from './services/alert.service';
-import { PermissionsService } from './services/permissions.service';
-import { RolesService } from './services/roles.service';
-import { ClientsService } from './services/clients.service';
+import { PermissionService } from './services/permission.service';
+import { RoleService } from './services/role.service';
+import { ClientService } from './services/client.service';
 import { httpInterceptorProviders } from './services/interceptors';
 import { AwsService } from './services/aws.service';
-import { FormsService } from './services/forms.service';
+import { FormService } from './services/form.service';
 import { ClientStoreGuardService } from './services/guards/client-store-guard.service';
 
 @NgModule()
@@ -28,11 +28,11 @@ export class CoreModule {
         AuthGuardService,
         AuthService,
         AwsService,
-        ClientsService,
+        ClientService,
         ClientStoreGuardService,
-        FormsService,
-        PermissionsService,
-        RolesService,
+        FormService,
+        PermissionService,
+        RoleService,
         httpInterceptorProviders
       ]
     };
