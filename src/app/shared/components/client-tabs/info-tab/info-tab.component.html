@@ -2,16 +2,16 @@
   <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de Persona" formControlName="personTypes">
-        <mat-option *ngFor="let personType of personTypes" [value]="personType.value">
-          {{ personType.viewValue }}
+        <mat-option *ngFor="let personType of personTypes$ | async" [value]="personType.id">
+          {{ personType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field fxFlex>
       <mat-select placeholder="Sexo" formControlName="genderTypes">
-        <mat-option *ngFor="let genderType of genderTypes" [value]="genderType.value">
-          {{ genderType.viewValue }}
+        <mat-option *ngFor="let genderType of genders$ | async" [value]="genderType.id">
+          {{ genderType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -64,8 +64,8 @@
 
     <mat-form-field fxFlex>
       <mat-select placeholder="Cargo" formControlName="positionTypes">
-        <mat-option *ngFor="let positionType of positionTypes" [value]="positionType.value">
-          {{ positionType.viewValue }}
+        <mat-option *ngFor="let positionType of positionTypes$ | async" [value]="positionType.id">
+          {{ positionType.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>

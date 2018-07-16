@@ -76,3 +76,9 @@ export const getClientRelations = createSelector(getClientsPageEntitiesState, fr
 
 export const getClientMailTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientMailTypes);
 
+export const getClientGenders = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientGenders);
+
+export const getPersonTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getPersontypes);
+
+export const getCharges = createSelector(getClientsPageEntitiesState, fromClientsPage.getCharges);
+

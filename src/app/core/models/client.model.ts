@@ -6,6 +6,7 @@ export interface ClientModel extends BaseModel {
   category: CategoryModel;
   channel: ChannelModel;
   client_contact: ClientContactModel[];
+  client_mails: ClientEmailModel[];
   company: string;
   document_nro: string;
   grossincome: number;
@@ -40,6 +41,14 @@ export interface ChannelModel extends BaseModel {
   details: string;
   icon: string;
   order: string;
+}
+
+export interface ClientEmailModel extends BaseModel {
+  client_id: number;
+  id: number;
+  id_type_mail: number;
+  mail: string;
+  principal: number;
 }
 
 export interface ClientContactModel extends BaseModel {
@@ -90,4 +99,7 @@ export interface ClientPayloadModel {
   type_locations: ClientObjectModel[];
   client_relations: ClientObjectModel[];
   client_type_mails: ClientObjectModel[];
+  genders: ClientObjectModel[];
+  person_type: ClientObjectModel[];
+  charges: ClientObjectModel[];
 }

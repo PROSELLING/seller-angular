@@ -8,7 +8,7 @@
       <mat-icon svgIcon="account"></mat-icon>
       <span [hidden]="hideAccountLabel">Datos Básicos</span>
     </ng-template>
-    <app-account-tab [isNatural]="isNatural"></app-account-tab>
+    <app-account-tab [client]="client" [isNatural]="isNatural"></app-account-tab>
   </mat-tab>
   <mat-tab label="domain" *ngIf="!isNatural">
     <ng-template mat-tab-label>

@@ -50,6 +50,9 @@ export class ClientsEffects {
     res.type_locations = this.convertToArray(res.type_locations);
     res.client_relations = this.convertToArray(res.client_relations);
     res.client_type_mails = this.convertToArray(res.client_type_mails);
+    res.genders = this.convertToArray(res.genders);
+    res.person_type = this.convertToArray(res.person_type);
+    res.charges = this.convertToArray(res.charges);
   }
 
   private convertToArray(obj: any): ClientObjectModel[] {

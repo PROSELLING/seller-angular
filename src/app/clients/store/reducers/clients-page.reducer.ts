@@ -13,6 +13,9 @@ export interface State {
   typeLocations: ClientObjectModel[];
   client_relations: ClientObjectModel[];
   client_type_mails: ClientObjectModel[];
+  genders: ClientObjectModel[];
+  person_type: ClientObjectModel[];
+  charges: ClientObjectModel[];
 }
 
 export const initialState: State = {
@@ -27,6 +30,9 @@ export const initialState: State = {
   typeLocations: [],
   client_relations: [],
   client_type_mails: [],
+  genders: [],
+  person_type: [],
+  charges: [],
 };
 
 export function reducer(state = initialState, action: ClientsActionsUnion): State {
@@ -46,6 +52,9 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
         typeLocations: action.payload.type_locations,
         client_relations: action.payload.client_relations,
         client_type_mails: action.payload.client_type_mails,
+        genders: action.payload.genders,
+        person_type: action.payload.person_type,
+        charges: action.payload.charges,
       };
     }
     default: {
@@ -65,3 +74,6 @@ export const getOccupations = (state: State) => state.occupations;
 export const getTypeLocations = (state: State) => state.typeLocations;
 export const getClientRelations = (state: State) => state.client_relations;
 export const getClientMailTypes = (state: State) => state.client_type_mails;
+export const getClientGenders = (state: State) => state.genders;
+export const getPersontypes = (state: State) => state.person_type;
+export const getCharges = (state: State) => state.charges;

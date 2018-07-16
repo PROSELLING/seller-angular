@@ -14,22 +14,11 @@ export class InfoTabComponent implements OnInit {
   documents$: Observable<ClientObjectModel[]>;
   maritalStatus$: Observable<ClientObjectModel[]>;
   ocupations$: Observable<ClientObjectModel[]>;
+  genders$: Observable<ClientObjectModel[]>;
+  personTypes$: Observable<ClientObjectModel[]>;
+  positionTypes$: Observable<ClientObjectModel[]>;
 
   infoForm: FormGroup;
-
-  personTypes = [
-    {value: '0', viewValue: 'Física'},
-    {value: '1', viewValue: 'Jurídica'}
-  ];
-  genderTypes = [
-    {value: '0', viewValue: 'Masculino'},
-    {value: '1', viewValue: 'Femenino'}
-  ];
-  positionTypes = [
-    {value: '0', viewValue: 'Ingeniero'},
-    {value: '1', viewValue: 'Gerente'},
-    {value: '2', viewValue: 'Desarrollador'}
-  ];
 
   constructor
   (private fb: FormBuilder,
@@ -41,6 +30,9 @@ export class InfoTabComponent implements OnInit {
     this.documents$ = this.store.pipe(select(fromClients.getDocuments));
     this.maritalStatus$ = this.store.pipe(select(fromClients.getMaritalStatus));
     this.ocupations$ = this.store.pipe(select(fromClients.getOccupations));
+    this.genders$ = this.store.pipe(select(fromClients.getClientGenders));
+    this.personTypes$ = this.store.pipe(select(fromClients.getPersonTypes));
+    this.positionTypes$ = this.store.pipe(select(fromClients.getCharges));
 
     this.infoForm = this.fb.group({
       personTypes: '',
