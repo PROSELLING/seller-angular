@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ClientObjectModel } from '../../../../core/models/client.model';
+import { ClientModel, ClientObjectModel } from '../../../../core/models/client.model';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
+import { FormService } from '../../../../core/services/form.service';
 
 @Component({
   selector: 'app-info-tab',
@@ -11,9 +12,10 @@ import { select, Store } from '@ngrx/store';
   styleUrls: ['./info-tab.component.scss']
 })
 export class InfoTabComponent implements OnInit {
+  @Input() client: ClientModel;
   documents$: Observable<ClientObjectModel[]>;
   maritalStatus$: Observable<ClientObjectModel[]>;
-  ocupations$: Observable<ClientObjectModel[]>;
+  occupations$: Observable<ClientObjectModel[]>;
   genders$: Observable<ClientObjectModel[]>;
   personTypes$: Observable<ClientObjectModel[]>;
   positionTypes$: Observable<ClientObjectModel[]>;
@@ -22,24 +24,27 @@ export class InfoTabComponent implements OnInit {
 
   constructor
   (private fb: FormBuilder,
-   private store: Store<fromClients.State>) {
-
+   private store: Store<fromClients.State>,
+   private formService: FormService) {
   }
 
   ngOnInit() {
+    console.log('client', this.client);
+    console.log('test', this.formService.getFormattedDate(this.client.birthday));
+    const birthday = this.formService.getFormattedDate(this.client.birthday);
     this.documents$ = this.store.pipe(select(fromClients.getDocuments));
     this.maritalStatus$ = this.store.pipe(select(fromClients.getMaritalStatus));
-    this.ocupations$ = this.store.pipe(select(fromClients.getOccupations));
+    this.occupations$ = this.store.pipe(select(fromClients.getOccupations));
     this.genders$ = this.store.pipe(select(fromClients.getClientGenders));
     this.personTypes$ = this.store.pipe(select(fromClients.getPersonTypes));
     this.positionTypes$ = this.store.pipe(select(fromClients.getCharges));
 
     this.infoForm = this.fb.group({
-      personTypes: '',
-      genderTypes: '',
-      documentTypes: '',
-      documentNumber: '',
-      birthday: '',
+      personTypes: this.client.person_type,
+      genderTypes: String(this.client.id_gender),
+      documentTypes: String(this.client.id_document),
+      documentNumber: this.client.document_nro,
+      birthday: birthday,
       civilStatusTypes: '',
       occupationTypes: '',
       company: '',

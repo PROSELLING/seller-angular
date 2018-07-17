@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
+import { ClientContactModel, ClientEmailModel } from '../models/client.model';
+import * as moment from 'moment';
+import { Moment } from 'moment';
 
 @Injectable()
 export class FormService {
 
-  constructor() { }
+  constructor() {
+  }
 
   addTableItem(formGroup: FormGroup, dataArray: Array<any>, dataSource: MatTableDataSource<any>) {
     if (formGroup.valid) {
@@ -32,5 +36,23 @@ export class FormService {
   deleteTableItem(dataArray: Array<any>, dataSource: MatTableDataSource<any>, index: number) {
     dataArray.splice(index, 1);
     dataSource.filter = '';
+  }
+
+  getClientContactInfo(clientContacts: ClientContactModel[]): ClientContactModel {
+    const [contactInfo] = clientContacts;
+    return contactInfo;
+  }
+
+  getClientEmailInfo(contactEmails: ClientEmailModel[]): ClientEmailModel {
+    const [emailInfo] = contactEmails;
+    return emailInfo;
+  }
+
+  getClientHasWhatsapp(clientContact: ClientContactModel): Boolean {
+    return clientContact.wsp === 'SI';
+  }
+
+  getFormattedDate(date: string): Moment {
+    return moment(date);
   }
 }

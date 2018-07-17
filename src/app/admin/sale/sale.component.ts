@@ -9,11 +9,11 @@ import { ClientModel } from '../../core/models/client.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
-  selector: 'app-budget',
-  templateUrl: './budget.component.html',
-  styleUrls: ['./budget.component.scss']
+  selector: 'app-sale',
+  templateUrl: './sale.component.html',
+  styleUrls: ['./sale.component.scss']
 })
-export class BudgetComponent implements OnInit {
+export class SaleComponent implements OnInit {
   stepperMode = 'horizontal';
   stateStep2: StepState = StepState.None;
   stateStep3: StepState = StepState.None;
@@ -26,11 +26,15 @@ export class BudgetComponent implements OnInit {
       link: '/'
     },
     {
-      label: 'Administración Simple',
+      label: 'Administración',
       link: '/admin'
     },
     {
-      label: 'Oportunidad',
+      label: 'Ventas',
+      link: '/admin/sales'
+    },
+    {
+      label: 'Venta',
       link: ''
     }
   ];

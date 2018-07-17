@@ -11,7 +11,6 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatNativeDateModule,
   MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
@@ -22,6 +21,7 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
-    MatNativeDateModule,
+    MatMomentDateModule,
     MatPaginatorModule,
     MatSelectModule,
     MatSidenavModule,
@@ -57,7 +57,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
-    MatNativeDateModule,
+    MatMomentDateModule,
     MatPaginatorModule,
     MatSelectModule,
     MatSidenavModule,

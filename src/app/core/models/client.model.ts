@@ -15,6 +15,7 @@ export interface ClientModel extends BaseModel {
   id_client_type: number;
   id_company: number;
   id_document: number;
+  id_gender: number;
   id_iva: number;
   id_marital_status: number;
   id_occupation: number;
@@ -52,7 +53,7 @@ export interface ClientEmailModel extends BaseModel {
 }
 
 export interface ClientContactModel extends BaseModel {
-  area_code: string;
+  area_code: number;
   cliend_id: number;
   ext_phone: string;
   id: number;

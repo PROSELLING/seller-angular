@@ -36,7 +36,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$.pipe(
     ofType(AuthActionTypes.LoginSuccess),
-    tap(() => this.router.navigate(['/admin']))
+    tap(() => this.router.navigate(['/admin/sales']))
   );
 
   @Effect({ dispatch: false })

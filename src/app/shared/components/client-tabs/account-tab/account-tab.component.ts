@@ -4,7 +4,9 @@ import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ClientModel, ClientObjectModel } from '../../../../core/models/client.model';
-import { tap } from 'rxjs/operators';
+import { FormService } from '../../../../core/services/form.service';
+
+;
 
 @Component({
   selector: 'app-account-tab',
@@ -23,45 +25,34 @@ export class AccountTabComponent implements OnInit {
 
   constructor
   (private fb: FormBuilder,
-   private store: Store<fromClients.State>) {
+   private store: Store<fromClients.State>,
+   private formService: FormService) {
 
   }
 
   ngOnInit() {
-    const accountInfo = this.setFormValues();
-    console.log('client info', accountInfo['contactInfo']['id_type_phone']);
+    const contactInfo = this.formService.getClientContactInfo(this.client.client_contact);
+    const contactEmail = this.formService.getClientEmailInfo(this.client.client_mails);
+    const hasWhatsapp = this.formService.getClientHasWhatsapp(contactInfo);
 
     this.accountForm = this.fb.group({
-      phoneTypes: '',
-      countryCode: '',
-      prefix: '',
-      phoneNumber: accountInfo['contactInfo'].phone,
-      hasWhatsapp: accountInfo['hasWhatsapp'],
-      emailTypes: '',
-      email: accountInfo['contactEmail']['mail'],
-      mainEmail: '',
-      originList: '',
-      channels: '',
-      resell: ''
+      phoneTypes: String(contactInfo['id_type_phone']),
+      countryCode: String(contactInfo['id_paises']),
+      prefix: contactInfo['area_code'],
+      phoneNumber: contactInfo['phone'],
+      hasWhatsapp: hasWhatsapp,
+      emailTypes: String(contactEmail['id_type_mail']),
+      email: contactEmail['mail'],
+      mainEmail: contactEmail['principal'],
+      originList: String(this.client.id_origin),
+      channels: String(this.client.id_channel),
+      resell: Boolean(this.client.resale === 'si')
     });
 
-    this.phoneTypes$ = this.store.pipe(
-      select(fromClients.getPhoneNumberTypes),
-      tap(() => {this.accountForm.patchValue({phoneTypes: 4}); console.log('test', this.accountForm)})
-    );
+    this.phoneTypes$ = this.store.pipe(select(fromClients.getPhoneNumberTypes));
     this.origins$ = this.store.pipe(select(fromClients.getOrigins));
     this.channels$ = this.store.pipe(select(fromClients.getChannels));
     this.emailTypes$ = this.store.pipe(select(fromClients.getClientMailTypes));
   }
-
-  setFormValues() {
-    const accountInfo = {};
-    const [contactInfo] = this.client.client_contact;
-    const [contactEmail] = this.client.client_mails;
-    accountInfo['contactInfo'] = contactInfo;
-    accountInfo['contactEmail'] = contactEmail;
-    accountInfo['hasWhatsapp'] = contactInfo.wsp === 'SI';
-    return accountInfo;
-  }
-
 }
+

@@ -22,7 +22,7 @@
       <mat-icon svgIcon="information"></mat-icon>
       <span [hidden]="hideInfoLabel">Información Adicional</span>
     </ng-template>
-    <app-info-tab></app-info-tab>
+    <app-info-tab [client]="client"></app-info-tab>
   </mat-tab>
   <mat-tab label="phone">
     <ng-template mat-tab-label>
