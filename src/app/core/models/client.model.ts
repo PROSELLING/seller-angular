@@ -12,12 +12,13 @@ export interface ClientModel extends BaseModel {
   grossincome: number;
   id_category: number;
   id_channel: number;
+  id_charge: number;
   id_client_type: number;
   id_company: number;
   id_document: number;
   id_gender: number;
   id_iva: number;
-  id_marital_status: number;
+  id_maritals_status: number;
   id_occupation: number;
   id_origin: number;
   id_seller: number;

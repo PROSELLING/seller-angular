@@ -5,10 +5,12 @@ import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
 import { httpInterceptorProviders } from '../core/services/interceptors';
 import { GanttComponent } from './gantt/gantt.component';
-import { SaleComponent } from './sale/sale.component';
+import { SaleEditComponent } from './sale/sale-edit/sale-edit.component';
 import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
 import { ClientsModule } from '../clients/clients.module';
-import { SalesComponent } from './sales/sales.component';
+import { SalesComponent } from './sale/sales/sales.component';
+import { SaleStepsComponent } from './components/sale-steps/sale-steps.component';
+import { SaleAddComponent } from './sale/sale-add/sale-add.component';
 
 @NgModule({
   imports: [
@@ -20,8 +22,10 @@ import { SalesComponent } from './sales/sales.component';
   declarations: [
     AdminComponent,
     GanttComponent,
-    SaleComponent,
+    SaleAddComponent,
+    SaleEditComponent,
     SalesComponent,
+    SaleStepsComponent,
     ClientSidenavComponent
   ],
   providers: [httpInterceptorProviders]

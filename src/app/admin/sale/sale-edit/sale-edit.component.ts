@@ -1,24 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StepState } from '@covalent/core';
-import { ObservableMedia } from '@angular/flex-layout';
-import * as fromClients from '../../clients/store';
+import * as fromClients from '../../../clients/store/index';
 import { select, Store } from '@ngrx/store';
-import { ClientsActions } from '../../clients/store/actions';
-import { ClientModel } from '../../core/models/client.model';
+import { ClientsActions } from '../../../clients/store/actions/index';
+import { ClientModel } from '../../../core/models/client.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-sale',
-  templateUrl: './sale.component.html',
-  styleUrls: ['./sale.component.scss']
+  templateUrl: './sale-edit.component.html',
+  styleUrls: ['./sale-edit.component.scss']
 })
-export class SaleComponent implements OnInit {
-  stepperMode = 'horizontal';
-  stateStep2: StepState = StepState.None;
-  stateStep3: StepState = StepState.None;
-  stateStep4: StepState = StepState.None;
-  disabled = false;
+export class SaleEditComponent implements OnInit {
+
+
   client$: Observable<ClientModel>;
   breadcrumbs = [
     {
@@ -41,7 +36,6 @@ export class SaleComponent implements OnInit {
 
   constructor
   (private activatedRoute: ActivatedRoute,
-   private media: ObservableMedia,
    private store: Store<fromClients.State>) {
     this.activatedRoute.params.subscribe(params => {
       this.store.dispatch(new ClientsActions.Select(params.id));
@@ -49,17 +43,6 @@ export class SaleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.media.subscribe(() => {
-      this.stepperMode = this.getStepperMode();
-    });
     this.client$ = this.store.pipe(select(fromClients.getSelectedClient));
-  }
-
-  private getStepperMode(): string {
-    if (this.media.isActive('xs')) {
-      return 'vertical';
-    } else {
-      return 'horizontal';
-    }
   }
 }

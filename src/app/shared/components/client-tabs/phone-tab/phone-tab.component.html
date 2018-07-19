@@ -1,5 +1,5 @@
 <form [formGroup]="phoneForm">
-  <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.gt-md="10px">
+  <div class="input-row" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-select placeholder="Tipo de teléfono" formControlName="id_type_phone">
         <mat-option *ngFor="let phoneType of phoneTypes$ | async" [value]="phoneType.id">

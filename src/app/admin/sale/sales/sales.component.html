@@ -2,9 +2,24 @@
   <app-block-header title="Ventas" [breadcrumbs]="breadcrumbs"></app-block-header>
 
   <div class="component-container">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-menu #appMenu="matMenu" overlapTrigger="false">
+          <button mat-menu-item [routerLink]="['../sale/add']">Nueva Venta</button>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon svgIcon="dots-vertical"></mat-icon>
+        </button>
+      </div>
+    </div>
+
+
 
     <div class="responsive_table">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
