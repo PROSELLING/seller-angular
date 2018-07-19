@@ -55,23 +55,23 @@ export class PhoneTabComponent implements OnInit {
     if (this.client !== undefined) {
       if (this.client.client_contact.length) {
         for (const contact of this.client.client_contact) {
-          const [phoneTypeText] = this.phoneTypes.filter(phoneType => phoneType.id === String(contact.id_type_phone));
-          console.log('inside setPhoneNumbers', phoneTypeText, this.phoneTypes);
-          const phoneNumber = this.fb.group({
-            id_type_phone: phoneTypeText['value'],
-            id_paises: contact.id_paises,
-            area_code: contact.area_code,
-            phone: contact.phone,
-            wsp: contact.wsp
-          });
-          this.addPhoneNumber(phoneNumber);
+          const [phoneTypeObject] = this.phoneTypes.filter(phoneType => phoneType.id === String(contact.id_type_phone));
+          if (phoneTypeObject) {
+            const phoneNumber = this.fb.group({
+              id_type_phone: phoneTypeObject,
+              id_paises: contact.id_paises,
+              area_code: contact.area_code,
+              phone: contact.phone,
+              wsp: contact.wsp
+            });
+            this.addPhoneNumber(phoneNumber);
+          }
         }
       }
     }
   }
 
   addPhoneNumber(phoneForm: FormGroup = this.phoneForm): void {
-    console.log('phoneForm', this.phoneForm);
     this.formService.addTableItem(phoneForm, this.phones, this.dataSource);
   }
 

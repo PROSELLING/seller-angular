@@ -7,6 +7,7 @@ export interface ClientModel extends BaseModel {
   channel: ChannelModel;
   client_contact: ClientContactModel[];
   client_mails: ClientEmailModel[];
+  client_networks: SocialNetworkModel[];
   company: string;
   document_nro: string;
   grossincome: number;
@@ -70,6 +71,14 @@ export interface OriginModel extends BaseModel {
   id_parent: number;
   order: string;
   origin: string;
+}
+
+export interface SocialNetworkModel extends BaseModel {
+  facebook: string;
+  google: string;
+  instagram: string;
+  linkedin: string;
+  twitter: string;
 }
 
 export interface ClientsResponseModel {
