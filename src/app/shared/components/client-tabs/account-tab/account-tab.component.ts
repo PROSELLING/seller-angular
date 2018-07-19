@@ -31,23 +31,40 @@ export class AccountTabComponent implements OnInit {
   }
 
   ngOnInit() {
-    const contactInfo = this.formService.getClientContactInfo(this.client.client_contact);
-    const contactEmail = this.formService.getClientEmailInfo(this.client.client_mails);
-    const hasWhatsapp = this.formService.getClientHasWhatsapp(contactInfo);
+    if (this.client !== undefined) {
+      const contactInfo = this.formService.getClientContactInfo(this.client.client_contact);
+      const contactEmail = this.formService.getClientEmailInfo(this.client.client_mails);
 
-    this.accountForm = this.fb.group({
-      phoneTypes: String(contactInfo['id_type_phone']),
-      countryCode: String(contactInfo['id_paises']),
-      prefix: contactInfo['area_code'],
-      phoneNumber: contactInfo['phone'],
-      hasWhatsapp: hasWhatsapp,
-      emailTypes: String(contactEmail['id_type_mail']),
-      email: contactEmail['mail'],
-      mainEmail: contactEmail['principal'],
-      originList: String(this.client.id_origin),
-      channels: String(this.client.id_channel),
-      resell: Boolean(this.client.resale === 'si')
-    });
+      const hasWhatsapp = this.formService.getClientHasWhatsapp(contactInfo);
+
+      this.accountForm = this.fb.group({
+        phoneTypes: contactInfo ? String(contactInfo.id_type_phone) : '',
+        countryCode: contactInfo ? String(contactInfo.id_paises) : '',
+        prefix: contactInfo ? contactInfo.area_code : '',
+        phoneNumber: contactInfo ? contactInfo.phone : '',
+        hasWhatsapp: hasWhatsapp,
+        emailTypes: contactEmail ? String(contactEmail.id_type_mail) : '',
+        email: contactEmail ? contactEmail.mail : '',
+        mainEmail: contactEmail ? contactEmail.principal : '',
+        originList: String(this.client.id_origin),
+        channels: String(this.client.id_channel),
+        resell: Boolean(this.client.resale === 'si')
+      });
+    } else {
+      this.accountForm = this.fb.group({
+        phoneTypes: '',
+        countryCode: '',
+        prefix: '',
+        phoneNumber: '',
+        hasWhatsapp: '',
+        emailTypes: '',
+        email: '',
+        mainEmail: '',
+        originList: '',
+        channels: '',
+        resell: ''
+      });
+    }
 
     this.phoneTypes$ = this.store.pipe(select(fromClients.getPhoneNumberTypes));
     this.origins$ = this.store.pipe(select(fromClients.getOrigins));

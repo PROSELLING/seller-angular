@@ -29,28 +29,42 @@ export class InfoTabComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('client', this.client);
-    console.log('test', this.formService.getFormattedDate(this.client.birthday));
-    const birthday = this.formService.getFormattedDate(this.client.birthday);
+    if (this.client !== undefined) {
+      const birthday = this.formService.getFormattedDate(this.client.birthday);
+
+      this.infoForm = this.fb.group({
+        personTypes: this.client.person_type,
+        genderTypes: String(this.client.id_gender),
+        documentTypes: String(this.client.id_document),
+        documentNumber: this.client.document_nro,
+        birthday: birthday,
+        civilStatusTypes: String(this.client.id_maritals_status),
+        occupationTypes: String(this.client.id_occupation),
+        company: this.client.company,
+        positionTypes: String(this.client.id_charge),
+        netSalary: this.client.grossincome
+      });
+    } else {
+      this.infoForm = this.fb.group({
+        personTypes: '',
+        genderTypes: '',
+        documentTypes: '',
+        documentNumber: '',
+        birthday: '',
+        civilStatusTypes: '',
+        occupationTypes: '',
+        company: '',
+        positionTypes: '',
+        netSalary: ''
+      });
+    }
+
     this.documents$ = this.store.pipe(select(fromClients.getDocuments));
     this.maritalStatus$ = this.store.pipe(select(fromClients.getMaritalStatus));
     this.occupations$ = this.store.pipe(select(fromClients.getOccupations));
     this.genders$ = this.store.pipe(select(fromClients.getClientGenders));
     this.personTypes$ = this.store.pipe(select(fromClients.getPersonTypes));
     this.positionTypes$ = this.store.pipe(select(fromClients.getCharges));
-
-    this.infoForm = this.fb.group({
-      personTypes: this.client.person_type,
-      genderTypes: String(this.client.id_gender),
-      documentTypes: String(this.client.id_document),
-      documentNumber: this.client.document_nro,
-      birthday: birthday,
-      civilStatusTypes: '',
-      occupationTypes: '',
-      company: '',
-      positionTypes: '',
-      netSalary: ''
-    });
   }
 
 }

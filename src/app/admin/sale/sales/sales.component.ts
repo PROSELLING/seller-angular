@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { AwsService } from '../../core/services/aws.service';
+import { AwsService } from '../../../core/services/aws.service';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../../core/store';
-import * as LayoutActions from '../../core/store/actions/layout.actions';
+import * as fromRoot from '../../../core/store/index';
+import * as LayoutActions from '../../../core/store/actions/layout.actions';
 
 const CLIENT_DATA = [
   {

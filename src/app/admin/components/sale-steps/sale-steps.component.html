@@ -1,0 +1,32 @@
+<div class="component-container">
+  <td-steps [mode]="stepperMode">
+    <td-step #step1 [active]="true" [disabled]="disabled">
+      <ng-template td-step-label>
+        Cliente
+        <mat-icon svgIcon="account"></mat-icon>
+      </ng-template>
+      <app-client-tabs [client]="client"></app-client-tabs>
+    </td-step>
+    <td-step #step2 [state]="stateStep2" [disabled]="disabled">
+      <ng-template td-step-label>
+        <span>Producto</span>
+        <mat-icon svgIcon="car"></mat-icon>
+      </ng-template>
+      This step is required!
+    </td-step>
+    <td-step #step3 [state]="stateStep3" [disabled]="disabled">
+      <ng-template td-step-label>
+        Gastos
+        <mat-icon svgIcon="currency-usd"></mat-icon>
+      </ng-template>
+      Mark this step complete and get a summary
+    </td-step>
+    <td-step #step4 [state]="stateStep4" [disabled]="disabled">
+      <ng-template td-step-label>
+        Actividades
+        <mat-icon svgIcon="calendar"></mat-icon>
+      </ng-template>
+    </td-step>
+  </td-steps>
+
+</div>

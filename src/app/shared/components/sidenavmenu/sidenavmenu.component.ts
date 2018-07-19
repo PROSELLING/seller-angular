@@ -32,7 +32,7 @@ export class SidenavMenuComponent implements OnInit {
         icon: 'finance',
         color: '#00A65A',
         children: [
-          {name: 'Convencional', link: 'admin'}
+          {name: 'Convencional', link: 'admin/sales'}
         ]
       },
       {

@@ -36,14 +36,14 @@
       <mat-icon svgIcon="email"></mat-icon>
       <span [hidden]="hideEmails">Emails</span>
     </ng-template>
-    <app-email-tab></app-email-tab>
+    <app-email-tab [client]="client"></app-email-tab>
   </mat-tab>
   <mat-tab label="social">
     <ng-template mat-tab-label>
       <mat-icon svgIcon="share-variant"></mat-icon>
       <span [hidden]="hideSocial">Redes Sociales</span>
     </ng-template>
-    <app-social-tab></app-social-tab>
+    <app-social-tab [client]="client"></app-social-tab>
   </mat-tab>
   <mat-tab label="location">
     <ng-template mat-tab-label>

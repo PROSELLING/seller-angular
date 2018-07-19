@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../core/services/guards/auth-guard.service';
 import { AdminComponent } from './admin.component';
-import { SaleComponent } from './sale/sale.component';
+import { SaleEditComponent } from './sale/sale-edit/sale-edit.component';
 import { GanttComponent } from './gantt/gantt.component';
 import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
 import { ClientStoreGuardService } from '../core/services/guards/client-store-guard.service';
-import { SalesComponent } from './sales/sales.component';
+import { SalesComponent } from './sale/sales/sales.component';
+import { SaleAddComponent } from './sale/sale-add/sale-add.component';
 
 const routes: Routes = [
   {
@@ -20,8 +21,13 @@ const routes: Routes = [
     canActivate: [AuthGuardService, ClientStoreGuardService]
   },
   {
+    path: 'sale/add',
+    component: SaleAddComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'sale/:id/edit',
-    component: SaleComponent,
+    component: SaleEditComponent,
     canActivate: [AuthGuardService]
   },
   {

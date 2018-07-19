@@ -7,17 +7,19 @@ export interface ClientModel extends BaseModel {
   channel: ChannelModel;
   client_contact: ClientContactModel[];
   client_mails: ClientEmailModel[];
+  client_networks: SocialNetworkModel[];
   company: string;
   document_nro: string;
   grossincome: number;
   id_category: number;
   id_channel: number;
+  id_charge: number;
   id_client_type: number;
   id_company: number;
   id_document: number;
   id_gender: number;
   id_iva: number;
-  id_marital_status: number;
+  id_maritals_status: number;
   id_occupation: number;
   id_origin: number;
   id_seller: number;
@@ -69,6 +71,14 @@ export interface OriginModel extends BaseModel {
   id_parent: number;
   order: string;
   origin: string;
+}
+
+export interface SocialNetworkModel extends BaseModel {
+  facebook: string;
+  google: string;
+  instagram: string;
+  linkedin: string;
+  twitter: string;
 }
 
 export interface ClientsResponseModel {
