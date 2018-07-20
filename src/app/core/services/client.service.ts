@@ -7,6 +7,7 @@ import { ObjectModel } from '../models/meta.model';
 
 const CLIENTS_ENDPOINT = 'clients';
 const CLIENT_SEARCH = 'client_search';
+const SELLER_SEARCH = 'seller_search';
 const METADATA = 'clientmetadata';
 const CLIENT = 'client';
 const CLIENT_ORIGIN = 'sub_origin';
@@ -38,6 +39,12 @@ export class ClientService {
       .set('q', query)
       .set('page', '1');
     return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
+  }
+
+  getSellers() {
+    return this.http.get(environment.apiUrl + SELLER_SEARCH).subscribe(data => {
+      console.log(data);
+    });
   }
 
   getClientMeta() {
