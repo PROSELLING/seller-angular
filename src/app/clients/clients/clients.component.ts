@@ -43,8 +43,10 @@ export class ClientsComponent implements AfterViewInit, OnInit {
         this.setClientsCopy(clients);
       })
     );
-  }
 
+    this.clientService.getSellers();
+
+  }
   ngAfterViewInit() {
     this.paginator.page
       .pipe(
