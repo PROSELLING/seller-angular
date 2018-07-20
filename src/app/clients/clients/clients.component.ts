@@ -10,6 +10,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 
+import { ClientService } from '../../core/services/client.service';
+
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -24,7 +26,13 @@ export class ClientsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('input') input: ElementRef;
 
-  constructor(private store: Store<fromRoot.RootState>) {
+  constructor(private store: Store<fromRoot.RootState>, private clientService: ClientService) {
+
+  }
+
+  ngOnInit() {
+    this.store.dispatch(new ClientsActions.Load({page: 1, filter: ''}));
+
     this.resultsLength$ = this.store.pipe(
       select(fromClients.getTotal)
     );
@@ -35,10 +43,9 @@ export class ClientsComponent implements AfterViewInit, OnInit {
         this.setClientsCopy(clients);
       })
     );
-  }
 
-  ngOnInit() {
-    this.store.dispatch(new ClientsActions.Load({page: 1, filter: ''}));
+    this.clientService.getSellers();
+
   }
 
   ngAfterViewInit() {
@@ -68,7 +75,7 @@ export class ClientsComponent implements AfterViewInit, OnInit {
     }));
     this.store.pipe(
       select(fromClients.getAllClients)
-    );
+    ).subscribe(data => console.log('test_PRUEBAA', data));
   }
 
   setClientsCopy(clients: ClientModel[]) {
