@@ -5,8 +5,9 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { SellersResponseModel } from '../models/seller.model';
 
+const CLIENTS_ENDPOINT = 'sellers';
+const CLIENT_SEARCH = 'seller_search';
 const SELLER_SEARCH = 'seller_search';
-const GET_LEADS = 'leads';
 
 @Injectable()
 export class SellerService {
@@ -14,26 +15,22 @@ export class SellerService {
   constructor(private http: HttpClient) {
   }
 
-  getSellers(params: any): Observable<SellersResponseModel> {
+  /*getSellers(params: any): Observable<SellersResponseModel> {
     const _params = new HttpParams()
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
-    return this.http.get<SellersResponseModel>(environment.apiUrl + SELLER_SEARCH, {params: _params});
-  }
-  /*
-    searchSeller(query: string) {
-      const _params = new HttpParams()
-        .set('q', query)
-        .set('page', '1');
-      return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
-    }*/
+    return this.http.get<SellersResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
+  }*/
 
-  getSellers_test() {
+  searchSeller(query: string) {
+    const _params = new HttpParams()
+      .set('q', query)
+      .set('page', '1');
+    return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
+  }
+
+  getSellers() {
     return this.http.get(environment.apiUrl + SELLER_SEARCH);
-  }
-
-  getLeads_test() {
-    return this.http.get(environment.apiUrl + GET_LEADS);
   }
 }

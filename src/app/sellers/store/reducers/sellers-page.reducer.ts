@@ -43,6 +43,18 @@ export function reducer(state = initialState, action: SellersActionsUnion): Stat
         ...state,
         currentPage: action.payload.sellers.current_page,
         total: action.payload.sellers.total,
+        phoneNumberTypes: action.payload.seller_type_phone,
+        origins: action.payload.origins,
+        channels: action.payload.channels,
+        documents: action.payload.documents,
+        maritalStatus: action.payload.marital_status,
+        occupations: action.payload.ocupations,
+        typeLocations: action.payload.type_locations,
+        seller_relations: action.payload.seller_relations,
+        seller_type_mails: action.payload.seller_type_mails,
+        genders: action.payload.genders,
+        person_type: action.payload.person_type,
+        charges: action.payload.charges,
       };
     }
     default: {
@@ -53,3 +65,15 @@ export function reducer(state = initialState, action: SellersActionsUnion): Stat
 
 export const getCurrentPage = (state: State) => state.currentPage;
 export const getTotal = (state: State) => state.total;
+export const getPhonNumberTypes = (state: State) => state.phoneNumberTypes;
+export const getOrigins = (state: State) => state.origins;
+export const getChannels = (state: State) => state.channels;
+export const getDocuments = (state: State) => state.documents;
+export const getMaritalStatus = (state: State) => state.maritalStatus;
+export const getOccupations = (state: State) => state.occupations;
+export const getTypeLocations = (state: State) => state.typeLocations;
+export const getSellerRelations = (state: State) => state.seller_relations;
+export const getSellerMailTypes = (state: State) => state.seller_type_mails;
+export const getSellerGenders = (state: State) => state.genders;
+export const getPersontypes = (state: State) => state.person_type;
+export const getCharges = (state: State) => state.charges;

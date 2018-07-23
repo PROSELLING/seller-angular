@@ -43,6 +43,7 @@ export class ClientService {
 
   getSellers() {
     return this.http.get(environment.apiUrl + SELLER_SEARCH).subscribe(data => {
+      console.log('TEST SELLERS');
       console.log(data);
     });
   }
