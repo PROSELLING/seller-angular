@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SellersComponent } from './sellers/sellers.component';
-import { AuthGuard } from '../core/guards/auth.guard';
-import {LeadsSidenavComponent} from './components/leads-sidenav/leads-sidenav.component';
+import { AuthGuardService } from '../core/services/guards/auth-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: SellersComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'lead/:id',
-    component: LeadsSidenavComponent,
-    outlet: 'rightSidenav'
+    canActivate: [AuthGuardService]
   }
 ];
 
