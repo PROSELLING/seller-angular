@@ -1,29 +1,29 @@
+///<reference path="../../../../node_modules/@angular/common/http/src/params.d.ts"/>
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { ClientsResponseModel } from '../models/client.model';
+import { SellersResponseModel } from '../models/seller.model';
 
-const CLIENTS_ENDPOINT = 'clients';
-const CLIENT_SEARCH = 'client_search';
+const CLIENTS_ENDPOINT = 'sellers';
+const CLIENT_SEARCH = 'seller_search';
 const SELLER_SEARCH = 'seller_search';
-const METADATA = 'clientmetadata';
 
 @Injectable()
-export class ClientService {
+export class SellerService {
 
   constructor(private http: HttpClient) {
   }
 
-  getClients(params: any): Observable<ClientsResponseModel> {
+  /*getSellers(params: any): Observable<SellersResponseModel> {
     const _params = new HttpParams()
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
-    return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
-  }
+    return this.http.get<SellersResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
+  }*/
 
-  searchClient(query: string) {
+  searchSeller(query: string) {
     const _params = new HttpParams()
       .set('q', query)
       .set('page', '1');
@@ -31,13 +31,6 @@ export class ClientService {
   }
 
   getSellers() {
-    return this.http.get(environment.apiUrl + SELLER_SEARCH).subscribe(data => {
-      console.log('TEST SELLERS');
-      console.log(data);
-    });
-  }
-
-  getClientMeta() {
-    return this.http.get(environment.apiUrl + METADATA);
+    return this.http.get(environment.apiUrl + SELLER_SEARCH);
   }
 }

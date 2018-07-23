@@ -15,10 +15,12 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { metaReducers, reducers } from './core/store';
+import { SellersComponent } from './sellers/sellers/sellers.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SellersComponent
   ],
   imports: [
     AuthModule,
