@@ -8,7 +8,7 @@ export enum SellersActionTypes {
   LoadSellersSuccess = '[Sellers] Load Sellers Success',
   LoadFail = '[Sellers] Load Fail',
   Select = '[Sellers] Select',
-  ResetSellerstate = '[Sellers] Reset Seller State'
+  ResetSellerState = '[Sellers] Reset Seller State'
 }
 
 export class Load implements Action {
@@ -46,8 +46,8 @@ export class Select implements Action {
   }
 }
 
-export class ResetSellerstate implements Action {
-  readonly type = SellersActionTypes.ResetSellerstate;
+export class ResetSellerState implements Action {
+  readonly type = SellersActionTypes.ResetSellerState;
 }
 
 export type SellersActionsUnion =
@@ -56,4 +56,4 @@ export type SellersActionsUnion =
   | LoadSellersSuccess
   | LoadFail
   | Select
-  | ResetSellerstate;
+  | ResetSellerState;

@@ -10,6 +10,7 @@ import { httpInterceptorProviders } from './services/interceptors';
 import { AwsService } from './services/aws.service';
 import { FormService } from './services/form.service';
 import { ClientStoreGuardService } from './services/guards/client-store-guard.service';
+import { SellerService } from './services/seller.service';
 import { SaleService } from './services/sale.service';
 import { StockService } from './services/stock.service';
 
@@ -34,9 +35,10 @@ export class CoreModule {
         ClientStoreGuardService,
         FormService,
         PermissionService,
-        StockService,
         RoleService,
         SaleService,
+        SellerService,
+        StockService,
         httpInterceptorProviders
       ]
     };
