@@ -20,6 +20,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'sellers',
+    loadChildren: './sellers/sellers.module#SellersModule',
+    canActivate: [AuthGuardService]
+  },
+  {
     path: '',
     redirectTo: 'clients',
     pathMatch: 'full'
