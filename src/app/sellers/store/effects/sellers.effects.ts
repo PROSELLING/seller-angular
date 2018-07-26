@@ -18,7 +18,7 @@ export class SellersEffects {
     map(action => action.payload),
     switchMap((params: any) =>
       this.sellerService
-        .getSellers()
+        .getSellers(params)
         .pipe(
           map( (res: SellerPayloadModel) => {
             this.updateElements(res);
