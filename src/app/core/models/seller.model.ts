@@ -2,38 +2,16 @@ import { BaseModel } from './base.model';
 
 export interface SellerModel extends BaseModel {
   birthday: string;
-  branch: number;
-  category: CategoryModel;
-  channel: ChannelModel;
-  seller_contact: SellerContactModel[];
-  seller_mails: SellerEmailModel[];
-  seller_networks: SocialNetworkModel[];
-  company: string;
-  document_nro: string;
-  grossincome: number;
-  id_category: number;
-  id_channel: number;
-  id_charge: number;
-  id_seller_type: number;
-  id_company: number;
-  id_document: number;
-  id_gender: number;
-  id_iva: number;
-  id_maritals_status: number;
-  id_occupation: number;
-  id_origin: number;
-  id_seller: number;
-  id_user: number;
+  cellphone: string;
+  email: string;
+  first_name: string;
   last_name: string;
-  name: string;
-  occupation: string;
-  origin: OriginModel;
-  person_type: string;
-  resale: string;
-  sex: string;
+  gender: string;
+  id_company: number;
+
 }
 
-export interface CategoryModel extends BaseModel {
+/*export interface CategoryModel extends BaseModel {
   category: string;
   condition: string;
   icon: string;
@@ -80,7 +58,7 @@ export interface SocialNetworkModel extends BaseModel {
   linkedin: string;
   twitter: string;
 }
-
+*/
 export interface SellersResponseModel {
   current_page: number;
   data: SellerModel[];
