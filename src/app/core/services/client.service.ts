@@ -24,6 +24,11 @@ export class ClientService {
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
+    console.log('datos de clientes');
+    this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params}).subscribe( data => {
+      console.log(data);
+      console.log('datos de clientes FIN');
+    });
 
     return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
   }

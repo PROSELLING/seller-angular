@@ -8,7 +8,6 @@ export interface SellerModel extends BaseModel {
   last_name: string;
   gender: string;
   id_company: number;
-
 }
 
 /*export interface CategoryModel extends BaseModel {
@@ -70,6 +69,15 @@ export interface SellersResponseModel {
   prev_page_url: string;
   to: number;
   total: number;
+}
+
+export interface Empresa {
+  created_at: string;
+  cuit: string;
+  database_name: string;
+  database_pass: string;
+  database_user: string;
+  direccion: string;
 }
 
 export interface SellerObjectModel {

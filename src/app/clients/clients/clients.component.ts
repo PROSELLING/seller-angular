@@ -79,6 +79,7 @@ export class ClientsComponent implements AfterViewInit, OnInit {
 
   setClientsCopy(clients: ClientModel[]) {
     this.clientsCopy$ = JSON.parse(JSON.stringify(clients));
+    console.log(this.clientsCopy$);
     this.clientsCopy$.map(client => {
       client['contactInfo'] = this.setContactInfo(client.client_contact);
     });
