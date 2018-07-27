@@ -21,7 +21,7 @@ export class SellersEffects {
         .getSellers(params)
         .pipe(
           map( (res: SellerPayloadModel) => {
-            this.updateElements(res);
+            // this.updateElements(res);
             return res;
           }),
           mergeMap((res: SellerPayloadModel) => [
