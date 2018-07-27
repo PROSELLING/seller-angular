@@ -14,6 +14,7 @@ export class SellerService {
   }
 
   getSellers(params: any): Observable<SellersResponseModel> {
+
     const _params = new HttpParams()
       .set('page', params.page)
       .set('filter', params.filter)

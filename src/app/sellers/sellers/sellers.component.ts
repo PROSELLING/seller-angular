@@ -23,12 +23,10 @@ export class SellersComponent implements OnInit {
   sellersCopy$: SellerModel[];
   displayedColumns = ['name'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('input') input: ElementRef;
   constructor(private store: Store<fromRoot.RootState>, private sellerService: SellerService) { }
 
   ngOnInit() {
-
     this.store.dispatch(new SellersActions.Load({page: 1, filter: ''}));
 
     this.sellerService.getSellers_test().subscribe(data => {
@@ -46,39 +44,12 @@ export class SellersComponent implements OnInit {
 
   setSellersCopy(sellers: SellerModel[]) {
     this.sellersCopy$ = JSON.parse(JSON.stringify(sellers));
+    console.log('RESULT COPYSELLERS');
+    console.log(((sellers));
     this.sellersCopy$.map(seller => {
       seller['contactInfo'] = seller.cellphone;
     });
-  }
 
-  ngAfterViewInit() {
-    this.paginator.page
-      .pipe(
-        tap(() => {
-          this.loadSellers();
-        })
-      ).subscribe();
-
-    fromEvent(this.input.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        tap(() => {
-          this.paginator.pageIndex = 0;
-          this.loadSellers();
-        })
-      )
-      .subscribe();
-  }
-
-  loadSellers() {
-    this.store.dispatch(new SellersActions.Load({
-      page: (this.paginator.pageIndex + 1),
-      filter: this.input.nativeElement.value
-    }));
-    this.store.pipe(
-      select(fromSellers.getAllSellers)
-    ).subscribe(data => console.log('test_PRUEBAA', data));
   }
 
 }
