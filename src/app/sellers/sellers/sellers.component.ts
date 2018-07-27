@@ -28,6 +28,11 @@ export class SellersComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new SellersActions.Load({page: 1, filter: ''}));
+
+    this.sellerService.getSellers_test().subscribe(data => {
+      console.log('TEST SELLERS 2', data);
+    });
+
     this.sellers$ = this.store.pipe(
       select(fromSellers.getAllSellers),
       tap(sellers => {
@@ -38,10 +43,11 @@ export class SellersComponent implements OnInit {
 
   setSellersCopy(sellers: SellerModel[]) {
     this.sellersCopy$ = JSON.parse(JSON.stringify(sellers));
-    console.log('RESULT COPYSELLERS');
-    console.log(((sellers));
+    console.log('RESULT COPYSELLERS', sellers);
     this.sellersCopy$.map(seller => {
       seller['contactInfo'] = seller.cellphone;
     });
+
   }
+
 }
