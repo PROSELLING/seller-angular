@@ -16,10 +16,13 @@ export class ClientService {
   }
 
   getClients(params: any): Observable<ClientsResponseModel> {
+    console.log('PARAMS');
+    console.log(params);
     const _params = new HttpParams()
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
+
     return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
   }
 
