@@ -4,6 +4,8 @@ import { AwsService } from '../../../core/services/aws.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
 import * as LayoutActions from '../../../core/store/actions/layout.actions';
+import { Observable } from 'rxjs';
+import {SaleActions} from './store/actions';
 
 const CLIENT_DATA = [
   {
@@ -41,6 +43,7 @@ const CLIENT_DATA = [
   styleUrls: ['./sales.component.scss']
 })
 export class SalesComponent implements OnInit {
+  sales$: Observable<any[]>;
   displayedColumns = ['saleDate', 'seller', 'client', 'business', 'status', 'amount', 'balance', 'deliveryEstimate', 'delivery', 'options'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
   image: any;
@@ -68,6 +71,7 @@ export class SalesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
   }
 
   applyFilter(filterValue: string) {
