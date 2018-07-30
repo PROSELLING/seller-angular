@@ -1,16 +1,17 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { SaleActionsUnion, SaleActionTypes } from '../actions/sale.actions';
+import { SaleModel } from '../../../../../core/models/sale.model';
 
-export const adapter: EntityAdapter<any> = createEntityAdapter<any>({
-  selectId: (client: any) => client.id
+export const adapter: EntityAdapter<SaleModel> = createEntityAdapter<SaleModel>({
+  selectId: (sale: SaleModel) => sale.id
 });
 
-export interface State extends EntityState<any> {
-  selectedClientId: string | null;
+export interface State extends EntityState<SaleModel> {
+  selectedSaleId: string | null;
 }
 
 export const initialState: State = adapter.getInitialState({
-  selectedClientId: null
+  selectedSaleId: null
 });
 
 export function reducer(state = initialState, action: SaleActionsUnion): State {
@@ -21,7 +22,7 @@ export function reducer(state = initialState, action: SaleActionsUnion): State {
     case SaleActionTypes.Select: {
       return {
         ...state,
-        selectedClientId: action.payload
+        selectedSaleId: action.payload
       };
     }
     case SaleActionTypes.ResetSaleState: {
@@ -33,4 +34,4 @@ export function reducer(state = initialState, action: SaleActionsUnion): State {
   }
 }
 
-export const getSelectedId = (state: State) => state.selectedClientId;
+export const getSelectedId = (state: State) => state.selectedSaleId;

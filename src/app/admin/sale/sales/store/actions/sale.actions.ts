@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { SaleModel } from '../../../../../core/models/sale.model';
 
 
 export enum SaleActionTypes {
@@ -27,7 +28,7 @@ export class LoadPageSuccess implements Action {
 export class LoadSaleSuccess implements Action {
   readonly type = SaleActionTypes.LoadSaleSuccess;
 
-  constructor(public payload: any) {
+  constructor(public payload: SaleModel[]) {
   }
 }
 

@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { Load, LoadFail, LoadPageSuccess, LoadSaleSuccess, SaleActionTypes } from '../actions/sale.actions';
 import { SaleService } from '../../../../../core/services/sale.service';
+import { SaleResponseModel } from '../../../../../core/models/sale.model';
 
 
 
@@ -21,9 +22,9 @@ export class SaleEffects {
           tap( (res: any) => {
             console.log('Inside Sale Effects', res);
           }),
-          mergeMap((res: any) => [
-            new LoadPageSuccess(res),
-            // new LoadSaleSuccess(res.clients.data)
+          mergeMap((res: SaleResponseModel) => [
+            // new LoadPageSuccess(res),
+            new LoadSaleSuccess(res.sales)
           ]),
           catchError(error => of(new LoadFail(error)))
         )

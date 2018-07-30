@@ -22,7 +22,7 @@ import { SaleEffects } from './sale/sales/store/effects/sale.effects';
     CommonModule,
     SharedModule,
     ClientsModule,
-    StoreModule.forFeature('sale', reducers),
+    StoreModule.forFeature('sales', reducers),
     EffectsModule.forFeature([SaleEffects])
   ],
   declarations: [

@@ -13,7 +13,7 @@ export interface SaleState {
 }
 
 export interface State extends fromRoot.RootState {
-  clients: SaleState;
+  sales: SaleState;
 }
 
 export const reducers: ActionReducerMap<SaleState> = {
@@ -21,7 +21,7 @@ export const reducers: ActionReducerMap<SaleState> = {
   salePage: fromSalePage.reducer
 };
 
-export const selectSaleState = createFeatureSelector<SaleState>('sale');
+export const selectSaleState = createFeatureSelector<SaleState>('sales');
 
 
 /** Selectors for Client **/
