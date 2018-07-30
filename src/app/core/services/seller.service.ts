@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { SellersResponseModel, Empresa } from '../models/seller.model';
+import { SellersResponseModel } from '../models/seller.model';
 
 const SELLER_SEARCH = 'seller_search';
 

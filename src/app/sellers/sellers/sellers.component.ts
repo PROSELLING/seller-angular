@@ -23,7 +23,8 @@ export class SellersComponent implements OnInit {
 
   sellers$: Observable<SellerModel[]>;
   sellersCopy$: SellerModel[];
-  displayedColumns = ['name'];
+  resultsLength$: Observable<number>;
+  displayedColumns = ['name', 'last_name', 'phone', 'celphone', 'email', 'menu'];
 
   @ViewChild('input') input: ElementRef;
   constructor(private store: Store<fromRoot.RootState>, private sellerService: SellerService) { }
@@ -48,6 +49,6 @@ export class SellersComponent implements OnInit {
 
   setSellersCopy(sellers: SellerModel[]) {
     this.sellersCopy$ = JSON.parse(JSON.stringify(sellers));
-    console.log('console_SELLERS: ',this.sellersCopy$);
+    console.log('console_SELLERS: ', this.sellersCopy$);
   }
 }
