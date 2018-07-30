@@ -94,16 +94,4 @@ export interface SellerObjectModel {
 
 export interface SellerPayloadModel {
   sellers: SellersResponseModel;
-  seller_type_phone: SellerObjectModel[];
-  origins: SellerObjectModel[];
-  channels: SellerObjectModel[];
-  documents: SellerObjectModel[];
-  marital_status: SellerObjectModel[];
-  ocupations: SellerObjectModel[];
-  type_locations: SellerObjectModel[];
-  seller_relations: SellerObjectModel[];
-  seller_type_mails: SellerObjectModel[];
-  genders: SellerObjectModel[];
-  person_type: SellerObjectModel[];
-  charges: SellerObjectModel[];
 }

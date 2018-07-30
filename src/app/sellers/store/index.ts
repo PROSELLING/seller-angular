@@ -57,28 +57,3 @@ export const getCurrentPage = createSelector(getSellersPageEntitiesState, fromSe
 
 /** Get total sellers **/
 export const getTotal = createSelector(getSellersPageEntitiesState, fromSellersPage.getTotal);
-
-export const getPhoneNumberTypes = createSelector(getSellersPageEntitiesState, fromSellersPage.getPhonNumberTypes);
-
-export const getOrigins = createSelector(getSellersPageEntitiesState, fromSellersPage.getOrigins);
-
-export const getChannels = createSelector(getSellersPageEntitiesState, fromSellersPage.getChannels);
-
-export const getDocuments = createSelector(getSellersPageEntitiesState, fromSellersPage.getDocuments);
-
-export const getMaritalStatus = createSelector(getSellersPageEntitiesState, fromSellersPage.getMaritalStatus);
-
-export const getOccupations = createSelector(getSellersPageEntitiesState, fromSellersPage.getOccupations);
-
-export const getTypeLocations = createSelector(getSellersPageEntitiesState, fromSellersPage.getTypeLocations);
-
-export const getSellerRelations = createSelector(getSellersPageEntitiesState, fromSellersPage.getSellerRelations);
-
-export const getSellerMailTypes = createSelector(getSellersPageEntitiesState, fromSellersPage.getSellerMailTypes);
-
-export const getSellerGenders = createSelector(getSellersPageEntitiesState, fromSellersPage.getSellerGenders);
-
-export const getPersonTypes = createSelector(getSellersPageEntitiesState, fromSellersPage.getPersontypes);
-
-export const getCharges = createSelector(getSellersPageEntitiesState, fromSellersPage.getCharges);
-
