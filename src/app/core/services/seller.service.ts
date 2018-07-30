@@ -19,11 +19,7 @@ export class SellerService {
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
-    console.log('Sentencia deirecta');
-    this.http.get<SellersResponseModel>(environment.apiUrl + SELLER_SEARCH, {params: _params}).subscribe( data =>{
-      console.log('datos: ');
-      console.log(data);
-    });
+
     return this.http.get<SellersResponseModel>(environment.apiUrl + SELLER_SEARCH, {params: _params});
   }
   /*
