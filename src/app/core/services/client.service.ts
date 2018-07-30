@@ -17,18 +17,10 @@ export class ClientService {
   }
 
   getClients(params: any): Observable<ClientsResponseModel> {
-    console.log('PARAMS');
-    console.log(params);
     const _params = new HttpParams()
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
-    console.log('datos de clientes');
-    this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params}).subscribe( data => {
-      console.log(data);
-      console.log('datos de clientes FIN');
-    });
-
     return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
   }
 
@@ -37,13 +29,6 @@ export class ClientService {
       .set('q', query)
       .set('page', '1');
     return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
-  }
-
-  getSellers() {
-    return this.http.get(environment.apiUrl + SELLER_SEARCH).subscribe(data => {
-      console.log('TEST SELLERS');
-      console.log(data);
-    });
   }
 
   getClientMeta() {

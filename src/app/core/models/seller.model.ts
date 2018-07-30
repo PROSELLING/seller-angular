@@ -8,7 +8,7 @@ export interface SellerModel extends BaseModel {
   last_name: string;
   gender: string;
   id_company: number;
-
+  phone: string;
 }
 
 /*export interface CategoryModel extends BaseModel {
