@@ -39,27 +39,4 @@ export class SellersEffects {
     private router: Router
   ) {
   }
-
-  private updateElements(res: SellerPayloadModel): void {
-    res.seller_type_phone = this.convertToArray(res.seller_type_phone);
-    res.origins = this.convertToArray(res.origins);
-    res.channels = this.convertToArray(res.channels);
-    res.documents = this.convertToArray(res.documents);
-    res.marital_status = this.convertToArray(res.marital_status);
-    res.ocupations = this.convertToArray(res.ocupations);
-    res.type_locations = this.convertToArray(res.type_locations);
-    res.seller_relations = this.convertToArray(res.seller_relations);
-    res.seller_type_mails = this.convertToArray(res.seller_type_mails);
-    res.genders = this.convertToArray(res.genders);
-    res.person_type = this.convertToArray(res.person_type);
-    res.charges = this.convertToArray(res.charges);
-  }
-
-  private convertToArray(obj: any): SellerObjectModel[] {
-    const elements = [];
-    for (const key of Object.keys(obj)) {
-      elements.push({id: key, value: obj[key]});
-    }
-    return elements;
-  }
 }

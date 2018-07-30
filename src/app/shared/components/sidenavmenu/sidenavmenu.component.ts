@@ -45,8 +45,8 @@ export class SidenavMenuComponent implements OnInit {
       },
       {
         name: 'Gestión de Vendedores',
-        icon: 'account-group',
-        color: '#dd4b39',
+        icon: 'cart',
+        color: '#c9d4d9',
         children: [
           {name: 'Vendedores', link: 'sellers'}
         ]
