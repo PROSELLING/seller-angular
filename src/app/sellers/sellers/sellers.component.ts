@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
 
 import {select, Store} from '@ngrx/store';
 import {SellerService} from '../../core/services/seller.service';
@@ -11,6 +12,7 @@ import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import { SellersActions } from '../store/actions';
 
 import {fromEvent} from 'rxjs/internal/observable/fromEvent';
+import * as fromClients from '../../clients/store';
 
 @Component({
   selector: 'app-sellers',
@@ -39,15 +41,13 @@ export class SellersComponent implements OnInit {
         this.setSellersCopy(sellers);
       })
     );
+    this.resultsLength$ = this.store.pipe(
+      select(fromSellers.getTotal)
+    );
   }
 
   setSellersCopy(sellers: SellerModel[]) {
     this.sellersCopy$ = JSON.parse(JSON.stringify(sellers));
-    console.log('RESULT COPYSELLERS', sellers);
-    this.sellersCopy$.map(seller => {
-      seller['contactInfo'] = seller.cellphone;
-    });
-
+    console.log('console_SELLERS: ',this.sellersCopy$);
   }
-
 }
