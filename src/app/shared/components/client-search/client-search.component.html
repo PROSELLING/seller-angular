@@ -2,7 +2,7 @@
   <mat-form-field>
     <input type="text" matInput [formControl]="searchControl" placeholder="Buscar Cliente" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn()">
-      <mat-option *ngFor="let client of clients | async" [value]="client"  (onSelectionChange)="selected($event)">
+      <mat-option *ngFor="let client of clients$ | async" [value]="client"  (onSelectionChange)="selected($event)">
         {{client.name}} {{client.last_name}}
       </mat-option>
     </mat-autocomplete>

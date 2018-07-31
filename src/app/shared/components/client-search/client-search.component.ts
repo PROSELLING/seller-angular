@@ -3,8 +3,11 @@ import { Observable, of, Subject } from 'rxjs';
 import { ClientService } from '../../../core/services/client.service';
 import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { ClientPayloadModel } from '../../../core/models/client.model';
+import { ClientModel, ClientPayloadModel } from '../../../core/models/client.model';
 import { MatOptionSelectionChange } from '@angular/material';
+import * as fromClients from '../../../clients/store';
+import { Store } from '@ngrx/store';
+import { SelectedSearchClient } from '../../../clients/store/actions/clients.actions';
 
 @Component({
   selector: 'app-client-search',
@@ -14,28 +17,38 @@ import { MatOptionSelectionChange } from '@angular/material';
 
 export class ClientSearchComponent implements OnInit {
   selectedClient: any;
-  clients: Observable<any[]>;
+  clients$: Observable<ClientModel[]>;
   private searchTerms = new Subject<string>();
   searchControl = new FormControl();
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService, private store: Store<fromClients.State>) {
   }
 
   ngOnInit() {
-    this.clients = this.searchControl.valueChanges.pipe(
+    this.clients$ = this.searchControl.valueChanges.pipe(
       filter(term => term),
       debounceTime(500),
       distinctUntilChanged(),
       switchMap(
-        term => term ? this.clientService.searchClient(term) : of<any[]>([])
+        (term: any) => {
+          if (typeof term === 'string') {
+            return this.clientService.searchClient(term);
+          }
+          if (typeof term === 'object') {
+            return this.clientService.searchClient(term.name);
+          }
+          return of<ClientModel[]>([]);
+        }
       ),
       map((res: ClientPayloadModel) => {
-        console.log('inside pipe', res.clients.data);
+        console.log('inside pipe', res);
+        const [client] = res.clients.data;
+        this.store.dispatch(new SelectedSearchClient(client));
         return res.clients.data;
       }),
       catchError((error: any) => {
         console.log('error', error);
-        return of<any[]>([]);
+        return of<ClientModel[]>([]);
       })
     );
   }

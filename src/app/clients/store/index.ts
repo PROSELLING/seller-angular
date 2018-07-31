@@ -6,10 +6,12 @@ import {
 import * as fromRoot from '../../core/store/index';
 import * as fromClients from './reducers/clients.reducer';
 import * as fromClientsPage from './reducers/clients-page.reducer';
+import * as fromSearch from './reducers/search.reducer';
 
 export interface ClientsState {
   clients: fromClients.State;
   clientsPage: fromClientsPage.State;
+  search: fromSearch.State;
 }
 
 export interface State extends fromRoot.RootState {
@@ -18,7 +20,8 @@ export interface State extends fromRoot.RootState {
 
 export const reducers: ActionReducerMap<ClientsState> = {
   clients: fromClients.reducer,
-  clientsPage: fromClientsPage.reducer
+  clientsPage: fromClientsPage.reducer,
+  search: fromSearch.reducer,
 };
 
 export const selectClientsState = createFeatureSelector<ClientsState>('clients');
@@ -81,4 +84,10 @@ export const getClientGenders = createSelector(getClientsPageEntitiesState, from
 export const getPersonTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getPersontypes);
 
 export const getCharges = createSelector(getClientsPageEntitiesState, fromClientsPage.getCharges);
+
+/** Selector for search **/
+export const getSearchEntitiesState = createSelector(selectClientsState, state => state.search);
+
+/** Get selected client from search **/
+export const getSearchSelectedClient = createSelector(getSearchEntitiesState, fromSearch.getSelectedClient);
 

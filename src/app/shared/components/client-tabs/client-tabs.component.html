@@ -1,6 +1,8 @@
 <div>
   <app-client-card [user]="client" [(isNatural)]="isNatural"></app-client-card>
-  <!--<app-client-search></app-client-search>-->
+  <ng-container *ngIf="addClient">
+    <app-client-search></app-client-search>
+  </ng-container>
 </div>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" class="client-tabs">
   <mat-tab label="account">

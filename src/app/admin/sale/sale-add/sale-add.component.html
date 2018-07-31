@@ -1,5 +1,5 @@
 <section class="content">
   <app-block-header title="Nueva Venta" [breadcrumbs]="breadcrumbs"></app-block-header>
 
-  <sale-steps-component ([client])="client"></sale-steps-component>
+  <app-sale-steps-component [addClient]="true" ([client])="client$"></app-sale-steps-component>
 </section>

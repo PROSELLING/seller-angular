@@ -8,7 +8,8 @@ export enum ClientsActionTypes {
   LoadClientsSuccess = '[Clients] Load Clients Success',
   LoadFail = '[Clients] Load Fail',
   Select = '[Clients] Select',
-  ResetClientState = '[Clients] Reset Client State'
+  ResetClientState = '[Clients] Reset Client State',
+  SelectedSearchClient = '[Clients] Selected Client',
 }
 
 export class Load implements Action {
@@ -50,10 +51,18 @@ export class ResetClientState implements Action {
   readonly type = ClientsActionTypes.ResetClientState;
 }
 
+export class SelectedSearchClient implements Action {
+  readonly type = ClientsActionTypes.SelectedSearchClient;
+
+  constructor(public payload: ClientModel) {
+  }
+}
+
 export type ClientsActionsUnion =
   | Load
   | LoadPageSuccess
   | LoadClientsSuccess
   | LoadFail
   | Select
-  | ResetClientState;
+  | ResetClientState
+  | SelectedSearchClient;

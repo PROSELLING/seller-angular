@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as fromClients from '../../../clients/store/index';
 import { select, Store } from '@ngrx/store';
-import { ClientsActions } from '../../../clients/store/actions/index';
 import { ClientModel } from '../../../core/models/client.model';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -37,8 +36,12 @@ export class SaleAddComponent implements OnInit {
   constructor
   (private activatedRoute: ActivatedRoute,
    private store: Store<fromClients.State>) {
+
   }
 
   ngOnInit() {
+    this.client$ = this.store.pipe(
+      select(fromClients.getSearchSelectedClient)
+    );
   }
 }

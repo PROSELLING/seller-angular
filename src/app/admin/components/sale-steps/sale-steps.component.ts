@@ -4,13 +4,14 @@ import { ObservableMedia } from '@angular/flex-layout';
 import { ClientModel } from '../../../core/models/client.model';
 
 @Component({
-  selector: 'sale-steps-component',
+  selector: 'app-sale-steps-component',
   templateUrl: './sale-steps.component.html',
   styleUrls: ['./sale-steps.component.scss']
 })
 
 export class SaleStepsComponent implements OnInit {
   @Input() client: ClientModel;
+  @Input() addClient = false;
   @Output() clientChange = new EventEmitter();
   stepperMode = 'horizontal';
   stateStep2: StepState = StepState.None;
@@ -18,7 +19,7 @@ export class SaleStepsComponent implements OnInit {
   stateStep4: StepState = StepState.None;
   disabled = false;
 
-  constructor(private media: ObservableMedia,) {
+  constructor(private media: ObservableMedia) {
   }
 
   ngOnInit() {
