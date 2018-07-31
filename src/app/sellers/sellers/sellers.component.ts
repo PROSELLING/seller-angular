@@ -10,6 +10,7 @@ import {SellerModel} from '../../core/models/seller.model';
 import * as fromSellers from '../../sellers/store';
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import { SellersActions } from '../store/actions';
+import * as LayoutActions from '../../core/store/actions/layout.actions';
 
 import {fromEvent} from 'rxjs/internal/observable/fromEvent';
 import * as fromClients from '../../clients/store';
@@ -50,5 +51,9 @@ export class SellersComponent implements OnInit {
   setSellersCopy(sellers: SellerModel[]) {
     this.sellersCopy$ = JSON.parse(JSON.stringify(sellers));
     console.log('console_SELLERS: ', this.sellersCopy$);
+  }
+
+  openRightSidenav() {
+    this.store.dispatch(new LayoutActions.OpenRightSidenav());
   }
 }
