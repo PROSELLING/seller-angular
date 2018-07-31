@@ -40,9 +40,15 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>tab</mat-icon>
-            <span>Leads</span>
+              <a
+                [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.id]}}]"
+                class="mat-accent"
+                (click)="openRightSidenav()"
+              >
+                Lead
+              </a>
           </button>
-          <button mat-menu-item disabled>
+          <button mat-menu-item>
             <mat-icon>create</mat-icon>
             <span>Editar</span>
           </button>
