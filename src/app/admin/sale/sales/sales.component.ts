@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { SaleActions } from './store/actions';
 import { SaleModel } from '../../../core/models/sale.model';
 import { tap } from 'rxjs/operators';
+import { StockService } from '../../../core/services/stock.service';
 
 const CLIENT_DATA = [
   {
@@ -69,7 +70,8 @@ export class SalesComponent implements OnInit {
 
   constructor(
     private awsService: AwsService,
-    private store: Store<fromRoot.RootState>
+    private store: Store<fromRoot.RootState>,
+    private physicalStockService: StockService
   ) {
     this.sales$ = this.store.pipe(
       select(fromSale.getAllSales),
@@ -81,6 +83,8 @@ export class SalesComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
+    this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
+    this.physicalStockService.getVirtualStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('VIRTUAL STOCK', res));
   }
 
   applyFilter(filterValue: string) {

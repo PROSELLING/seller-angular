@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this.store.dispatch(new AuthActions.Login(this.loginForm.value));
     }
   }

@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
 import { FormService } from '../../../../core/services/form.service';
 import { Observable } from 'rxjs';
-import { ClientModel, ClientObjectModel } from '../../../../core/models/client.model';
+import { ClientModel } from '../../../../core/models/client.model';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { tap } from 'rxjs/operators';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 @Component({
   selector: 'app-email-tab',
@@ -15,8 +16,8 @@ import { tap } from 'rxjs/operators';
 })
 export class EmailTabComponent implements OnInit {
   @Input() client: ClientModel;
-  emailTypes$: Observable<ClientObjectModel[]>;
-  emailTypes: ClientObjectModel[];
+  emailTypes$: Observable<ObjectModel[]>;
+  emailTypes: ObjectModel[];
 
   emailForm: FormGroup;
   emails = [];

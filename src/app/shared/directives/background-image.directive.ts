@@ -10,7 +10,6 @@ export class BackgroundImageDirective implements OnChanges {
   }
 
   ngOnChanges() {
-    console.log('test', this.bgImageUrl);
     this.el.nativeElement.style.backgroundImage = `url(${this.bgImageUrl})`;
     this.el.nativeElement.style.backgroundSize = 'cover';
     this.el.nativeElement.style.backgroundPosition = 'center';

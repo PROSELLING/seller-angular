@@ -13,11 +13,10 @@ export const initialState: State = {
 export function reducer(state = initialState, action: SaleActionsUnion): State {
   switch (action.type) {
     case SaleActionTypes.LoadPageSuccess: {
-      console.log('TESTING LOAD PAGE', action.payload);
       return {
         ...state,
-        currentPage: action.payload.clients.current_page,
-        total: action.payload.clients.total,
+        currentPage: action.payload.sales.current_page,
+        total: action.payload.sales.total,
       };
     }
     default: {

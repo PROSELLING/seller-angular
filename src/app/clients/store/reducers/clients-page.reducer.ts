@@ -1,21 +1,21 @@
 import { ClientsActionsUnion, ClientsActionTypes } from '../actions/clients.actions';
-import { ClientObjectModel } from '../../../core/models/client.model';
+import { ObjectModel } from '../../../core/models/meta.model';
 
 export interface State {
   currentPage: number;
   total: number;
-  phoneNumberTypes: ClientObjectModel[];
-  origins: ClientObjectModel[];
-  channels: ClientObjectModel[];
-  documents: ClientObjectModel[];
-  maritalStatus: ClientObjectModel[];
-  occupations: ClientObjectModel[];
-  typeLocations: ClientObjectModel[];
-  client_relations: ClientObjectModel[];
-  client_type_mails: ClientObjectModel[];
-  genders: ClientObjectModel[];
-  person_type: ClientObjectModel[];
-  charges: ClientObjectModel[];
+  phoneNumberTypes: ObjectModel[];
+  origins: ObjectModel[];
+  channels: ObjectModel[];
+  documents: ObjectModel[];
+  maritalStatus: ObjectModel[];
+  occupations: ObjectModel[];
+  typeLocations: ObjectModel[];
+  client_relations: ObjectModel[];
+  client_type_mails: ObjectModel[];
+  genders: ObjectModel[];
+  person_type: ObjectModel[];
+  charges: ObjectModel[];
 }
 
 export const initialState: State = {
@@ -38,7 +38,6 @@ export const initialState: State = {
 export function reducer(state = initialState, action: ClientsActionsUnion): State {
   switch (action.type) {
     case ClientsActionTypes.LoadPageSuccess: {
-      console.log('TESTING LOAD PAGE', action.payload);
       return {
         ...state,
         currentPage: action.payload.clients.current_page,

@@ -69,7 +69,7 @@ export class ClientsComponent implements AfterViewInit, OnInit {
     }));
     this.store.pipe(
       select(fromClients.getAllClients)
-    ).subscribe(data => console.log('test', data));
+    );
   }
 
   setClientsCopy(clients: ClientModel[]) {

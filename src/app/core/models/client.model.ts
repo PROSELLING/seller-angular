@@ -1,4 +1,5 @@
 import { BaseModel } from './base.model';
+import { ClientMetaModel, ResponseModel } from './meta.model';
 
 export interface ClientModel extends BaseModel {
   birthday: string;
@@ -81,36 +82,10 @@ export interface SocialNetworkModel extends BaseModel {
   twitter: string;
 }
 
-export interface ClientsResponseModel {
-  current_page: number;
+export interface ClientsResponseModel extends ResponseModel {
   data: ClientModel[];
-  from: number;
-  last_page: number;
-  next_page_url: string;
-  path: string;
-  per_page: number;
-  prev_page_url: string;
-  to: number;
-  total: number;
 }
 
-export interface ClientObjectModel {
-  id: string;
-  value: string;
-}
-
-export interface ClientPayloadModel {
+export interface ClientPayloadModel extends ClientMetaModel {
   clients: ClientsResponseModel;
-  client_type_phone: ClientObjectModel[];
-  origins: ClientObjectModel[];
-  channels: ClientObjectModel[];
-  documents: ClientObjectModel[];
-  marital_status: ClientObjectModel[];
-  ocupations: ClientObjectModel[];
-  type_locations: ClientObjectModel[];
-  client_relations: ClientObjectModel[];
-  client_type_mails: ClientObjectModel[];
-  genders: ClientObjectModel[];
-  person_type: ClientObjectModel[];
-  charges: ClientObjectModel[];
 }

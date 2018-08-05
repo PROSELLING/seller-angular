@@ -41,13 +41,11 @@ export class ClientSearchComponent implements OnInit {
         }
       ),
       map((res: ClientPayloadModel) => {
-        console.log('inside pipe', res);
         const [client] = res.clients.data;
         this.store.dispatch(new SelectedSearchClient(client));
         return res.clients.data;
       }),
       catchError((error: any) => {
-        console.log('error', error);
         return of<ClientModel[]>([]);
       })
     );

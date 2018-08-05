@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ClientContactModel, ClientModel, ClientObjectModel } from '../../../../core/models/client.model';
+import { ClientContactModel, ClientModel } from '../../../../core/models/client.model';
 import { MatTableDataSource } from '@angular/material';
 import { FormService } from '../../../../core/services/form.service';
 import { Observable } from 'rxjs';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { tap } from 'rxjs/operators';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 @Component({
   selector: 'app-phone-tab',
@@ -20,8 +21,8 @@ export class PhoneTabComponent implements OnInit {
   dataSource = new MatTableDataSource(this.phones);
   tableColumns = ['type', 'prefix', 'number', 'options'];
 
-  phoneTypes$: Observable<ClientObjectModel[]>;
-  phoneTypes: ClientObjectModel[];
+  phoneTypes$: Observable<ObjectModel[]>;
+  phoneTypes: ObjectModel[];
 
   coutryCodes = [
     {value: '1', viewValue: '55'},

@@ -1,5 +1,6 @@
 import { ClientModel } from './client.model';
 import { BaseModel } from './base.model';
+import { ResponseModel } from './meta.model';
 
 export interface SaleModel extends BaseModel {
   attend: string;
@@ -24,6 +25,10 @@ export interface SaleModel extends BaseModel {
   total: number;
 }
 
-export interface SaleResponseModel {
-  sales: SaleModel[];
+export interface SaleResponseModel extends ResponseModel {
+  data: SaleModel[];
+}
+
+export interface SalePayloadModel {
+  sales: SaleResponseModel;
 }
