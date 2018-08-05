@@ -10,6 +10,8 @@ import { httpInterceptorProviders } from './services/interceptors';
 import { AwsService } from './services/aws.service';
 import { FormService } from './services/form.service';
 import { ClientStoreGuardService } from './services/guards/client-store-guard.service';
+import { SaleService } from './services/sale.service';
+import { StockService } from './services/stock.service';
 
 @NgModule()
 export class CoreModule {
@@ -32,7 +34,9 @@ export class CoreModule {
         ClientStoreGuardService,
         FormService,
         PermissionService,
+        StockService,
         RoleService,
+        SaleService,
         httpInterceptorProviders
       ]
     };

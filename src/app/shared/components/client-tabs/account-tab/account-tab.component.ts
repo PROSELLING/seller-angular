@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ClientModel, ClientObjectModel } from '../../../../core/models/client.model';
+import { ClientModel } from '../../../../core/models/client.model';
 import { FormService } from '../../../../core/services/form.service';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 ;
 
@@ -16,10 +17,10 @@ import { FormService } from '../../../../core/services/form.service';
 export class AccountTabComponent implements OnInit {
   @Input() client: ClientModel;
   @Input() isNatural: boolean;
-  phoneTypes$: Observable<ClientObjectModel[]>;
-  origins$: Observable<ClientObjectModel[]>;
-  channels$: Observable<ClientObjectModel[]>;
-  emailTypes$: Observable<ClientObjectModel[]>;
+  phoneTypes$: Observable<ObjectModel[]>;
+  origins$: Observable<ObjectModel[]>;
+  channels$: Observable<ObjectModel[]>;
+  emailTypes$: Observable<ObjectModel[]>;
 
   accountForm: FormGroup;
 

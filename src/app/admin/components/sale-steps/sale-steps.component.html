@@ -5,7 +5,7 @@
         Cliente
         <mat-icon svgIcon="account"></mat-icon>
       </ng-template>
-      <app-client-tabs [client]="client"></app-client-tabs>
+      <app-client-tabs [addClient]="addClient" [client]="client"></app-client-tabs>
     </td-step>
     <td-step #step2 [state]="stateStep2" [disabled]="disabled">
       <ng-template td-step-label>

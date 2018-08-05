@@ -10,6 +10,7 @@ import { ClientModel } from '../../../core/models/client.model';
 })
 export class ClientTabsComponent implements OnInit {
   @Input() client: ClientModel;
+  @Input() addClient = false;
   hideAccountLabel = false;
   hideCompanyLabel = true;
   hideInfoLabel = true;

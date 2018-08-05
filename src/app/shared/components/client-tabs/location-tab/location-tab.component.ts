@@ -5,7 +5,7 @@ import { FormService } from '../../../../core/services/form.service';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ClientObjectModel } from '../../../../core/models/client.model';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 @Component({
   selector: 'app-location-tab',
@@ -13,7 +13,7 @@ import { ClientObjectModel } from '../../../../core/models/client.model';
   styleUrls: ['./location-tab.component.scss']
 })
 export class LocationTabComponent implements OnInit {
-  locationTypes$: Observable<ClientObjectModel[]>;
+  locationTypes$: Observable<ObjectModel[]>;
 
   infoForm: FormGroup;
   places = [];

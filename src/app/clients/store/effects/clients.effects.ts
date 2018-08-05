@@ -7,7 +7,8 @@ import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { ClientsActionTypes, Load, LoadClientsSuccess, LoadFail, LoadPageSuccess } from '../actions/clients.actions';
 
 import { ClientService } from '../../../core/services/client.service';
-import { ClientObjectModel, ClientPayloadModel } from '../../../core/models/client.model';
+import { ClientPayloadModel } from '../../../core/models/client.model';
+import { ObjectModel } from '../../../core/models/meta.model';
 
 
 @Injectable()
@@ -20,7 +21,7 @@ export class ClientsEffects {
       this.clientService
         .getClients(params)
         .pipe(
-          map( (res: ClientPayloadModel) => {
+          map((res: ClientPayloadModel) => {
             this.updateElements(res);
             return res;
           }),
@@ -55,7 +56,7 @@ export class ClientsEffects {
     res.charges = this.convertToArray(res.charges);
   }
 
-  private convertToArray(obj: any): ClientObjectModel[] {
+  private convertToArray(obj: any): ObjectModel[] {
     const elements = [];
     for (const key of Object.keys(obj)) {
       elements.push({id: key, value: obj[key]});

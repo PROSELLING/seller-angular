@@ -11,13 +11,19 @@ import { ClientsModule } from '../clients/clients.module';
 import { SalesComponent } from './sale/sales/sales.component';
 import { SaleStepsComponent } from './components/sale-steps/sale-steps.component';
 import { SaleAddComponent } from './sale/sale-add/sale-add.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './sale/sales/store';
+import { EffectsModule } from '@ngrx/effects';
+import { SaleEffects } from './sale/sales/store/effects/sale.effects';
 
 @NgModule({
   imports: [
     AdminRoutingModule,
     CommonModule,
     SharedModule,
-    ClientsModule
+    ClientsModule,
+    StoreModule.forFeature('sales', reducers),
+    EffectsModule.forFeature([SaleEffects])
   ],
   declarations: [
     AdminComponent,

@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { AwsService } from '../../../core/services/aws.service';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
-import * as LayoutActions from '../../../core/store/actions/layout.actions';
+import * as fromSale from './store';
+import { LayoutActions } from '../../../core/store/actions';
+import { Observable } from 'rxjs';
+import { SaleActions } from './store/actions';
+import { SaleModel } from '../../../core/models/sale.model';
+import { tap } from 'rxjs/operators';
+import { StockService } from '../../../core/services/stock.service';
 
 const CLIENT_DATA = [
   {
@@ -41,6 +47,7 @@ const CLIENT_DATA = [
   styleUrls: ['./sales.component.scss']
 })
 export class SalesComponent implements OnInit {
+  sales$: Observable<SaleModel[]>;
   displayedColumns = ['saleDate', 'seller', 'client', 'business', 'status', 'amount', 'balance', 'deliveryEstimate', 'delivery', 'options'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
   image: any;
@@ -63,11 +70,21 @@ export class SalesComponent implements OnInit {
 
   constructor(
     private awsService: AwsService,
-    private store: Store<fromRoot.RootState>
+    private store: Store<fromRoot.RootState>,
+    private physicalStockService: StockService
   ) {
+    this.sales$ = this.store.pipe(
+      select(fromSale.getAllSales),
+      tap(sales => {
+        console.log('SALES FROM ENTITY', sales);
+      })
+    );
   }
 
   ngOnInit() {
+    this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
+    this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
+    this.physicalStockService.getVirtualStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('VIRTUAL STOCK', res));
   }
 
   applyFilter(filterValue: string) {

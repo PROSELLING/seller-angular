@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ClientModel, ClientObjectModel } from '../../../../core/models/client.model';
+import { ClientModel } from '../../../../core/models/client.model';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { FormService } from '../../../../core/services/form.service';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 @Component({
   selector: 'app-info-tab',
@@ -13,12 +14,12 @@ import { FormService } from '../../../../core/services/form.service';
 })
 export class InfoTabComponent implements OnInit {
   @Input() client: ClientModel;
-  documents$: Observable<ClientObjectModel[]>;
-  maritalStatus$: Observable<ClientObjectModel[]>;
-  occupations$: Observable<ClientObjectModel[]>;
-  genders$: Observable<ClientObjectModel[]>;
-  personTypes$: Observable<ClientObjectModel[]>;
-  positionTypes$: Observable<ClientObjectModel[]>;
+  documents$: Observable<ObjectModel[]>;
+  maritalStatus$: Observable<ObjectModel[]>;
+  occupations$: Observable<ObjectModel[]>;
+  genders$: Observable<ObjectModel[]>;
+  personTypes$: Observable<ObjectModel[]>;
+  positionTypes$: Observable<ObjectModel[]>;
 
   infoForm: FormGroup;
 

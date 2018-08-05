@@ -48,7 +48,6 @@ export class SidenavComponent implements OnInit {
         if (left && !right) {
           this.store.dispatch(new LayoutActions.CloseSidenav());
         }
-        console.log('testZip', pair);
       }).unsubscribe();
   }
 

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormService } from '../../../../core/services/form.service';
-import { ClientContactModel, ClientObjectModel } from '../../../../core/models/client.model';
+import { ClientContactModel } from '../../../../core/models/client.model';
 import { MatTableDataSource } from '@angular/material';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 @Component({
   selector: 'app-relationship-tab',
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./relationship-tab.component.scss']
 })
 export class RelationshipTabComponent implements OnInit {
-  clientRelations$: Observable<ClientObjectModel[]>;
+  clientRelations$: Observable<ObjectModel[]>;
 
   relationshipForm: FormGroup;
   relations: ClientContactModel[] = [];

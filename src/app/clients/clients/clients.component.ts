@@ -26,12 +26,6 @@ export class ClientsComponent implements AfterViewInit, OnInit {
   @ViewChild('input') input: ElementRef;
 
   constructor(private store: Store<fromRoot.RootState>) {
-
-  }
-
-  ngOnInit() {
-    this.store.dispatch(new ClientsActions.Load({page: 1, filter: ''}));
-
     this.resultsLength$ = this.store.pipe(
       select(fromClients.getTotal)
     );
@@ -42,6 +36,10 @@ export class ClientsComponent implements AfterViewInit, OnInit {
         this.setClientsCopy(clients);
       })
     );
+  }
+
+  ngOnInit() {
+    this.store.dispatch(new ClientsActions.Load({page: 1, filter: ''}));
   }
 
   ngAfterViewInit() {
@@ -71,7 +69,7 @@ export class ClientsComponent implements AfterViewInit, OnInit {
     }));
     this.store.pipe(
       select(fromClients.getAllClients)
-    ).subscribe(data => console.log('test', data));
+    );
   }
 
   setClientsCopy(clients: ClientModel[]) {
