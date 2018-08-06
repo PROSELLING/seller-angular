@@ -49,7 +49,7 @@ export class FormService {
   }
 
   getClientHasWhatsapp(clientContact: ClientContactModel): Boolean {
-    return clientContact.wsp === 'SI';
+    return clientContact ? clientContact.wsp === 'SI' : false;
   }
 
   getFormattedDate(date: string): Moment {

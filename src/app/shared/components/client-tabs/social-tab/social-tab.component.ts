@@ -16,7 +16,7 @@ export class SocialTabComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.client !== undefined) {
+    if (this.client !== undefined && this.client !== null) {
       if (this.client.client_networks.length) {
         const [clientNetworks] = this.client.client_networks;
         this.socialForm = this.fb.group({

@@ -47,7 +47,7 @@ export class EmailTabComponent implements OnInit {
   }
 
   private setEmailTypes(): void {
-    if (this.client !== undefined) {
+    if (this.client !== undefined && this.client !== null) {
       if (this.client.client_mails.length) {
         for (const email of this.client.client_mails) {
           const [emailTypeObject] = this.emailTypes.filter(emailType => emailType.id === String(email.id_type_mail));

@@ -62,7 +62,7 @@ export class SalesComponent implements OnInit {
       link: '/admin'
     },
     {
-      label: 'Ventas',
+      label: 'Experiencia',
       link: ''
     }
   ];

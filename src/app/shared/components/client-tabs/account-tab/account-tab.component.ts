@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as fromClients from '../../../../clients/store';
 import { select, Store } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { ObjectModel } from '../../../../core/models/meta.model';
   templateUrl: './account-tab.component.html',
   styleUrls: ['./account-tab.component.scss']
 })
-export class AccountTabComponent implements OnInit {
+export class AccountTabComponent implements OnInit, OnChanges {
   @Input() client: ClientModel;
   @Input() isNatural: boolean;
   phoneTypes$: Observable<ObjectModel[]>;
@@ -31,8 +31,15 @@ export class AccountTabComponent implements OnInit {
 
   }
 
+  ngOnChanges() {
+    if (this.client) {
+      console.log('CHANGED', this.client);
+    }
+  }
+
   ngOnInit() {
-    if (this.client !== undefined) {
+    if (this.client !== undefined && this.client !== null) {
+      console.log('wHATS HAPPENING OVER HERE', this.client);
       const contactInfo = this.formService.getClientContactInfo(this.client.client_contact);
       const contactEmail = this.formService.getClientEmailInfo(this.client.client_mails);
 

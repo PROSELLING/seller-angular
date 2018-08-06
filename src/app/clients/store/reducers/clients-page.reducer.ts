@@ -56,6 +56,9 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
         charges: action.payload.charges,
       };
     }
+    case ClientsActionTypes.ResetClientState: {
+      return initialState;
+    }
     default: {
       return state;
     }

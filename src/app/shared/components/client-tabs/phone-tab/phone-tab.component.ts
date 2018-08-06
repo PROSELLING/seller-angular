@@ -53,7 +53,7 @@ export class PhoneTabComponent implements OnInit {
   }
 
   private setPhoneNumbers(): void {
-    if (this.client !== undefined) {
+    if (this.client !== undefined && this.client !== null) {
       if (this.client.client_contact.length) {
         for (const contact of this.client.client_contact) {
           const [phoneTypeObject] = this.phoneTypes.filter(phoneType => phoneType.id === String(contact.id_type_phone));
