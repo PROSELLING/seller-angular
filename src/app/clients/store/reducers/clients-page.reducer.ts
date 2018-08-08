@@ -42,6 +42,11 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
         ...state,
         currentPage: action.payload.clients.current_page,
         total: action.payload.clients.total,
+      };
+    }
+    case ClientsActionTypes.LoadClientsMetaSuccess: {
+      return {
+        ...state,
         phoneNumberTypes: action.payload.client_type_phone,
         origins: action.payload.origins,
         channels: action.payload.channels,
