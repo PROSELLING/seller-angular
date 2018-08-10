@@ -11,6 +11,7 @@ import { SaleModel } from '../../../core/models/sale.model';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { StockService } from '../../../core/services/stock.service';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
+import { SaleService } from '../../../core/services/sale.service';
 
 const CLIENT_DATA = [
   {
@@ -78,7 +79,8 @@ export class SalesComponent implements OnInit, AfterViewInit {
   constructor(
     private awsService: AwsService,
     private store: Store<fromRoot.RootState>,
-    private physicalStockService: StockService
+    private physicalStockService: StockService,
+    private saleService: SaleService
   ) {
     this.sales$ = this.store.pipe(
       select(fromSale.getAllSales)
@@ -90,8 +92,9 @@ export class SalesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
-    this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
+    /*this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
     this.physicalStockService.getVirtualStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('VIRTUAL STOCK', res));
+    this.saleService.getSaleMeta().subscribe(res => console.log('SALE METADATA', res));*/
   }
 
   ngAfterViewInit() {
