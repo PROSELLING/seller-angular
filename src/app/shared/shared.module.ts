@@ -23,7 +23,7 @@ import { EmailTabComponent } from './components/client-tabs/email-tab/email-tab.
 import { SocialTabComponent } from './components/client-tabs/social-tab/social-tab.component';
 import { LocationTabComponent } from './components/client-tabs/location-tab/location-tab.component';
 import { RelationshipTabComponent } from './components/client-tabs/relationship-tab/relationship-tab.component';
-import { ClientProfileComponent } from './components/client-profile/client-profile.component';
+import { ClientProfileCardComponent } from './components/client-profile-card/client-profile-card.component';
 import { ClientCardComponent } from './components/client-card/client-card.component';
 import { ClientSearchComponent } from './components/client-search/client-search.component';
 
@@ -51,7 +51,7 @@ import { ClientSearchComponent } from './components/client-search/client-search.
     AlertComponent,
     BlockHeaderComponent,
     ClientCardComponent,
-    ClientProfileComponent,
+    ClientProfileCardComponent,
     ClientSearchComponent,
     ClientTabsComponent,
     HeaderComponent,
@@ -61,7 +61,7 @@ import { ClientSearchComponent } from './components/client-search/client-search.
     AlertComponent,
     BlockHeaderComponent,
     BackgroundImageDirective,
-    ClientProfileComponent,
+    ClientProfileCardComponent,
     HeaderComponent,
     SidenavComponent,
     SidenavMenuComponent,

@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { httpInterceptorProviders } from '../core/services/interceptors';
 import { GanttComponent } from './gantt/gantt.component';
 import { SaleEditComponent } from './sale/sale-edit/sale-edit.component';
+import { ClientProfileComponent} from './components/client-profile/client-profile.component';
 import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
 import { ClientsModule } from '../clients/clients.module';
 import { SalesComponent } from './sale/sales/sales.component';
@@ -32,6 +33,7 @@ import { SaleEffects } from './sale/sales/store/effects/sale.effects';
     SaleEditComponent,
     SalesComponent,
     SaleStepsComponent,
+    ClientProfileComponent,
     ClientSidenavComponent
   ],
   providers: [httpInterceptorProviders]

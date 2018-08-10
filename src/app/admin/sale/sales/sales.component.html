@@ -22,7 +22,7 @@
 
 
     <div class="responsive_table">
-      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- Seller Column -->
         <ng-container matColumnDef="seller">
@@ -107,7 +107,7 @@
             (mouseenter)="onRowHovered(row)"
             (mouseleave)="onRowHovered(null)"
         ></tr>
-      </mat-table>
+      </table>
       <mat-paginator [length]="resultsLength$ | async" [pageSize]="15"></mat-paginator>
     </div>
   </div>

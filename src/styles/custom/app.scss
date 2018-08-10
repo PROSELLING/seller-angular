@@ -30,6 +30,22 @@ a {
   padding: 0 10px;
 }
 
+.client-profile-tabs {
+  .mat-ink-bar,
+  .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{
+    display: none;
+  }
+
+  .mat-tab-labels {
+    flex-wrap: wrap;
+  }
+
+  .mat-tab-label {
+    min-width: 118px;
+    padding: 0 16px;
+  }
+}
+
 @media(max-width: 800px) {
   .responsive_table {
     overflow-x: auto !important;

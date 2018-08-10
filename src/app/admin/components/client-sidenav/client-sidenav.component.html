@@ -2,5 +2,6 @@
   <mat-icon svgIcon="close"></mat-icon>
 </div>
 <div class="client-profile">
+  <app-client-profile-card [user]="user$ | async"></app-client-profile-card>
   <app-client-profile [user]="user$ | async"></app-client-profile>
 </div>
