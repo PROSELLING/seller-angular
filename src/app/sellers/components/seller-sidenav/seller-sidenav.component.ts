@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { select, Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-seller-sidenav',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerSidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe( params => {
+      console.log('Este es el heroe: ', params);
+    });
+  }
 
   ngOnInit() {
   }
