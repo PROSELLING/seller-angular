@@ -34,17 +34,13 @@
       <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button mat-icon-button [matMenuTriggerFor]="menu"
-                matTooltip="Asignar de leads, eliminar o editar {{element.first_name}}">
+                matTooltip="Asignar leads, eliminar o editar vendedor {{element.first_name}}">
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>tab</mat-icon>
-              <a
-                [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.id]}}]"
-                class="mat-accent"
-                (click)="openRightSidenav()"
-              >
+              <a>
                 Lead
               </a>
           </button>
