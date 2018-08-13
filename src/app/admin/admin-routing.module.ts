@@ -36,7 +36,7 @@ const routes: Routes = [
     outlet: 'rightSidenav'
   },
   {
-    path: 'client/:id',
+    path: 'cliente/:id',
     component: ClientSidenavComponent,
     outlet: 'rightSidenav'
   }
