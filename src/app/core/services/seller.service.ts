@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { SellersResponseModel } from '../models/seller.model';
 
 const SELLER_SEARCH = 'seller_search';
+const GET_LEADS = 'leads';
 
 @Injectable()
 export class SellerService {
@@ -14,12 +15,10 @@ export class SellerService {
   }
 
   getSellers(params: any): Observable<SellersResponseModel> {
-
     const _params = new HttpParams()
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
-
     return this.http.get<SellersResponseModel>(environment.apiUrl + SELLER_SEARCH, {params: _params});
   }
   /*
@@ -34,4 +33,7 @@ export class SellerService {
     return this.http.get(environment.apiUrl + SELLER_SEARCH);
   }
 
+  getLeads_test() {
+    return this.http.get(environment.apiUrl + GET_LEADS);
+  }
 }

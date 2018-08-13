@@ -8,6 +8,7 @@ import * as fromSellers from '../../sellers/store';
 import { tap } from 'rxjs/operators';
 import { SellersActions } from '../store/actions';
 import * as LayoutActions from '../../core/store/actions/layout.actions';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-sellers',
@@ -23,7 +24,7 @@ export class SellersComponent implements OnInit {
 
   @ViewChild('input') input: ElementRef;
 
-  constructor(private store: Store<fromRoot.RootState>) {
+  constructor(private store: Store<fromRoot.RootState>, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
