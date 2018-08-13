@@ -40,7 +40,9 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>tab</mat-icon>
-              <a>
+              <a
+                [routerLink]="['/sellers','seller', element.id]"
+              >
                 Lead
               </a>
           </button>
