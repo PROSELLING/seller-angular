@@ -12,7 +12,7 @@ export class SellerSidenavComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
-      console.log('Este es el heroe: ', params);
+      console.log('Este es el seller: ', params);
     });
   }
 
