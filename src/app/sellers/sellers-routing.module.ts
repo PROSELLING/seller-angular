@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SellersComponent } from './sellers/sellers.component';
 import { AuthGuardService } from '../core/services/guards/auth-guard.service';
-import {SellerSidenavComponent} from './components/seller-sidenav/seller-sidenav.component';
+import {LeadsSidenavComponent} from './components/leads-sidenav/leads-sidenav.component';
 
 const routes: Routes = [
   {
@@ -11,8 +11,9 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'seller/:id',
-    component: SellerSidenavComponent
+    path: 'lead/:id',
+    component: LeadsSidenavComponent,
+    outlet: 'rightSidenav'
   }
 ];
 

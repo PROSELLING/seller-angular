@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SellersEffects } from './store/effects/sellers.effects';
 import { SellerSidenavComponent } from './components/seller-sidenav/seller-sidenav.component';
+import { LeadsSidenavComponent } from './components/leads-sidenav/leads-sidenav.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SellerSidenavComponent } from './components/seller-sidenav/seller-siden
   ],
   declarations: [
     SellersComponent,
-    SellerSidenavComponent
+    SellerSidenavComponent,
+    LeadsSidenavComponent
   ],
   providers: [httpInterceptorProviders]
 })
