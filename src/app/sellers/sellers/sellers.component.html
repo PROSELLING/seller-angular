@@ -41,7 +41,9 @@
           <button mat-menu-item>
             <mat-icon>tab</mat-icon>
               <a
-                [routerLink]="['/sellers','seller', element.id]"
+                [routerLink]="['/sellers', {outlets: {rightSidenav: ['lead', element.id]}}]"
+                class="mat-accent"
+                (click)="openRightSidenav()"
               >
                 Lead
               </a>
