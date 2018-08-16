@@ -4,7 +4,7 @@ import { BaseModel } from './base.model';
 export interface UserModel extends BaseModel {
   email: string;
   username: string;
-  first_name: string;
+  name: string;
   last_name: string;
   imagen: string;
   birthday?: string;
