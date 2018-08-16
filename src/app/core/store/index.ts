@@ -19,7 +19,7 @@ export const reducers: ActionReducerMap<RootState> = {
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync(
     {
-      keys: ['layout', 'auth', 'clients', 'sales'],
+      keys: ['layout', 'auth', 'clients', 'sales', 'sellers'],
       rehydrate: true
     }
     )(reducer);

@@ -6,6 +6,7 @@ import { ClientsResponseModel } from '../models/client.model';
 
 const CLIENTS_ENDPOINT = 'clients';
 const CLIENT_SEARCH = 'client_search';
+const SELLER_SEARCH = 'seller_search';
 const METADATA = 'clientmetadata';
 
 @Injectable()
