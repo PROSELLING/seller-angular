@@ -1,6 +1,6 @@
 import { ClientModel } from './client.model';
 import { BaseModel } from './base.model';
-import { ResponseModel } from './meta.model';
+import { ObjectModel, ResponseModel } from './meta.model';
 
 export interface SaleModel extends BaseModel {
   attend: string;
@@ -31,4 +31,12 @@ export interface SaleResponseModel extends ResponseModel {
 
 export interface SalePayloadModel {
   sales: SaleResponseModel;
+}
+
+export interface SaleMetaResponseModel {
+  stages: ObjectModel[];
+  substages: ObjectModel[];
+  task_reasons: ObjectModel[];
+  task_results: ObjectModel[];
+  type_sales: ObjectModel[];
 }

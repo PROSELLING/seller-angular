@@ -4,11 +4,20 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
-import { ClientsActionTypes, Load, LoadClientsSuccess, LoadFail, LoadPageSuccess } from '../actions/clients.actions';
+import {
+  ClientsActionTypes,
+  Load,
+  LoadClientsMeta,
+  LoadClientsMetaFail,
+  LoadClientsMetaSuccess,
+  LoadClientsSuccess,
+  LoadFail,
+  LoadPageSuccess
+} from '../actions/clients.actions';
 
 import { ClientService } from '../../../core/services/client.service';
 import { ClientPayloadModel } from '../../../core/models/client.model';
-import { ObjectModel } from '../../../core/models/meta.model';
+import { ClientMetaModel } from '../../../core/models/meta.model';
 
 
 @Injectable()
@@ -18,19 +27,27 @@ export class ClientsEffects {
     ofType<Load>(ClientsActionTypes.Load),
     map(action => action.payload),
     switchMap((params: any) =>
-      this.clientService
-        .getClients(params)
+      this.clientService.getClients(params)
         .pipe(
-          map((res: ClientPayloadModel) => {
-            this.updateElements(res);
-            return res;
-          }),
           mergeMap((res: ClientPayloadModel) => [
             new LoadPageSuccess(res),
-            new LoadClientsSuccess(res.clients.data)
+            new LoadClientsSuccess(res.clients.data),
+            new LoadClientsMeta()
           ]),
           catchError(error => of(new LoadFail(error)))
         )
+    )
+  );
+  @Effect()
+  loadClientMeta$ = this.actions$.pipe(
+    ofType<LoadClientsMeta>(ClientsActionTypes.LoadClientsMeta),
+    mergeMap(() => {
+      return this.clientService.getClientMeta()
+        .pipe(
+          map((res: ClientMetaModel) => new LoadClientsMetaSuccess(res)),
+          catchError(error => of(new LoadClientsMetaFail(error))),
+        );
+      }
     )
   );
 
@@ -39,28 +56,5 @@ export class ClientsEffects {
     private clientService: ClientService,
     private router: Router
   ) {
-  }
-
-  private updateElements(res: ClientPayloadModel): void {
-    res.client_type_phone = this.convertToArray(res.client_type_phone);
-    res.origins = this.convertToArray(res.origins);
-    res.channels = this.convertToArray(res.channels);
-    res.documents = this.convertToArray(res.documents);
-    res.marital_status = this.convertToArray(res.marital_status);
-    res.ocupations = this.convertToArray(res.ocupations);
-    res.type_locations = this.convertToArray(res.type_locations);
-    res.client_relations = this.convertToArray(res.client_relations);
-    res.client_type_mails = this.convertToArray(res.client_type_mails);
-    res.genders = this.convertToArray(res.genders);
-    res.person_type = this.convertToArray(res.person_type);
-    res.charges = this.convertToArray(res.charges);
-  }
-
-  private convertToArray(obj: any): ObjectModel[] {
-    const elements = [];
-    for (const key of Object.keys(obj)) {
-      elements.push({id: key, value: obj[key]});
-    }
-    return elements;
   }
 }

@@ -6,10 +6,12 @@ import {
 import * as fromRoot from '../../../../core/store/index';
 import * as fromSale from './reducers/sale.reducer';
 import * as fromSalePage from './reducers/sale-page.reducer';
+import * as fromSaleMeta from './reducers/sale-meta.reducer';
 
 export interface SaleState {
   sale: fromSale.State;
   salePage: fromSalePage.State;
+  saleMeta: fromSaleMeta.State;
 }
 
 export interface State extends fromRoot.RootState {
@@ -18,7 +20,8 @@ export interface State extends fromRoot.RootState {
 
 export const reducers: ActionReducerMap<SaleState> = {
   sale: fromSale.reducer,
-  salePage: fromSalePage.reducer
+  salePage: fromSalePage.reducer,
+  saleMeta: fromSaleMeta.reducer
 };
 
 export const selectSaleState = createFeatureSelector<SaleState>('sales');
@@ -57,5 +60,20 @@ export const getCurrentPage = createSelector(getSalePageEntitiesState, fromSaleP
 
 /** Get total sales **/
 export const getTotal = createSelector(getSalePageEntitiesState, fromSalePage.getTotal);
+
+/** Selectors for Sale Metadata **/
+export const getSaleMetaState = createSelector(selectSaleState, state => state.saleMeta);
+
+export const getSaleStages = createSelector(getSaleMetaState, fromSaleMeta.getStages);
+
+export const getSaleSubstages = createSelector(getSaleMetaState, fromSaleMeta.getSubstages);
+
+export const getSaleTaskReasons = createSelector(getSaleMetaState, fromSaleMeta.getTaskReasons);
+
+export const getSaleTaskResults = createSelector(getSaleMetaState, fromSaleMeta.getTaskResults);
+
+export const getSaleTypeSales = createSelector(getSaleMetaState, fromSaleMeta.getTypeSales);
+
+
 
 

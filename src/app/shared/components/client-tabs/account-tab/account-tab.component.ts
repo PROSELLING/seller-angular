@@ -7,8 +7,6 @@ import { ClientModel } from '../../../../core/models/client.model';
 import { FormService } from '../../../../core/services/form.service';
 import { ObjectModel } from '../../../../core/models/meta.model';
 
-;
-
 @Component({
   selector: 'app-account-tab',
   templateUrl: './account-tab.component.html',
@@ -32,7 +30,7 @@ export class AccountTabComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.client !== undefined) {
+    if (this.client !== undefined && this.client !== null) {
       const contactInfo = this.formService.getClientContactInfo(this.client.client_contact);
       const contactEmail = this.formService.getClientEmailInfo(this.client.client_mails);
 
