@@ -1,20 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material';
-import {MatMenuModule} from '@angular/material/menu';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import {select, Store} from '@ngrx/store';
-import {SellerService} from '../../core/services/seller.service';
+import { select, Store } from '@ngrx/store';
+import { SellerService } from '../../core/services/seller.service';
 import * as fromRoot from '../../core/store';
-import {Observable} from 'rxjs/internal/Observable';
-import {SellerModel} from '../../core/models/seller.model';
+import { Observable } from 'rxjs/internal/Observable';
+import { SellerModel } from '../../core/models/seller.model';
 import * as fromSellers from '../../sellers/store';
-import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { SellersActions } from '../store/actions';
 import * as LayoutActions from '../../core/store/actions/layout.actions';
-import {ActivatedRoute} from '@angular/router';
-
-import {fromEvent} from 'rxjs/internal/observable/fromEvent';
-import * as fromClients from '../../clients/store';
 
 @Component({
   selector: 'app-sellers',
@@ -29,7 +23,9 @@ export class SellersComponent implements OnInit {
   displayedColumns = ['name', 'last_name', 'phone', 'celphone', 'email', 'menu'];
 
   @ViewChild('input') input: ElementRef;
-  constructor(private store: Store<fromRoot.RootState>, private sellerService: SellerService) { }
+
+  constructor(private store: Store<fromRoot.RootState>, private sellerService: SellerService) {
+  }
 
   ngOnInit() {
     this.store.dispatch(new SellersActions.Load({page: 1, filter: ''}));
