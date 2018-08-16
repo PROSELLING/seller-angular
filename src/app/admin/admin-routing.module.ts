@@ -37,7 +37,7 @@ const routes: Routes = [
     outlet: 'rightSidenav'
   },
   {
-    path: 'cliente/:id',
+    path: 'client/:id',
     component: ClientSidenavComponent,
     outlet: 'rightSidenav',
     canActivate: [ClientExistsGuard]
