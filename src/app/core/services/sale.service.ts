@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 
 const SALES = 'sales';
+const METADATA = 'salesmetadata';
 
 @Injectable()
 export class SaleService {
@@ -24,5 +25,9 @@ export class SaleService {
       .set('q', query)
       .set('page', '1');
     return this.http.get(environment.apiUrl + SALES, {params: _params});
+  }
+
+  getSaleMeta() {
+    return this.http.get(environment.apiUrl + METADATA);
   }
 }

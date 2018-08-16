@@ -17,7 +17,6 @@ import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 })
 export class ClientsComponent implements AfterViewInit, OnInit {
   clients$: Observable<ClientModel[]>;
-  test$: Observable<any>;
   clientsCopy$: ClientModel[];
   displayedColumns = ['name', 'client_contact', 'origin'];
   resultsLength$: Observable<number>;

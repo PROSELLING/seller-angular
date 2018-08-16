@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { ClientModel, ClientPayloadModel } from '../../../core/models/client.model';
+import { ClientMetaModel } from '../../../core/models/meta.model';
 
 
 export enum ClientsActionTypes {
@@ -7,6 +8,9 @@ export enum ClientsActionTypes {
   LoadPageSuccess = '[Clients] Load Success',
   LoadClientsSuccess = '[Clients] Load Clients Success',
   LoadFail = '[Clients] Load Fail',
+  LoadClientsMeta = '[Clients] Load Clients Meta',
+  LoadClientsMetaSuccess = '[Clients] Load Clients Meta Success',
+  LoadClientsMetaFail = '[Clients] Load Clients Meta Fail',
   Select = '[Clients] Select',
   ResetClientState = '[Clients] Reset Client State',
   SelectedSearchClient = '[Clients] Selected Client',
@@ -40,6 +44,24 @@ export class LoadFail implements Action {
   }
 }
 
+export class LoadClientsMeta implements Action {
+  readonly type = ClientsActionTypes.LoadClientsMeta;
+}
+
+export class LoadClientsMetaSuccess implements Action {
+  readonly type = ClientsActionTypes.LoadClientsMetaSuccess;
+
+  constructor(public payload: ClientMetaModel) {
+  }
+}
+
+export class LoadClientsMetaFail implements Action {
+  readonly type = ClientsActionTypes.LoadClientsMetaFail;
+
+  constructor(public payload: any) {
+  }
+}
+
 export class Select implements Action {
   readonly type = ClientsActionTypes.Select;
 
@@ -63,6 +85,9 @@ export type ClientsActionsUnion =
   | LoadPageSuccess
   | LoadClientsSuccess
   | LoadFail
+  | LoadClientsMeta
+  | LoadClientsMetaSuccess
+  | LoadClientsMetaFail
   | Select
   | ResetClientState
   | SelectedSearchClient;

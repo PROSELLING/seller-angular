@@ -17,6 +17,12 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
         selectedClient: action.payload
       };
     }
+    case ClientsActionTypes.ResetClientState: {
+      return initialState;
+    }
+    default: {
+      return state;
+    }
   }
 }
 

@@ -30,7 +30,7 @@ export class InfoTabComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.client !== undefined) {
+    if (this.client !== undefined && this.client !== null) {
       const birthday = this.formService.getFormattedDate(this.client.birthday);
 
       this.infoForm = this.fb.group({

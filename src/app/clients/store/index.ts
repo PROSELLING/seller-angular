@@ -7,10 +7,12 @@ import * as fromRoot from '../../core/store/index';
 import * as fromClients from './reducers/clients.reducer';
 import * as fromClientsPage from './reducers/clients-page.reducer';
 import * as fromSearch from './reducers/search.reducer';
+import * as fromClientsMeta from './reducers/clients-meta.reducer';
 
 export interface ClientsState {
   clients: fromClients.State;
   clientsPage: fromClientsPage.State;
+  clientsMeta: fromClientsMeta.State;
   search: fromSearch.State;
 }
 
@@ -21,6 +23,7 @@ export interface State extends fromRoot.RootState {
 export const reducers: ActionReducerMap<ClientsState> = {
   clients: fromClients.reducer,
   clientsPage: fromClientsPage.reducer,
+  clientsMeta: fromClientsMeta.reducer,
   search: fromSearch.reducer,
 };
 
@@ -61,29 +64,33 @@ export const getCurrentPage = createSelector(getClientsPageEntitiesState, fromCl
 /** Get total clients **/
 export const getTotal = createSelector(getClientsPageEntitiesState, fromClientsPage.getTotal);
 
-export const getPhoneNumberTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getPhonNumberTypes);
 
-export const getOrigins = createSelector(getClientsPageEntitiesState, fromClientsPage.getOrigins);
+/** Selectors for Client Metadata **/
+export const getClientsMetaState = createSelector(selectClientsState, state => state.clientsMeta);
 
-export const getChannels = createSelector(getClientsPageEntitiesState, fromClientsPage.getChannels);
+export const getPhoneNumberTypes = createSelector(getClientsMetaState, fromClientsMeta.getPhonNumberTypes);
 
-export const getDocuments = createSelector(getClientsPageEntitiesState, fromClientsPage.getDocuments);
+export const getOrigins = createSelector(getClientsMetaState, fromClientsMeta.getOrigins);
 
-export const getMaritalStatus = createSelector(getClientsPageEntitiesState, fromClientsPage.getMaritalStatus);
+export const getChannels = createSelector(getClientsMetaState, fromClientsMeta.getChannels);
 
-export const getOccupations = createSelector(getClientsPageEntitiesState, fromClientsPage.getOccupations);
+export const getDocuments = createSelector(getClientsMetaState, fromClientsMeta.getDocuments);
 
-export const getTypeLocations = createSelector(getClientsPageEntitiesState, fromClientsPage.getTypeLocations);
+export const getMaritalStatus = createSelector(getClientsMetaState, fromClientsMeta.getMaritalStatus);
 
-export const getClientRelations = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientRelations);
+export const getOccupations = createSelector(getClientsMetaState, fromClientsMeta.getOccupations);
 
-export const getClientMailTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientMailTypes);
+export const getTypeLocations = createSelector(getClientsMetaState, fromClientsMeta.getTypeLocations);
 
-export const getClientGenders = createSelector(getClientsPageEntitiesState, fromClientsPage.getClientGenders);
+export const getClientRelations = createSelector(getClientsMetaState, fromClientsMeta.getClientRelations);
 
-export const getPersonTypes = createSelector(getClientsPageEntitiesState, fromClientsPage.getPersontypes);
+export const getClientMailTypes = createSelector(getClientsMetaState, fromClientsMeta.getClientMailTypes);
 
-export const getCharges = createSelector(getClientsPageEntitiesState, fromClientsPage.getCharges);
+export const getClientGenders = createSelector(getClientsMetaState, fromClientsMeta.getClientGenders);
+
+export const getPersonTypes = createSelector(getClientsMetaState, fromClientsMeta.getPersontypes);
+
+export const getCharges = createSelector(getClientsMetaState, fromClientsMeta.getCharges);
 
 /** Selector for search **/
 export const getSearchEntitiesState = createSelector(selectClientsState, state => state.search);

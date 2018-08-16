@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { ClientsActions} from '../../../clients/store/actions';
 import * as fromClient from '../../../clients/store';
 import { Observable } from 'rxjs/internal/Observable';
-import { filter, map, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable()
 export class ClientStoreGuardService implements CanActivate {
@@ -18,7 +18,6 @@ export class ClientStoreGuardService implements CanActivate {
       .pipe(
         select(fromClient.getAllClients),
         map(clients => {
-          console.log('guard test', clients);
           if (!clients.length) {
             this.store.dispatch(new ClientsActions.Load({}));
           }

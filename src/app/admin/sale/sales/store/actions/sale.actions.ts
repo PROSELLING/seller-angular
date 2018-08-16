@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SaleModel } from '../../../../../core/models/sale.model';
+import { SaleMetaResponseModel, SaleModel } from '../../../../../core/models/sale.model';
 
 
 export enum SaleActionTypes {
@@ -7,6 +7,9 @@ export enum SaleActionTypes {
   LoadPageSuccess = '[Sale] Load Success',
   LoadSaleSuccess = '[Sale] Load Sale Success',
   LoadFail = '[Sale] Load Fail',
+  LoadMeta = '[Sale] Load Meta',
+  LoadMetaSuccess = '[Sale] Load Meta Success',
+  LoadMetaFail = '[Sale] Load Meta Fail',
   Select = '[Sale] Select',
   ResetSaleState = '[Sale] Reset Sale State'
 }
@@ -39,6 +42,24 @@ export class LoadFail implements Action {
   }
 }
 
+export class LoadMeta implements Action {
+  readonly type = SaleActionTypes.LoadMeta;
+}
+
+export class LoadMetaSuccess implements Action {
+  readonly type = SaleActionTypes.LoadMetaSuccess;
+
+  constructor(public payload: SaleMetaResponseModel) {
+  }
+}
+
+export class LoadMetaFail implements Action {
+  readonly type = SaleActionTypes.LoadMetaFail;
+
+  constructor(public payload: any) {
+  }
+}
+
 export class Select implements Action {
   readonly type = SaleActionTypes.Select;
 
@@ -55,5 +76,8 @@ export type SaleActionsUnion =
   | LoadPageSuccess
   | LoadSaleSuccess
   | LoadFail
+  | LoadMeta
+  | LoadMetaSuccess
+  | LoadMetaFail
   | Select
   | ResetClientState;

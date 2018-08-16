@@ -6,6 +6,7 @@ import { ClientsResponseModel } from '../models/client.model';
 
 const CLIENTS_ENDPOINT = 'clients';
 const CLIENT_SEARCH = 'client_search';
+const METADATA = 'clientmetadata';
 
 @Injectable()
 export class ClientService {
@@ -26,5 +27,9 @@ export class ClientService {
       .set('q', query)
       .set('page', '1');
     return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
+  }
+
+  getClientMeta() {
+    return this.http.get(environment.apiUrl + METADATA);
   }
 }

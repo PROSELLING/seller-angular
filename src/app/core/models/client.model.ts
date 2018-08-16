@@ -86,6 +86,6 @@ export interface ClientsResponseModel extends ResponseModel {
   data: ClientModel[];
 }
 
-export interface ClientPayloadModel extends ClientMetaModel {
+export interface ClientPayloadModel {
   clients: ClientsResponseModel;
 }

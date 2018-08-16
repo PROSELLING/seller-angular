@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { AwsService } from '../../../core/services/aws.service';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
@@ -8,8 +8,10 @@ import { LayoutActions } from '../../../core/store/actions';
 import { Observable } from 'rxjs';
 import { SaleActions } from './store/actions';
 import { SaleModel } from '../../../core/models/sale.model';
-import { tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { StockService } from '../../../core/services/stock.service';
+import { fromEvent } from 'rxjs/internal/observable/fromEvent';
+import { SaleService } from '../../../core/services/sale.service';
 
 const CLIENT_DATA = [
   {
@@ -46,12 +48,16 @@ const CLIENT_DATA = [
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.scss']
 })
-export class SalesComponent implements OnInit {
+export class SalesComponent implements OnInit, AfterViewInit {
   sales$: Observable<SaleModel[]>;
-  displayedColumns = ['saleDate', 'seller', 'client', 'business', 'status', 'amount', 'balance', 'deliveryEstimate', 'delivery', 'options'];
+  displayedColumns = ['seller', 'category', 'client', 'sale', 'status', 'amountBalance', 'deliveryEstimate', 'options'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
-  image: any;
   selectedRow: any;
+
+  resultsLength$: Observable<number>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('input') input: ElementRef;
+
   breadcrumbs = [
     {
       label: 'Seller',
@@ -62,38 +68,66 @@ export class SalesComponent implements OnInit {
       link: '/admin'
     },
     {
-      label: 'Ventas',
+      label: 'Experiencia',
       link: ''
     }
   ];
+
+  // image: any;
 
 
   constructor(
     private awsService: AwsService,
     private store: Store<fromRoot.RootState>,
-    private physicalStockService: StockService
+    private physicalStockService: StockService,
+    private saleService: SaleService
   ) {
     this.sales$ = this.store.pipe(
-      select(fromSale.getAllSales),
-      tap(sales => {
-        console.log('SALES FROM ENTITY', sales);
-      })
+      select(fromSale.getAllSales)
+    );
+    this.resultsLength$ = this.store.pipe(
+      select(fromSale.getTotal)
     );
   }
 
   ngOnInit() {
     this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
-    this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
+    /*this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
     this.physicalStockService.getVirtualStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('VIRTUAL STOCK', res));
+    this.saleService.getSaleMeta().subscribe(res => console.log('SALE METADATA', res));*/
   }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+  ngAfterViewInit() {
+    this.paginator.page
+      .pipe(
+        tap(() => {
+          this.loadSales();
+        })
+      ).subscribe();
+
+    fromEvent(this.input.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        tap(() => {
+          this.paginator.pageIndex = 0;
+          this.loadSales();
+        })
+      )
+      .subscribe();
   }
 
-  selectEvent(file: File) {
+  loadSales() {
+    this.store.dispatch(new SaleActions.Load({
+      page: (this.paginator.pageIndex + 1),
+      filter: this.input.nativeElement.value
+    }));
+    this.store.pipe(
+      select(fromSale.getAllSales)
+    );
+  }
+
+  /*selectEvent(file: File) {
     this.awsService.singleFileUpload(file, 'imagenes')
       .subscribe(fileData => this.image = fileData);
   }
@@ -105,7 +139,7 @@ export class SalesComponent implements OnInit {
 
   onRowClicked(row) {
     console.log('Row clicked: ', row);
-  }
+  }*/
 
   onRowHovered(row) {
     this.selectedRow = row;
