@@ -45,7 +45,7 @@
           <th mat-header-cell *matHeaderCellDef>Cliente</th>
           <td mat-cell *matCellDef="let element">
             <a
-              [routerLink]="['/admin', {outlets: {rightSidenav: ['cliente', element.clientId]}}]"
+              [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.clientId]}}]"
               class="mat-accent"
               (click)="openRightSidenav()"
             >
