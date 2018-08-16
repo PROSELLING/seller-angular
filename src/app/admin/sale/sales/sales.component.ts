@@ -19,7 +19,7 @@ const CLIENT_DATA = [
     saleDate: '28 Dic',
     seller: 'Miguel López',
     client: 'Juan Pérez',
-    clientId: 17,
+    clientId: 165764,
     business: 'Ranger XL 2.2 Diesel DC Azul Mediterraneo (VIN serie negrita, nº stock Fact)',
     status: 'En Proceso',
     amount: '$390,000',
