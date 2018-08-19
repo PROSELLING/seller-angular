@@ -1,4 +1,5 @@
 import { ClientsActionsUnion, ClientsActionTypes } from '../actions/clients.actions';
+import { ClientActionsUnion, ClientActionTypes } from '../actions/client.actions';
 import { ClientModel } from '../../../core/models/client.model';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
@@ -14,7 +15,7 @@ export const initialState: State = adapter.getInitialState({
   selectedClientId: null
 });
 
-export function reducer(state = initialState, action: ClientsActionsUnion): State {
+export function reducer(state = initialState, action: ClientsActionsUnion | ClientActionsUnion): State {
   switch (action.type) {
     case ClientsActionTypes.LoadClientsSuccess: {
       return adapter.addMany(action.payload, state);
@@ -27,6 +28,12 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
     }
     case ClientsActionTypes.ResetClientState: {
       return initialState;
+    }
+    case ClientActionTypes.Load: {
+      return adapter.addOne(action.payload, {
+        ...state,
+        selectedClientId: state.selectedClientId
+      });
     }
     default: {
       return state;

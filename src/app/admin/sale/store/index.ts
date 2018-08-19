@@ -3,7 +3,7 @@ import {
   createFeatureSelector,
   ActionReducerMap,
 } from '@ngrx/store';
-import * as fromRoot from '../../../../core/store/index';
+import * as fromRoot from '../../../core/store/index';
 import * as fromSale from './reducers/sale.reducer';
 import * as fromSalePage from './reducers/sale-page.reducer';
 import * as fromSaleMeta from './reducers/sale-meta.reducer';
@@ -58,7 +58,7 @@ export const getSalePageEntitiesState = createSelector(selectSaleState, state =>
 /** Get current page **/
 export const getCurrentPage = createSelector(getSalePageEntitiesState, fromSalePage.getCurrentPage);
 
-/** Get total sales **/
+/** Get total sales-list **/
 export const getTotal = createSelector(getSalePageEntitiesState, fromSalePage.getTotal);
 
 /** Selectors for Sale Metadata **/

@@ -4,12 +4,14 @@ import {
   ActionReducerMap,
 } from '@ngrx/store';
 import * as fromRoot from '../../core/store/index';
+import * as fromClient from './reducers/client.reducer';
 import * as fromClients from './reducers/clients.reducer';
 import * as fromClientsPage from './reducers/clients-page.reducer';
 import * as fromSearch from './reducers/search.reducer';
 import * as fromClientsMeta from './reducers/clients-meta.reducer';
 
 export interface ClientsState {
+  client: fromClient.State;
   clients: fromClients.State;
   clientsPage: fromClientsPage.State;
   clientsMeta: fromClientsMeta.State;
@@ -21,6 +23,7 @@ export interface State extends fromRoot.RootState {
 }
 
 export const reducers: ActionReducerMap<ClientsState> = {
+  client: fromClient.reducer,
   clients: fromClients.reducer,
   clientsPage: fromClientsPage.reducer,
   clientsMeta: fromClientsMeta.reducer,

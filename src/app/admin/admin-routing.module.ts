@@ -1,34 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '../core/services/guards/auth-guard.service';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { AdminComponent } from './admin.component';
 import { SaleEditComponent } from './sale/sale-edit/sale-edit.component';
 import { GanttComponent } from './gantt/gantt.component';
 import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
-import { ClientStoreGuardService } from '../core/services/guards/client-store-guard.service';
-import { SalesComponent } from './sale/sales/sales.component';
+import { ClientStoreGuard } from '../core/guards/client-store.guard';
+import { SalesListComponent } from './sale/sales-list/sales-list.component';
 import { SaleAddComponent } from './sale/sale-add/sale-add.component';
+import { ClientExistsGuard } from '../core/guards/client-exists.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    canActivate: [AuthGuardService, ClientStoreGuardService]
+    canActivate: [AuthGuard, ClientStoreGuard]
   },
   {
     path: 'sales',
-    component: SalesComponent,
-    canActivate: [AuthGuardService, ClientStoreGuardService]
+    component: SalesListComponent,
+    canActivate: [AuthGuard, ClientStoreGuard]
   },
   {
     path: 'sale/add',
     component: SaleAddComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'sale/:id/edit',
     component: SaleEditComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'sale/:id',
@@ -38,7 +39,8 @@ const routes: Routes = [
   {
     path: 'client/:id',
     component: ClientSidenavComponent,
-    outlet: 'rightSidenav'
+    outlet: 'rightSidenav',
+    canActivate: [ClientExistsGuard]
   }
 ];
 

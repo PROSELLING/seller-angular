@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+// @ts-ignore
 import { SaleMetaResponseModel, SaleModel } from '../../../../../core/models/sale.model';
 
 

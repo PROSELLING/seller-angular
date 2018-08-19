@@ -3,10 +3,10 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { AwsService } from '../../../core/services/aws.service';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
-import * as fromSale from './store';
+import * as fromSale from '../store/index';
 import { LayoutActions } from '../../../core/store/actions';
 import { Observable } from 'rxjs';
-import { SaleActions } from './store/actions';
+import { SaleActions } from '../store/actions';
 import { SaleModel } from '../../../core/models/sale.model';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { StockService } from '../../../core/services/stock.service';
@@ -45,10 +45,10 @@ const CLIENT_DATA = [
 
 @Component({
   selector: 'app-sales',
-  templateUrl: './sales.component.html',
-  styleUrls: ['./sales.component.scss']
+  templateUrl: './sales-list.component.html',
+  styleUrls: ['./sales-list.component.scss']
 })
-export class SalesComponent implements OnInit, AfterViewInit {
+export class SalesListComponent implements OnInit, AfterViewInit {
   sales$: Observable<SaleModel[]>;
   displayedColumns = ['seller', 'category', 'client', 'sale', 'status', 'amountBalance', 'deliveryEstimate', 'options'];
   dataSource = new MatTableDataSource(CLIENT_DATA);

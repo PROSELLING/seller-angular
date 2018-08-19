@@ -1,5 +1,5 @@
 import { SaleActionsUnion, SaleActionTypes } from '../actions/sale.actions';
-import { ObjectModel } from '../../../../../core/models/meta.model';
+import { ObjectModel } from '../../../../core/models/meta.model';
 
 export interface State {
   stages: ObjectModel[];

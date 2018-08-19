@@ -13,8 +13,8 @@ import {
   LoadSaleSuccess,
   SaleActionTypes
 } from '../actions/sale.actions';
-import { SaleService } from '../../../../../core/services/sale.service';
-import { SaleMetaResponseModel, SalePayloadModel } from '../../../../../core/models/sale.model';
+import { SaleService } from '../../../../core/services/sale.service';
+import { SaleMetaResponseModel, SalePayloadModel } from '../../../../core/models/sale.model';
 
 
 

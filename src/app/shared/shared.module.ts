@@ -26,6 +26,7 @@ import { RelationshipTabComponent } from './components/client-tabs/relationship-
 import { ClientProfileCardComponent } from './components/client-profile-card/client-profile-card.component';
 import { ClientCardComponent } from './components/client-card/client-card.component';
 import { ClientSearchComponent } from './components/client-search/client-search.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { ClientSearchComponent } from './components/client-search/client-search.
     ClientSearchComponent,
     ClientTabsComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    PageNotFoundComponent
   ],
   declarations: [
     AlertComponent,
@@ -74,7 +76,8 @@ import { ClientSearchComponent } from './components/client-search/client-search.
     PhoneTabComponent,
     SocialTabComponent,
     LocationTabComponent,
-    RelationshipTabComponent
+    RelationshipTabComponent,
+    PageNotFoundComponent
   ]
 })
 export class SharedModule {

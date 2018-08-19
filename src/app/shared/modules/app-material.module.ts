@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {
   MatAutocompleteModule,
   MatButtonModule,
+  MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,
   MatDividerModule,
@@ -28,6 +29,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
   imports: [
     MatAutocompleteModule,
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatDividerModule,
@@ -51,6 +53,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
   exports: [
     MatAutocompleteModule,
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatDividerModule,

@@ -9,13 +9,13 @@ import { SaleEditComponent } from './sale/sale-edit/sale-edit.component';
 import { ClientProfileComponent} from './components/client-profile/client-profile.component';
 import { ClientSidenavComponent } from './components/client-sidenav/client-sidenav.component';
 import { ClientsModule } from '../clients/clients.module';
-import { SalesComponent } from './sale/sales/sales.component';
+import { SalesListComponent } from './sale/sales-list/sales-list.component';
 import { SaleStepsComponent } from './components/sale-steps/sale-steps.component';
 import { SaleAddComponent } from './sale/sale-add/sale-add.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './sale/sales/store';
+import { reducers } from './sale/store/index';
 import { EffectsModule } from '@ngrx/effects';
-import { SaleEffects } from './sale/sales/store/effects/sale.effects';
+import { SaleEffects } from './sale/store/effects/sale.effects';
 
 @NgModule({
   imports: [
@@ -31,7 +31,7 @@ import { SaleEffects } from './sale/sales/store/effects/sale.effects';
     GanttComponent,
     SaleAddComponent,
     SaleEditComponent,
-    SalesComponent,
+    SalesListComponent,
     SaleStepsComponent,
     ClientProfileComponent,
     ClientSidenavComponent

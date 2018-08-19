@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AlertService } from '../alert.service';
+import { AlertService } from '../services/alert.service';
 import { select, Store } from '@ngrx/store';
-import { ClientsActions} from '../../../clients/store/actions';
-import * as fromClient from '../../../clients/store';
+import { ClientsActions} from '../../clients/store/actions';
+import * as fromClient from '../../clients/store/index';
 import { Observable } from 'rxjs/internal/Observable';
 import { map, take } from 'rxjs/operators';
 
 @Injectable()
-export class ClientStoreGuardService implements CanActivate {
+export class ClientStoreGuard implements CanActivate {
 
   constructor(private store: Store<fromClient.State>, private route: Router, private alertService: AlertService) {
   }
