@@ -29,16 +29,7 @@ export class ClientExistsGuard implements CanActivate {
 
   hasClientInApi(id: string): Observable<boolean> {
     return this.clientService.getClient(id).pipe(
-      map(clientPayload => {
-        console.log('CLIENTRESPONSE', clientPayload);
-        const client: ClientModel = clientPayload.client;
-        client['client_address'] = clientPayload.client_address;
-        client['client_contact'] = clientPayload.client_contact;
-        client['client_mails'] = clientPayload.client_mails;
-        client['client_networks'] = clientPayload.client_networks;
-        return client;
-      }),
-      map(clientEntity => new ClientActions.Load(clientEntity)),
+      map(clientResponse => new ClientActions.Load(clientResponse.client[0])),
       tap((action: ClientActions.Load) => this.store.dispatch(action)),
       map(client => !!client),
       catchError(() => {

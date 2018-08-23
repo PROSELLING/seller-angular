@@ -34,9 +34,18 @@ export interface SalePayloadModel {
 }
 
 export interface SaleMetaResponseModel {
+  companies: ObjectModel[];
+  insurances: ObjectModel[];
+  iva_conditions: ObjectModel[];
+  non_purchase_reasons: ObjectModel[];
+  sale_status: ObjectModel[];
   stages: ObjectModel[];
   substages: ObjectModel[];
   task_reasons: ObjectModel[];
   task_results: ObjectModel[];
+  type_deliveries: ObjectModel[];
+  type_invoices: ObjectModel[];
+  type_payments: ObjectModel[];
+  type_plans: ObjectModel[];
   type_sales: ObjectModel[];
 }

@@ -56,7 +56,7 @@ export class PhoneTabComponent implements OnInit {
     if (this.client !== undefined && this.client !== null) {
       if (this.client.client_contact.length) {
         for (const contact of this.client.client_contact) {
-          const [phoneTypeObject] = this.phoneTypes.filter(phoneType => phoneType.id === String(contact.id_type_phone));
+          const [phoneTypeObject] = this.phoneTypes.filter(phoneType => phoneType.id === contact.id_type_phone);
           if (phoneTypeObject) {
             const phoneNumber = this.fb.group({
               id_type_phone: phoneTypeObject,

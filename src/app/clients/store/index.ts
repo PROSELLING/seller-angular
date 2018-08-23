@@ -71,29 +71,42 @@ export const getTotal = createSelector(getClientsPageEntitiesState, fromClientsP
 /** Selectors for Client Metadata **/
 export const getClientsMetaState = createSelector(selectClientsState, state => state.clientsMeta);
 
-export const getPhoneNumberTypes = createSelector(getClientsMetaState, fromClientsMeta.getPhonNumberTypes);
-
-export const getOrigins = createSelector(getClientsMetaState, fromClientsMeta.getOrigins);
+export const getCategories = createSelector(getClientsMetaState, fromClientsMeta.getCategories);
 
 export const getChannels = createSelector(getClientsMetaState, fromClientsMeta.getChannels);
 
-export const getDocuments = createSelector(getClientsMetaState, fromClientsMeta.getDocuments);
-
-export const getMaritalStatus = createSelector(getClientsMetaState, fromClientsMeta.getMaritalStatus);
-
-export const getOccupations = createSelector(getClientsMetaState, fromClientsMeta.getOccupations);
-
-export const getTypeLocations = createSelector(getClientsMetaState, fromClientsMeta.getTypeLocations);
+export const getCharges = createSelector(getClientsMetaState, fromClientsMeta.getCharges);
+export const getCharge = (id: number) => createSelector(getCharges, charges => charges.filter(charge => charge.id === id));
 
 export const getClientRelations = createSelector(getClientsMetaState, fromClientsMeta.getClientRelations);
 
 export const getClientMailTypes = createSelector(getClientsMetaState, fromClientsMeta.getClientMailTypes);
 
+export const getClientTypes = createSelector(getClientsMetaState, fromClientsMeta.getClientTypes);
+
+export const getCountries = createSelector(getClientsMetaState, fromClientsMeta.getCountries);
+
+export const getCountriesCode = createSelector(getClientsMetaState, fromClientsMeta.getCountriesCode);
+export const getCountriesCodeValue = (id: number) => createSelector(getCountriesCode, countriesCodes => countriesCodes.filter(countryCode => countryCode.id === id));
+
+export const getPhoneNumberTypes = createSelector(getClientsMetaState, fromClientsMeta.getPhonNumberTypes);
+
+export const getDocuments = createSelector(getClientsMetaState, fromClientsMeta.getDocuments);
+
+export const getMaritalStatus = createSelector(getClientsMetaState, fromClientsMeta.getMaritalStatus);
+export const getMaritalStatusValue = (id: number) => createSelector(getMaritalStatus, maritalStatuses => maritalStatuses.filter(maritalStatus => maritalStatus.id === id));
+
+export const getOrigins = createSelector(getClientsMetaState, fromClientsMeta.getOrigins);
+
+export const getOccupations = createSelector(getClientsMetaState, fromClientsMeta.getOccupations);
+export const getOccupation = (id: number) => createSelector(getOccupations, occupations => occupations.filter(occupation => occupation.id === id));
+
+export const getTypeLocations = createSelector(getClientsMetaState, fromClientsMeta.getTypeLocations);
+export const getTypeLocation = (id: number) => createSelector(getTypeLocations, typeLocations => typeLocations.filter(typeLocation => typeLocation.id === id));
+
 export const getClientGenders = createSelector(getClientsMetaState, fromClientsMeta.getClientGenders);
 
 export const getPersonTypes = createSelector(getClientsMetaState, fromClientsMeta.getPersontypes);
-
-export const getCharges = createSelector(getClientsMetaState, fromClientsMeta.getCharges);
 
 /** Selector for search **/
 export const getSearchEntitiesState = createSelector(selectClientsState, state => state.search);

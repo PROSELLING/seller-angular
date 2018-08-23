@@ -1,19 +1,19 @@
 <div class="client-card">
   <div class="header"></div>
   <div class="client-img"><img src="http://via.placeholder.com/150x150" alt="User"></div>
-  <div fxLayout="column" fxLayoutAlign="center center" class="header-info app-bg-color-primary">
-    <div *ngIf="user">
-      <h4 class="m-t-10 app-heading-4 app-color-white app-text-capitalize">
+  <div fxLayout="column" fxLayoutAlign="center center" class="header-info app-bg-color-primary l--p-b-20">
+    <div *ngIf="user" class="app-color-white app-text-capitalize app-heading-4 l--m-b-10">
+      <h4 class="m-t-10 l--m-b-0">
         {{user.name}} {{user.last_name}}
       </h4>
-      <span *ngIf="user.cargo">
-        {{user.cargo}}
+      <span *ngIf="charge$ | async as charge">
+        {{charge.value}}
       </span>
     </div>
     <div
       gdColumns="1fr 1fr"
       gdGap="5px"
-      class="app-full-width app-color-white"
+      class="app-full-width app-color-white app-text-default"
     >
       <div
         gdColumns="1fr"
@@ -22,12 +22,20 @@
       >
         <div>
           <mat-icon svgIcon="phone"></mat-icon>
+          {{phoneNumber}}
         </div>
         <div>
           <mat-icon svgIcon="email"></mat-icon>
+          {{email}}
         </div>
-        <div>
+        <div fxLayout="row">
           <mat-icon svgIcon="map-marker"></mat-icon>
+          <span>
+            <ng-container *ngIf="locality$ | async as locality">
+              {{locality.value}}
+            </ng-container>
+            {{address}}
+          </span>
         </div>
       </div>
       <div
@@ -35,7 +43,22 @@
         gdGap="10px"
         class="align-left"
       >
-        Otra info
+        <div>
+          {{user.company}}
+        </div>
+        <div>
+          <span *ngIf="(occupation$ | async) as occupation">
+            {{occupation.value}}
+          </span>
+        </div>
+        <div>
+          <span *ngIf="(maritalStatus$ | async) as maritalStatus">
+            {{maritalStatus.value}}
+          </span>
+        </div>
+        <div>
+          {{age}} años
+        </div>
       </div>
     </div>
   </div>

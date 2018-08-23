@@ -6,6 +6,7 @@ export interface ClientModel extends BaseModel {
   branch: number;
   category: CategoryModel;
   channel: ChannelModel;
+  client_address: ClientAddresstModel[];
   client_contact: ClientContactModel[];
   client_mails: ClientEmailModel[];
   client_networks: SocialNetworkModel[];
@@ -107,8 +108,4 @@ export interface ClientPayloadModel {
 
 export interface ClientResponseModel {
   client: ClientModel;
-  client_address: ClientAddresstModel[];
-  client_contact: ClientContactModel[];
-  client_mails: ClientEmailModel[];
-  client_networks: SocialNetworkModel[];
 }
