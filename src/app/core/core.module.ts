@@ -14,6 +14,7 @@ import { SellerService } from './services/seller.service';
 import { SaleService } from './services/sale.service';
 import { StockService } from './services/stock.service';
 import { ClientExistsGuard } from './guards/client-exists.guard';
+import { ProductService } from './services/product.service';
 
 @NgModule()
 export class CoreModule {
@@ -37,6 +38,7 @@ export class CoreModule {
         ClientStoreGuard,
         FormService,
         PermissionService,
+        ProductService,
         RoleService,
         SaleService,
         SellerService,
