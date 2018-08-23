@@ -1,4 +1,4 @@
-import { SaleActionsUnion, SaleActionTypes } from '../actions/sale.actions';
+import { SaleActionsUnion, SaleActionTypes } from '../actions/sales.actions';
 import { ObjectModel } from '../../../../core/models/meta.model';
 
 export interface State {

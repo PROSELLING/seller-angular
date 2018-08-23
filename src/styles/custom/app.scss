@@ -46,6 +46,10 @@ a {
   }
 }
 
+.mat-icon.icon-size-32 {
+  transform: scale(1.5);
+}
+
 @media(max-width: 800px) {
   .responsive_table {
     overflow-x: auto !important;

@@ -12,14 +12,14 @@ import {
   LoadPageSuccess,
   LoadSaleSuccess,
   SaleActionTypes
-} from '../actions/sale.actions';
+} from '../actions/sales.actions';
 import { SaleService } from '../../../../core/services/sale.service';
 import { SaleMetaResponseModel, SalePayloadModel } from '../../../../core/models/sale.model';
 
 
 
 @Injectable()
-export class SaleEffects {
+export class SalesEffects {
   @Effect()
   loadSales$ = this.actions$.pipe(
     ofType<Load>(SaleActionTypes.Load),

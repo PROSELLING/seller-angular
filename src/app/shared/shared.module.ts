@@ -27,6 +27,8 @@ import { ClientProfileCardComponent } from './components/client-profile-card/cli
 import { ClientCardComponent } from './components/client-card/client-card.component';
 import { ClientSearchComponent } from './components/client-search/client-search.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ClientBadgeComponent } from './components/client-badge/client-badge.component';
+import { ClientAttitudeBadgeComponent } from './components/client-attitude-badge/client-attitude-badge.component';
 
 @NgModule({
   imports: [
@@ -56,8 +58,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ClientSearchComponent,
     ClientTabsComponent,
     HeaderComponent,
+    ClientAttitudeBadgeComponent,
+    ClientBadgeComponent,
+    PageNotFoundComponent,
     SidenavComponent,
-    PageNotFoundComponent
   ],
   declarations: [
     AlertComponent,
@@ -77,7 +81,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SocialTabComponent,
     LocationTabComponent,
     RelationshipTabComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ClientBadgeComponent,
+    ClientAttitudeBadgeComponent
   ]
 })
 export class SharedModule {

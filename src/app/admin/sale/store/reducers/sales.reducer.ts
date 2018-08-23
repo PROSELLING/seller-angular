@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { SaleActionsUnion, SaleActionTypes } from '../actions/sale.actions';
+import { SaleActionsUnion, SaleActionTypes } from '../actions/sales.actions';
 import { SaleModel } from '../../../../core/models/sale.model';
 
 export const adapter: EntityAdapter<SaleModel> = createEntityAdapter<SaleModel>({

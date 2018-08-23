@@ -1,4 +1,4 @@
-import { SaleActionsUnion, SaleActionTypes } from '../actions/sale.actions';
+import { SaleActionsUnion, SaleActionTypes } from '../actions/sales.actions';
 
 export interface State {
   currentPage: number;

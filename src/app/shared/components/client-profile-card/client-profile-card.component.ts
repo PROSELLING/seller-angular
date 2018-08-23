@@ -14,7 +14,9 @@ import * as moment from 'moment';
 })
 export class ClientProfileCardComponent implements OnInit, OnChanges {
   @Input() user: ClientModel;
+  category$: Observable<ObjectModel>;
   charge$: Observable<ObjectModel>;
+  industry$: Observable<ObjectModel>;
   occupation$: Observable<ObjectModel>;
   locality$: Observable<ObjectModel>;
   maritalStatus$: Observable<ObjectModel>;
@@ -33,7 +35,9 @@ export class ClientProfileCardComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['user']) {
       if (this.user !== undefined && this.user !== null) {
+        this.getCategory();
         this.getCharge();
+        this.getIndustry();
         this.getPhoneNumber();
         this.getEmail();
         this.getLocation();
@@ -44,12 +48,33 @@ export class ClientProfileCardComponent implements OnInit, OnChanges {
     }
   }
 
+  getCategory() {
+    this.category$ = this.store.pipe(
+      select(fromClients.getCategory(this.user.id_category)),
+      map(categories => {
+        const [category] = categories;
+        return category;
+      })
+    );
+  }
+
   getCharge() {
     this.charge$ = this.store.pipe(
       select(fromClients.getCharge(this.user.id_charge)),
       map(charges => {
         const [charge] = charges;
         return charge;
+      })
+    );
+  }
+
+  getIndustry() {
+    this.industry$ = this.store.pipe(
+      select(fromClients.getClientIndustry(this.user.id_industry)),
+      map(industries => {
+        console.log('TEST', industries);
+        const [industry] = industries;
+        return industry;
       })
     );
   }

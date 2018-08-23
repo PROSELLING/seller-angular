@@ -5,7 +5,10 @@ export interface State {
   categories: ObjectModel[];
   channels: ObjectModel[];
   charges: ObjectModel[];
+  client_attitudes: ObjectModel[];
+  client_industries: ObjectModel[];
   client_relations: ObjectModel[];
+  client_roles: ObjectModel[];
   client_type_mails: ObjectModel[];
   client_type_phone: ObjectModel[];
   client_types: ObjectModel[];
@@ -24,7 +27,10 @@ export const initialState: State = {
   categories: [],
   channels: [],
   charges: [],
+  client_attitudes: [],
+  client_industries: [],
   client_relations: [],
+  client_roles: [],
   client_type_mails: [],
   client_type_phone: [],
   client_types: [],
@@ -47,7 +53,10 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
         categories: action.payload.categories,
         channels: action.payload.channels,
         charges: action.payload.charges,
+        client_attitudes: action.payload.client_attitudes,
+        client_industries: action.payload.client_industries,
         client_relations: action.payload.client_relations,
+        client_roles: action.payload.client_roles,
         client_type_mails: action.payload.client_type_mails,
         client_type_phone: action.payload.client_type_phone,
         client_types: action.payload.client_types,
@@ -71,7 +80,10 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
 export const getCategories = (state: State) => state.categories;
 export const getChannels = (state: State) => state.channels;
 export const getCharges = (state: State) => state.charges;
+export const getClientAttitudes = (state: State) => state.client_attitudes;
+export const getClientIndustries = (state: State) => state.client_industries;
 export const getClientRelations = (state: State) => state.client_relations;
+export const getClientRoles = (state: State) => state.client_roles;
 export const getClientMailTypes = (state: State) => state.client_type_mails;
 export const getPhonNumberTypes = (state: State) => state.client_type_phone;
 export const getClientTypes = (state: State) => state.client_types;

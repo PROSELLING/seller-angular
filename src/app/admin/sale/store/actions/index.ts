@@ -1,3 +1,3 @@
-import * as actions from './sale.actions';
+import * as actions from './sales.actions';
 
 export const SaleActions = actions;

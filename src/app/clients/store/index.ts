@@ -72,13 +72,21 @@ export const getTotal = createSelector(getClientsPageEntitiesState, fromClientsP
 export const getClientsMetaState = createSelector(selectClientsState, state => state.clientsMeta);
 
 export const getCategories = createSelector(getClientsMetaState, fromClientsMeta.getCategories);
+export const getCategory = (id: number) => createSelector(getCategories, categories => categories.filter(category => category.id === id));
 
 export const getChannels = createSelector(getClientsMetaState, fromClientsMeta.getChannels);
 
 export const getCharges = createSelector(getClientsMetaState, fromClientsMeta.getCharges);
 export const getCharge = (id: number) => createSelector(getCharges, charges => charges.filter(charge => charge.id === id));
 
+export const getClientAttitudes = createSelector(getClientsMetaState, fromClientsMeta.getClientAttitudes);
+
+export const getClientIndustries = createSelector(getClientsMetaState, fromClientsMeta.getClientIndustries);
+export const getClientIndustry = (id: number) => createSelector(getClientIndustries, industries => industries.filter(industry => industry.id === id));
+
 export const getClientRelations = createSelector(getClientsMetaState, fromClientsMeta.getClientRelations);
+
+export const getClientRoles = createSelector(getClientsMetaState, fromClientsMeta.getClientRoles);
 
 export const getClientMailTypes = createSelector(getClientsMetaState, fromClientsMeta.getClientMailTypes);
 

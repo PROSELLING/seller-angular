@@ -2,7 +2,10 @@ export interface ClientMetaModel {
   categories: ObjectModel[];
   channels: ObjectModel[];
   charges: ObjectModel[];
+  client_attitudes: ObjectModel[];
+  client_industries: ObjectModel[];
   client_relations: ObjectModel[];
+  client_roles: ObjectModel[];
   client_type_mails: ObjectModel[];
   client_type_phone: ObjectModel[];
   client_types: ObjectModel[];

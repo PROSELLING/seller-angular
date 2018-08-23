@@ -15,7 +15,7 @@ import { SaleAddComponent } from './sale/sale-add/sale-add.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './sale/store/index';
 import { EffectsModule } from '@ngrx/effects';
-import { SaleEffects } from './sale/store/effects/sale.effects';
+import { SalesEffects } from './sale/store/effects/sales.effects';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { SaleEffects } from './sale/store/effects/sale.effects';
     SharedModule,
     ClientsModule,
     StoreModule.forFeature('sales', reducers),
-    EffectsModule.forFeature([SaleEffects])
+    EffectsModule.forFeature([SalesEffects])
   ],
   declarations: [
     AdminComponent,

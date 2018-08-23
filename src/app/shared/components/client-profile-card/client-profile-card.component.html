@@ -3,12 +3,27 @@
   <div class="client-img"><img src="http://via.placeholder.com/150x150" alt="User"></div>
   <div fxLayout="column" fxLayoutAlign="center center" class="header-info app-bg-color-primary l--p-b-20">
     <div *ngIf="user" class="app-color-white app-text-capitalize app-heading-4 l--m-b-10">
-      <h4 class="m-t-10 l--m-b-0">
-        {{user.name}} {{user.last_name}}
-      </h4>
-      <span *ngIf="charge$ | async as charge">
-        {{charge.value}}
-      </span>
+      <div
+        gdColumns="1fr 2fr 1fr"
+        gdGap="5px"
+        gdAlignColumns="center center"
+      >
+        <div>
+          <app-client-badge [badge]="category$ | async"></app-client-badge>
+        </div>
+        <div>
+          <h4 class="m-t-10 l--m-b-0">
+            {{user.name}} {{user.last_name}}
+          </h4>
+          <span *ngIf="charge$ | async as charge">
+            {{charge.value}}
+          </span>
+        </div>
+        <div>
+          <app-client-attitude-badge></app-client-attitude-badge>
+        </div>
+      </div>
+
     </div>
     <div
       gdColumns="1fr 1fr"
@@ -46,13 +61,18 @@
         <div>
           {{user.company}}
         </div>
-        <div>
-          <span *ngIf="(occupation$ | async) as occupation">
+        <div *ngIf="(occupation$ | async) as occupation">
+          <span>
             {{occupation.value}}
           </span>
         </div>
-        <div>
-          <span *ngIf="(maritalStatus$ | async) as maritalStatus">
+        <div *ngIf="(industry$ | async) as industry">
+          <span>
+            {{industry.value}}
+          </span>
+        </div>
+        <div *ngIf="(maritalStatus$ | async) as maritalStatus">
+          <span>
             {{maritalStatus.value}}
           </span>
         </div>

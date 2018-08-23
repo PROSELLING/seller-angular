@@ -4,9 +4,9 @@ import {
   ActionReducerMap,
 } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
-import * as fromSale from './reducers/sale.reducer';
-import * as fromSalePage from './reducers/sale-page.reducer';
-import * as fromSaleMeta from './reducers/sale-meta.reducer';
+import * as fromSale from './reducers/sales.reducer';
+import * as fromSalePage from './reducers/sales-page.reducer';
+import * as fromSaleMeta from './reducers/sales-meta.reducer';
 
 export interface SaleState {
   sale: fromSale.State;
