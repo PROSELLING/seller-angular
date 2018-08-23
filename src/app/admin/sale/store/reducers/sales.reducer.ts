@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { SaleActionsUnion, SaleActionTypes } from '../actions/sale.actions';
-import { SaleModel } from '../../../../../core/models/sale.model';
+import { SaleActionsUnion, SalesActionTypes } from '../actions/sales.actions';
+import { SaleModel } from '../../../../core/models/sale.model';
 
 export const adapter: EntityAdapter<SaleModel> = createEntityAdapter<SaleModel>({
   selectId: (sale: SaleModel) => sale.id
@@ -16,16 +16,16 @@ export const initialState: State = adapter.getInitialState({
 
 export function reducer(state = initialState, action: SaleActionsUnion): State {
   switch (action.type) {
-    case SaleActionTypes.LoadSaleSuccess: {
+    case SalesActionTypes.LoadSalesSuccess: {
       return adapter.addMany(action.payload, state);
     }
-    case SaleActionTypes.Select: {
+    case SalesActionTypes.Select: {
       return {
         ...state,
         selectedSaleId: action.payload
       };
     }
-    case SaleActionTypes.ResetSaleState: {
+    case SalesActionTypes.ResetSaleState: {
       return initialState;
     }
     default: {

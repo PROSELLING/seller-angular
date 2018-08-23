@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { ClientsResponseModel } from '../models/client.model';
+import { ClientResponseModel, ClientsResponseModel } from '../models/client.model';
+import { ObjectModel } from '../models/meta.model';
 
 const CLIENTS_ENDPOINT = 'clients';
 const CLIENT_SEARCH = 'client_search';
-const SELLER_SEARCH = 'seller_search';
 const METADATA = 'clientmetadata';
+const CLIENT = 'client';
+const CLIENT_ORIGIN = 'sub_origin';
 
 @Injectable()
 export class ClientService {
@@ -32,5 +34,17 @@ export class ClientService {
 
   getClientMeta() {
     return this.http.get(environment.apiUrl + METADATA);
+  }
+
+  getClient(id: string): Observable<ClientResponseModel> {
+    const _params = new HttpParams()
+      .set('id', id);
+    return this.http.get<ClientResponseModel>(environment.apiUrl + CLIENT, {params: _params});
+  }
+
+  getOrigin(id: string): Observable<ObjectModel> {
+    const _params = new HttpParams()
+      .set('id', id);
+    return this. http.get<ObjectModel>(environment.apiUrl + CLIENT_ORIGIN, {params: _params});
   }
 }

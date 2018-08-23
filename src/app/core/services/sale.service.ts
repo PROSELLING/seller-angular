@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 
 const SALES = 'sales';
 const METADATA = 'salesmetadata';
+const SUBSTAGE = 'sub_stage';
 
 @Injectable()
 export class SaleService {
@@ -27,7 +28,13 @@ export class SaleService {
     return this.http.get(environment.apiUrl + SALES, {params: _params});
   }
 
-  getSaleMeta() {
+  getSalesMeta() {
     return this.http.get(environment.apiUrl + METADATA);
+  }
+
+  getStage(id: number) {
+    const _params = new HttpParams()
+      .set('id_stage', String(id));
+    return this.http.get(environment.apiUrl + SUBSTAGE, {params: _params});
   }
 }

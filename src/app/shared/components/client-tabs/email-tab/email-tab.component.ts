@@ -50,7 +50,7 @@ export class EmailTabComponent implements OnInit {
     if (this.client !== undefined && this.client !== null) {
       if (this.client.client_mails.length) {
         for (const email of this.client.client_mails) {
-          const [emailTypeObject] = this.emailTypes.filter(emailType => emailType.id === String(email.id_type_mail));
+          const [emailTypeObject] = this.emailTypes.filter(emailType => emailType.id === email.id_type_mail);
           if (emailTypeObject) {
             const emailForm = this.fb.group({
               emailTypes: emailTypeObject,

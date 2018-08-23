@@ -6,6 +6,7 @@ export interface ClientModel extends BaseModel {
   branch: number;
   category: CategoryModel;
   channel: ChannelModel;
+  client_address: ClientAddresstModel[];
   client_contact: ClientContactModel[];
   client_mails: ClientEmailModel[];
   client_networks: SocialNetworkModel[];
@@ -18,6 +19,7 @@ export interface ClientModel extends BaseModel {
   id_client_type: number;
   id_company: number;
   id_document: number;
+  id_industry: number;
   id_gender: number;
   id_iva: number;
   id_maritals_status: number;
@@ -66,6 +68,21 @@ export interface ClientContactModel extends BaseModel {
   phone: string;
   wsp: string;
 }
+export interface ClientAddresstModel extends BaseModel {
+  cliend_id: number;
+  department: string;
+  district: string;
+  floor: string;
+  google_place_id: string;
+  id: number;
+  id_locality: number;
+  id_type: number;
+  latitud: string;
+  longitude: string;
+  number: string;
+  street: string;
+  zipcode: string;
+}
 
 export interface OriginModel extends BaseModel {
   id_brand_origin: number;
@@ -88,4 +105,8 @@ export interface ClientsResponseModel extends ResponseModel {
 
 export interface ClientPayloadModel {
   clients: ClientsResponseModel;
+}
+
+export interface ClientResponseModel {
+  client: ClientModel;
 }

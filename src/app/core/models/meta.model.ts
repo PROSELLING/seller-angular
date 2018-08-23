@@ -1,20 +1,27 @@
 export interface ClientMetaModel {
+  categories: ObjectModel[];
   channels: ObjectModel[];
   charges: ObjectModel[];
+  client_attitudes: ObjectModel[];
+  client_industries: ObjectModel[];
   client_relations: ObjectModel[];
+  client_roles: ObjectModel[];
   client_type_mails: ObjectModel[];
   client_type_phone: ObjectModel[];
+  client_types: ObjectModel[];
+  countries: ObjectModel[];
+  countries_code: ObjectModel[];
   documents: ObjectModel[];
   genders: ObjectModel[];
   marital_status: ObjectModel[];
-  ocupations: ObjectModel[];
+  occupations: ObjectModel[];
   origins: ObjectModel[];
   person_type: ObjectModel[];
   type_locations: ObjectModel[];
 }
 
 export interface ObjectModel {
-  id: string;
+  id: number;
   value: string;
 }
 

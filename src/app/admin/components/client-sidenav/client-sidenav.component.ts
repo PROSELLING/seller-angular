@@ -6,6 +6,7 @@ import * as fromClients from '../../../clients/store';
 import { ActivatedRoute } from '@angular/router';
 import { ClientsActions } from '../../../clients/store/actions';
 import { LayoutActions } from '../../../core/store/actions';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-client-sidenav',
@@ -25,7 +26,7 @@ export class ClientSidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user$ = this.store.pipe(select(fromClients.getSelectedClient));
+    this.user$ = this.store.pipe(select(fromClients.getSelectedClient), tap(result => console.log('result', result)));
   }
 
   closeSide() {

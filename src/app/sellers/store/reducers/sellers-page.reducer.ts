@@ -4,13 +4,13 @@ import { SellerObjectModel } from '../../../core/models/seller.model';
 export interface State {
   currentPage: number;
   total: number;
-  phoneNumberTypes: SellerObjectModel[];
+  client_type_phone: SellerObjectModel[];
   origins: SellerObjectModel[];
   channels: SellerObjectModel[];
   documents: SellerObjectModel[];
   maritalStatus: SellerObjectModel[];
   occupations: SellerObjectModel[];
-  typeLocations: SellerObjectModel[];
+  type_locations: SellerObjectModel[];
   seller_relations: SellerObjectModel[];
   seller_type_mails: SellerObjectModel[];
   genders: SellerObjectModel[];
@@ -21,13 +21,13 @@ export interface State {
 export const initialState: State = {
   currentPage: 1,
   total: 0,
-  phoneNumberTypes: [],
+  client_type_phone: [],
   origins: [],
   channels: [],
   documents: [],
   maritalStatus: [],
   occupations: [],
-  typeLocations: [],
+  type_locations: [],
   seller_relations: [],
   seller_type_mails: [],
   genders: [],

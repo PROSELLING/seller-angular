@@ -26,7 +26,7 @@ export class SaleEditComponent implements OnInit {
     },
     {
       label: 'Experiencia',
-      link: '/admin/sales'
+      link: '/admin/sales-list'
     },
     {
       label: 'Venta',
