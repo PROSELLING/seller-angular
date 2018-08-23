@@ -28,7 +28,7 @@ export class SaleService {
     return this.http.get(environment.apiUrl + SALES, {params: _params});
   }
 
-  getSaleMeta() {
+  getSalesMeta() {
     return this.http.get(environment.apiUrl + METADATA);
   }
 

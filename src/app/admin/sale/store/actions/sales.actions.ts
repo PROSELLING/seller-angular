@@ -1,81 +1,81 @@
 import { Action } from '@ngrx/store';
-// @ts-ignore
-import { SaleMetaResponseModel, SaleModel } from '../../../../../core/models/sale.model';
+import { SaleMetaResponseModel, SaleModel } from '../../../../core/models/sale.model';
 
 
-export enum SaleActionTypes {
-  Load = '[Sale] Load',
-  LoadPageSuccess = '[Sale] Load Success',
-  LoadSaleSuccess = '[Sale] Load Sale Success',
-  LoadFail = '[Sale] Load Fail',
-  LoadMeta = '[Sale] Load Meta',
-  LoadMetaSuccess = '[Sale] Load Meta Success',
-  LoadMetaFail = '[Sale] Load Meta Fail',
-  Select = '[Sale] Select',
-  ResetSaleState = '[Sale] Reset Sale State'
+
+export enum SalesActionTypes {
+  Load = '[Sales] Load',
+  LoadPageSuccess = '[Sales] Load Success',
+  LoadSalesSuccess = '[Sales] Load Sale Success',
+  LoadFail = '[Sales] Load Fail',
+  LoadMeta = '[Sales] Load Meta',
+  LoadMetaSuccess = '[Sales] Load Meta Success',
+  LoadMetaFail = '[Sales] Load Meta Fail',
+  Select = '[Sales] Select',
+  ResetSaleState = '[Sales] Reset Sale State'
 }
 
 export class Load implements Action {
-  readonly type = SaleActionTypes.Load;
+  readonly type = SalesActionTypes.Load;
 
   constructor(public payload: any) {
   }
 }
 
 export class LoadPageSuccess implements Action {
-  readonly type = SaleActionTypes.LoadPageSuccess;
+  readonly type = SalesActionTypes.LoadPageSuccess;
 
   constructor(public payload: any) {
   }
 }
 
-export class LoadSaleSuccess implements Action {
-  readonly type = SaleActionTypes.LoadSaleSuccess;
+export class LoadSalesSuccess implements Action {
+  readonly type = SalesActionTypes.LoadSalesSuccess;
 
   constructor(public payload: SaleModel[]) {
   }
 }
 
 export class LoadFail implements Action {
-  readonly type = SaleActionTypes.LoadFail;
+  readonly type = SalesActionTypes.LoadFail;
 
   constructor(public payload: any) {
   }
 }
 
 export class LoadMeta implements Action {
-  readonly type = SaleActionTypes.LoadMeta;
+  readonly type = SalesActionTypes.LoadMeta;
 }
 
 export class LoadMetaSuccess implements Action {
-  readonly type = SaleActionTypes.LoadMetaSuccess;
+  readonly type = SalesActionTypes.LoadMetaSuccess;
 
   constructor(public payload: SaleMetaResponseModel) {
   }
 }
 
 export class LoadMetaFail implements Action {
-  readonly type = SaleActionTypes.LoadMetaFail;
+  readonly type = SalesActionTypes.LoadMetaFail;
 
   constructor(public payload: any) {
   }
 }
 
 export class Select implements Action {
-  readonly type = SaleActionTypes.Select;
+  readonly type = SalesActionTypes.Select;
 
   constructor(public payload: string) {
   }
 }
 
 export class ResetClientState implements Action {
-  readonly type = SaleActionTypes.ResetSaleState;
+  readonly type = SalesActionTypes.ResetSaleState;
 }
 
 export type SaleActionsUnion =
   | Load
   | LoadPageSuccess
-  | LoadSaleSuccess
+  | LoadSalesSuccess
   | LoadFail
   | LoadMeta
   | LoadMetaSuccess

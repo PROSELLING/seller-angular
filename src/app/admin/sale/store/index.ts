@@ -28,23 +28,23 @@ export const selectSaleState = createFeatureSelector<SaleState>('sales');
 
 
 /** Selectors for Client **/
-export const getSaleEntitiesState = createSelector(selectSaleState, state => state.sale);
+export const getSalesEntitiesState = createSelector(selectSaleState, state => state.sale);
 
 export const getSelectedSaleId = createSelector(
-  getSaleEntitiesState,
+  getSalesEntitiesState,
   fromSale.getSelectedId
 );
 
 /** Selectors using NGRX Entity **/
 export const {
-  selectIds: getSaleIds,
-  selectEntities: getSaleEntities,
+  selectIds: getSalesIds,
+  selectEntities: getSalesEntities,
   selectAll: getAllSales,
   selectTotal: getTotalSales,
-} = fromSale.adapter.getSelectors(getSaleEntitiesState);
+} = fromSale.adapter.getSelectors(getSalesEntitiesState);
 
 export const getSelectedSale = createSelector(
-  getSaleEntities,
+  getSalesEntities,
   getSelectedSaleId,
   (entities, selectedId) => {
     return selectedId && entities[selectedId];
@@ -53,42 +53,42 @@ export const getSelectedSale = createSelector(
 
 
 /** Selectors for Sale Page **/
-export const getSalePageEntitiesState = createSelector(selectSaleState, state => state.salePage);
+export const getSalesPageEntitiesState = createSelector(selectSaleState, state => state.salePage);
 
 /** Get current page **/
-export const getCurrentPage = createSelector(getSalePageEntitiesState, fromSalePage.getCurrentPage);
+export const getCurrentPage = createSelector(getSalesPageEntitiesState, fromSalePage.getCurrentPage);
 
 /** Get total sales-list **/
-export const getTotal = createSelector(getSalePageEntitiesState, fromSalePage.getTotal);
+export const getTotal = createSelector(getSalesPageEntitiesState, fromSalePage.getTotal);
 
 /** Selectors for Sale Metadata **/
-export const getSaleMetaState = createSelector(selectSaleState, state => state.saleMeta);
+export const getSalesMetaState = createSelector(selectSaleState, state => state.saleMeta);
 
-export const getSaleCompanies = createSelector(getSaleMetaState, fromSaleMeta.getCompanies);
+export const getSalesCompanies = createSelector(getSalesMetaState, fromSaleMeta.getCompanies);
 
-export const getSaleInsurances = createSelector(getSaleMetaState, fromSaleMeta.getInsurances);
+export const getSalesInsurances = createSelector(getSalesMetaState, fromSaleMeta.getInsurances);
 
-export const getSaleIvaConditions = createSelector(getSaleMetaState, fromSaleMeta.getIvaConditions);
+export const getSalesIvaConditions = createSelector(getSalesMetaState, fromSaleMeta.getIvaConditions);
 
-export const getSaleNonPurchaseReasons = createSelector(getSaleMetaState, fromSaleMeta.getNonPurchaseReasons);
+export const getSalesNonPurchaseReasons = createSelector(getSalesMetaState, fromSaleMeta.getNonPurchaseReasons);
 
-export const getSaleStatus = createSelector(getSaleMetaState, fromSaleMeta.getSaleStatus);
+export const getSalesStatus = createSelector(getSalesMetaState, fromSaleMeta.getSalesStatus);
 
-export const getSaleStages = createSelector(getSaleMetaState, fromSaleMeta.getStages);
+export const getSalesStages = createSelector(getSalesMetaState, fromSaleMeta.getStages);
 
-export const getSaleSubstages = createSelector(getSaleMetaState, fromSaleMeta.getSubstages);
+export const getSalesSubstages = createSelector(getSalesMetaState, fromSaleMeta.getSubstages);
 
-export const getSaleTaskReasons = createSelector(getSaleMetaState, fromSaleMeta.getTaskReasons);
+export const getSalesTaskReasons = createSelector(getSalesMetaState, fromSaleMeta.getTaskReasons);
 
-export const getSaleTaskResults = createSelector(getSaleMetaState, fromSaleMeta.getTaskResults);
+export const getSalesTaskResults = createSelector(getSalesMetaState, fromSaleMeta.getTaskResults);
 
-export const getSaleTypeDeliveries = createSelector(getSaleMetaState, fromSaleMeta.getTypeDeliveries);
+export const getSalesTypeDeliveries = createSelector(getSalesMetaState, fromSaleMeta.getTypeDeliveries);
 
-export const getSaleTypeInvoices = createSelector(getSaleMetaState, fromSaleMeta.getTypeInvoices);
+export const getSalesTypeInvoices = createSelector(getSalesMetaState, fromSaleMeta.getTypeInvoices);
 
-export const getSaleTypePlans = createSelector(getSaleMetaState, fromSaleMeta.getTypePlans);
+export const getSalesTypePlans = createSelector(getSalesMetaState, fromSaleMeta.getTypePlans);
 
-export const getSaleTypeSales = createSelector(getSaleMetaState, fromSaleMeta.getTypeSales);
+export const getSalesTypeSales = createSelector(getSalesMetaState, fromSaleMeta.getTypeSales);
 
 
 

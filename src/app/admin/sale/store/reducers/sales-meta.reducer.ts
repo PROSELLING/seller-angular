@@ -1,4 +1,4 @@
-import { SaleActionsUnion, SaleActionTypes } from '../actions/sales.actions';
+import { SaleActionsUnion, SalesActionTypes } from '../actions/sales.actions';
 import { ObjectModel } from '../../../../core/models/meta.model';
 
 export interface State {
@@ -37,7 +37,7 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: SaleActionsUnion): State {
   switch (action.type) {
-    case SaleActionTypes.LoadMetaSuccess: {
+    case SalesActionTypes.LoadMetaSuccess: {
       return {
         ...state,
         companies: action.payload.companies,
@@ -66,7 +66,7 @@ export const getCompanies = (state: State) => state.companies;
 export const getInsurances = (state: State) => state.insurances;
 export const getIvaConditions = (state: State) => state.iva_conditions;
 export const getNonPurchaseReasons = (state: State) => state.non_purchase_reasons;
-export const getSaleStatus = (state: State) => state.sale_status;
+export const getSalesStatus = (state: State) => state.sale_status;
 export const getStages = (state: State) => state.stages;
 export const getSubstages = (state: State) => state.substages;
 export const getTaskReasons = (state: State) => state.task_reasons;

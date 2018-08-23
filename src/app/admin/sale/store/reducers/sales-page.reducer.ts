@@ -1,4 +1,4 @@
-import { SaleActionsUnion, SaleActionTypes } from '../actions/sales.actions';
+import { SaleActionsUnion, SalesActionTypes } from '../actions/sales.actions';
 
 export interface State {
   currentPage: number;
@@ -12,7 +12,7 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: SaleActionsUnion): State {
   switch (action.type) {
-    case SaleActionTypes.LoadPageSuccess: {
+    case SalesActionTypes.LoadPageSuccess: {
       return {
         ...state,
         currentPage: action.payload.sales.current_page,
