@@ -13,9 +13,11 @@ import { SalesListComponent } from './sale/sales-list/sales-list.component';
 import { SaleStepsComponent } from './components/sale-steps/sale-steps.component';
 import { SaleAddComponent } from './sale/sale-add/sale-add.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './sale/store/index';
+import { reducers } from './sale/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SalesEffects } from './sale/store/effects/sales.effects';
+import { ProductModule } from '../product/product.module';
+import { SaleStageIconComponent } from './components/sale-stage-icon/sale-stage-icon.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { SalesEffects } from './sale/store/effects/sales.effects';
     CommonModule,
     SharedModule,
     ClientsModule,
+    ProductModule,
     StoreModule.forFeature('sales', reducers),
     EffectsModule.forFeature([SalesEffects])
   ],
@@ -34,7 +37,8 @@ import { SalesEffects } from './sale/store/effects/sales.effects';
     SalesListComponent,
     SaleStepsComponent,
     ClientProfileComponent,
-    ClientSidenavComponent
+    ClientSidenavComponent,
+    SaleStageIconComponent
   ],
   providers: [httpInterceptorProviders]
 })

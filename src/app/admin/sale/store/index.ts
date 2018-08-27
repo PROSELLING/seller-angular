@@ -1,8 +1,4 @@
-import {
-  createSelector,
-  createFeatureSelector,
-  ActionReducerMap,
-} from '@ngrx/store';
+import { ActionReducerMap, createFeatureSelector, createSelector, } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
 import * as fromSale from './reducers/sales.reducer';
 import * as fromSalePage from './reducers/sales-page.reducer';
@@ -73,8 +69,10 @@ export const getSalesIvaConditions = createSelector(getSalesMetaState, fromSaleM
 export const getSalesNonPurchaseReasons = createSelector(getSalesMetaState, fromSaleMeta.getNonPurchaseReasons);
 
 export const getSalesStatus = createSelector(getSalesMetaState, fromSaleMeta.getSalesStatus);
+export const getSalesStatusValue = (id: number) => createSelector(getSalesStatus, status => status.filter(statusValue => statusValue.id === id));
 
 export const getSalesStages = createSelector(getSalesMetaState, fromSaleMeta.getStages);
+export const getSalesStage = (id: number) => createSelector(getSalesStages, stages => stages.filter(stage => stage.id === id));
 
 export const getSalesSubstages = createSelector(getSalesMetaState, fromSaleMeta.getSubstages);
 

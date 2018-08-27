@@ -34,6 +34,12 @@ export const selectClientsState = createFeatureSelector<ClientsState>('clients')
 
 
 /** Selectors for Client **/
+export const getClientEntitiesState = createSelector(selectClientsState, state => state.client);
+
+export const getClientOrigin = createSelector(getClientEntitiesState, fromClient.getClientOrigin);
+
+
+/** Selectors for Clients **/
 export const getClientsEntitiesState = createSelector(selectClientsState, state => state.clients);
 
 export const getSelectedClientId = createSelector(
