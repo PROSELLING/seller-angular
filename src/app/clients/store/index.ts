@@ -107,6 +107,9 @@ export const getPhoneNumberTypes = createSelector(getClientsMetaState, fromClien
 
 export const getDocuments = createSelector(getClientsMetaState, fromClientsMeta.getDocuments);
 
+export const getEmpathies = createSelector(getClientsMetaState, fromClientsMeta.getEmpathies);
+export const getEmpathy = (id: number) => createSelector(getEmpathies, empathies => empathies.filter(empathy => empathy.id === id));
+
 export const getMaritalStatus = createSelector(getClientsMetaState, fromClientsMeta.getMaritalStatus);
 export const getMaritalStatusValue = (id: number) => createSelector(getMaritalStatus, maritalStatuses => maritalStatuses.filter(maritalStatus => maritalStatus.id === id));
 

@@ -15,6 +15,7 @@ export interface State {
   countries: ObjectModel[];
   countries_code: ObjectModel[];
   documents: ObjectModel[];
+  empathies: ObjectModel[];
   genders: ObjectModel[];
   marital_status: ObjectModel[];
   occupations: ObjectModel[];
@@ -37,6 +38,7 @@ export const initialState: State = {
   countries: [],
   countries_code: [],
   documents: [],
+  empathies: [],
   genders: [],
   marital_status: [],
   occupations: [],
@@ -63,6 +65,7 @@ export function reducer(state = initialState, action: ClientsActionsUnion): Stat
         countries: action.payload.countries,
         countries_code: action.payload.countries_code,
         documents: action.payload.documents,
+        empathies: action.payload.empaties,
         genders: action.payload.genders,
         marital_status: action.payload.marital_status,
         occupations: action.payload.occupations,
@@ -90,6 +93,7 @@ export const getClientTypes = (state: State) => state.client_types;
 export const getCountries = (state: State) => state.countries;
 export const getCountriesCode = (state: State) => state.countries_code;
 export const getDocuments = (state: State) => state.documents;
+export const getEmpathies = (state: State) => state.empathies;
 export const getClientGenders = (state: State) => state.genders;
 export const getMaritalStatus = (state: State) => state.marital_status;
 export const getOccupations = (state: State) => state.occupations;

@@ -1,1 +1,16 @@
-{{(stage$ | async).value}}
+<div class="l--p-y-10">
+  <ng-container *ngIf="showPhoto; else noPhoto">
+    <div class="client-img"><img src="http://via.placeholder.com/50x50" alt="User"></div>
+  </ng-container>
+  <ng-template #noPhoto>
+    <div class="icon-img" fxLayout="row" fxLayoutAlign="center center">
+      <ng-container *ngIf="client; else noClient">
+        <mat-icon svgIcon="account" *ngIf="client.person_type === 'F'"></mat-icon>
+        <mat-icon svgIcon="domain" *ngIf="client.person_type === 'J'"></mat-icon>
+      </ng-container>
+      <ng-template #noClient>
+        <mat-icon svgIcon="account"></mat-icon>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

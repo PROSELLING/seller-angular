@@ -6,14 +6,14 @@ import * as moment from 'moment';
 import { Observable, of } from 'rxjs';
 import { ObjectModel } from '../../models/meta.model';
 import { ClientAddresstModel, ClientContactModel, ClientEmailModel } from '../../models/client.model';
-import * as ClientActionTypes from '../../../clients/store/actions/client.actions';
 import { ClientService } from '../client.service';
 
 @Injectable()
 export class ClientCrudService {
 
   constructor(private store: Store<fromClients.State>,
-              private clientService: ClientService) { }
+              private clientService: ClientService) {
+  }
 
   static getEmail(emailArray: ClientEmailModel[]): string {
     const [emailInfo] = emailArray;
