@@ -22,82 +22,91 @@
 
 
     <div class="responsive_table">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="sales$" class="mat-elevation-z8">
+        <!-- Date Created Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef>Fecha y Hora</th>
+          <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
 
-        <!-- Seller Column -->
-        <ng-container matColumnDef="seller">
-          <th mat-header-cell *matHeaderCellDef>Vendedor</th>
+        <!-- Stage Column -->
+        <ng-container matColumnDef="stage">
+          <th mat-header-cell *matHeaderCellDef>Etapa</th>
           <td mat-cell *matCellDef="let element">
-            <div [matTooltip]="element.saleDate" matTooltipPosition="above">
-              {{element.seller}}
-            </div>
+            <ng-container *ngIf="element.client; else elseBlock">
+              <app-sale-stage-icon [client]="element.client" [stageId]="element.id_stage + 1"></app-sale-stage-icon>
+            </ng-container>
+            <ng-template #elseBlock>
+              <app-sale-stage-icon [stageId]="element.id_stage + 3"></app-sale-stage-icon>
+            </ng-template>
           </td>
         </ng-container>
 
         <!-- Category Column -->
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef>Categoría</th>
-          <td mat-cell *matCellDef="let element">Categoría</td>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element.client">
+              <app-client-badge [badge]="getClientCategory(element.client.id_category) | async"></app-client-badge>
+            </ng-container>
+          </td>
         </ng-container>
 
         <!-- Client Column -->
         <ng-container matColumnDef="client">
           <th mat-header-cell *matHeaderCellDef>Cliente</th>
           <td mat-cell *matCellDef="let element">
-            <a
-              [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.clientId]}}]"
-              class="mat-accent"
-              (click)="openRightSidenav()"
-            >
-              {{element.client}}
-            </a>
+            <ng-container *ngIf="element.client">
+              <a
+                [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.client.id]}}]"
+                class="mat-accent"
+                (click)="openRightSidenav()"
+              >
+                {{element.client.name}} {{element.client.last_name}}
+              </a>
+            </ng-container>
           </td>
         </ng-container>
 
-        <!-- Sale Column -->
-        <ng-container matColumnDef="sale">
-          <th mat-header-cell *matHeaderCellDef>Negocio</th>
-          <td mat-cell *matCellDef="let element">{{element.business}}</td>
+        <!-- Attitude Column -->
+        <ng-container matColumnDef="attitude">
+          <th mat-header-cell *matHeaderCellDef>Empatía</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element.client">
+              <app-client-empathy-badge></app-client-empathy-badge>
+            </ng-container>
+          </td>
         </ng-container>
 
+        <!--Status Value-->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>Estatus</th>
           <td mat-cell *matCellDef="let element">
             <a
-              [routerLink]="['/admin', {outlets: {rightSidenav: ['sale', element.id]}}]"
+              [routerLink]="['/admin', {outlets: {rightSidenav: ['sale', element.status]}}]"
               class="mat-accent"
               (click)="openRightSidenav()"
             >
-              {{element.status}}
+              {{(getSaleStatus(element.status) | async).value}}
             </a>
           </td>
         </ng-container>
 
-        <!-- Amount and Balance for the sale Column -->
-        <ng-container matColumnDef="amountBalance">
-          <th mat-header-cell *matHeaderCellDef>Monto Negocio y Saldo</th>
-          <td mat-cell *matCellDef="let element" class="align-right">
-            {{element.amount}}<br />
-            {{element.balance}}
-          </td>
+        <!-- Total Column -->
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let element">{{element.total}}</td>
         </ng-container>
 
-        <!-- Delivery date for the sale Column -->
-        <ng-container matColumnDef="deliveryEstimate">
-          <th mat-header-cell *matHeaderCellDef>Entrega Acordada</th>
+        <!-- Total Column -->
+        <ng-container matColumnDef="origin">
+          <th mat-header-cell *matHeaderCellDef>Origen</th>
           <td mat-cell *matCellDef="let element">
-            <div [matTooltip]="['Entrega Estimada para el ' + element.deliveryEstimate]" matTooltipPosition="above">
-              {{element.delivery}}
-            </div>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="options">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <a [routerLink]="['../sale', element.id, 'edit']">
-              <mat-icon>edit</mat-icon>
-            </a>
+            <ng-container *ngIf="element.client">
+              <div *ngFor="let origin of getClientOrigin(element.client.id_origin) | async">
+                {{origin.value}} <br />
+              </div>
+            </ng-container>
           </td>
         </ng-container>
 

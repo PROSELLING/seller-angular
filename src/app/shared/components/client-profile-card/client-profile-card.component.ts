@@ -1,11 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ClientModel } from '../../../core/models/client.model';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromClients from '../../../clients/store';
 import { Observable } from 'rxjs';
 import { ObjectModel } from '../../../core/models/meta.model';
-import { map } from 'rxjs/operators';
-import * as moment from 'moment';
+import { ClientCrudService } from '../../../core/services/crud/client-crud.service';
 
 @Component({
   selector: 'app-client-profile-card',
@@ -25,7 +24,8 @@ export class ClientProfileCardComponent implements OnInit, OnChanges {
   address: string;
   age: number;
 
-  constructor(private store: Store<fromClients.State>) {
+  constructor(private store: Store<fromClients.State>,
+              private clientCrudService: ClientCrudService) {
   }
 
   ngOnInit() {
@@ -35,95 +35,17 @@ export class ClientProfileCardComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['user']) {
       if (this.user !== undefined && this.user !== null) {
-        this.getCategory();
-        this.getCharge();
-        this.getIndustry();
-        this.getPhoneNumber();
-        this.getEmail();
-        this.getLocation();
-        this.getOccupation();
-        this.getMaritalStatus();
-        this.getAge();
+        this.category$ = this.clientCrudService.getCategory(this.user.id_category);
+        this.charge$ = this.clientCrudService.getCharge(this.user.id_charge);
+        this.industry$ = this.clientCrudService.getIndustry(this.user.id_industry);
+        this.phoneNumber = ClientCrudService.getPhoneNumber(this.user.client_contact);
+        this.email = ClientCrudService.getEmail(this.user.client_mails);
+        this.address = ClientCrudService.getAddress(this.user.client_address);
+        this.locality$ = this.clientCrudService.getLocationType(this.user.client_address);
+        this.occupation$ = this.clientCrudService.getOccupation(this.user.id_occupation);
+        this.maritalStatus$ = this.clientCrudService.getMaritalStatus(this.user.id_maritals_status);
+        this.age = ClientCrudService.getAge(this.user.birthday);
       }
     }
-  }
-
-  getCategory() {
-    this.category$ = this.store.pipe(
-      select(fromClients.getCategory(this.user.id_category)),
-      map(categories => {
-        const [category] = categories;
-        return category;
-      })
-    );
-  }
-
-  getCharge() {
-    this.charge$ = this.store.pipe(
-      select(fromClients.getCharge(this.user.id_charge)),
-      map(charges => {
-        const [charge] = charges;
-        return charge;
-      })
-    );
-  }
-
-  getIndustry() {
-    this.industry$ = this.store.pipe(
-      select(fromClients.getClientIndustry(this.user.id_industry)),
-      map(industries => {
-        console.log('TEST', industries);
-        const [industry] = industries;
-        return industry;
-      })
-    );
-  }
-
-  getPhoneNumber() {
-    const [contactInfo] = this.user.client_contact;
-    this.phoneNumber = `+${contactInfo.id_paises} ${contactInfo.area_code} ${contactInfo.phone}`;
-  }
-
-  getEmail() {
-    const [emailInfo] = this.user.client_mails;
-    this.email = emailInfo.mail;
-  }
-
-  getLocation() {
-    const [location] = this.user.client_address;
-    if (location) {
-      this.locality$ = this.store.pipe(
-        select(fromClients.getTypeLocation(location.id_type)),
-        map(locations => {
-          const [locationType] = locations;
-          return locationType;
-        })
-      );
-      this.address = `${location.street} #${location.number} ${location.district}`;
-    }
-  }
-
-  getOccupation() {
-    this.occupation$ = this.store.pipe(
-      select(fromClients.getOccupation(this.user.id_occupation)),
-      map(occupations => {
-        const [occupation] = occupations;
-        return occupation;
-      })
-    );
-  }
-
-  getMaritalStatus() {
-    this.maritalStatus$ = this.store.pipe(
-      select(fromClients.getMaritalStatusValue(this.user.id_maritals_status)),
-      map(maritalStatuses => {
-        const [maritalStatus] = maritalStatuses;
-        return maritalStatus;
-      })
-    );
-  }
-
-  getAge() {
-    this.age = moment().diff(moment(this.user.birthday), 'years');
   }
 }

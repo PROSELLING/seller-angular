@@ -34,6 +34,12 @@ export const selectClientsState = createFeatureSelector<ClientsState>('clients')
 
 
 /** Selectors for Client **/
+export const getClientEntitiesState = createSelector(selectClientsState, state => state.client);
+
+export const getClientOrigin = createSelector(getClientEntitiesState, fromClient.getClientOrigin);
+
+
+/** Selectors for Clients **/
 export const getClientsEntitiesState = createSelector(selectClientsState, state => state.clients);
 
 export const getSelectedClientId = createSelector(
@@ -100,6 +106,9 @@ export const getCountriesCodeValue = (id: number) => createSelector(getCountries
 export const getPhoneNumberTypes = createSelector(getClientsMetaState, fromClientsMeta.getPhonNumberTypes);
 
 export const getDocuments = createSelector(getClientsMetaState, fromClientsMeta.getDocuments);
+
+export const getEmpathies = createSelector(getClientsMetaState, fromClientsMeta.getEmpathies);
+export const getEmpathy = (id: number) => createSelector(getEmpathies, empathies => empathies.filter(empathy => empathy.id === id));
 
 export const getMaritalStatus = createSelector(getClientsMetaState, fromClientsMeta.getMaritalStatus);
 export const getMaritalStatusValue = (id: number) => createSelector(getMaritalStatus, maritalStatuses => maritalStatuses.filter(maritalStatus => maritalStatus.id === id));

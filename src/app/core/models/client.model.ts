@@ -32,6 +32,7 @@ export interface ClientModel extends BaseModel {
   occupation: string;
   origin: OriginModel;
   person_type: string;
+  photo: string;
   resale: string;
   sex: string;
 }

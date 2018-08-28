@@ -42,9 +42,9 @@ export class ClientService {
     return this.http.get<ClientResponseModel>(environment.apiUrl + CLIENT, {params: _params});
   }
 
-  getOrigin(id: string): Observable<ObjectModel> {
+  getOrigin(id: number): Observable<ObjectModel[]> {
     const _params = new HttpParams()
-      .set('id', id);
-    return this. http.get<ObjectModel>(environment.apiUrl + CLIENT_ORIGIN, {params: _params});
+      .set('id', String(id));
+    return this. http.get<ObjectModel[]>(environment.apiUrl + CLIENT_ORIGIN, {params: _params});
   }
 }

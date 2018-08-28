@@ -12,6 +12,7 @@ export interface ClientMetaModel {
   countries: ObjectModel[];
   countries_code: ObjectModel[];
   documents: ObjectModel[];
+  empaties: ObjectModel[];
   genders: ObjectModel[];
   marital_status: ObjectModel[];
   occupations: ObjectModel[];
@@ -23,6 +24,7 @@ export interface ClientMetaModel {
 export interface ObjectModel {
   id: number;
   value: string;
+  color?: string;
 }
 
 export interface ResponseModel {

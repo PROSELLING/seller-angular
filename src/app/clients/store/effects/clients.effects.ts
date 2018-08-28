@@ -17,7 +17,8 @@ import {
 
 import { ClientService } from '../../../core/services/client.service';
 import { ClientPayloadModel } from '../../../core/models/client.model';
-import { ClientMetaModel } from '../../../core/models/meta.model';
+import { ClientMetaModel, ObjectModel } from '../../../core/models/meta.model';
+import { ClientActionTypes, LoadOrigin, LoadOriginFail, LoadOriginSuccess } from '../actions/client.actions';
 
 
 @Injectable()
@@ -38,6 +39,7 @@ export class ClientsEffects {
         )
     )
   );
+
   @Effect()
   loadClientMeta$ = this.actions$.pipe(
     ofType<LoadClientsMeta>(ClientsActionTypes.LoadClientsMeta),
@@ -46,6 +48,20 @@ export class ClientsEffects {
         .pipe(
           map((res: ClientMetaModel) => new LoadClientsMetaSuccess(res)),
           catchError(error => of(new LoadClientsMetaFail(error))),
+        );
+      }
+    )
+  );
+
+  @Effect()
+  loadClientOrigin$ = this.actions$.pipe(
+    ofType<LoadOrigin>(ClientActionTypes.LoadOrigin),
+    map(action => action.payload),
+    mergeMap((id: number) => {
+      return this.clientService.getOrigin(id)
+        .pipe(
+          map((res: ObjectModel[]) => new LoadOriginSuccess(res)),
+          catchError(error => of(new LoadOriginFail(error))),
         );
       }
     )

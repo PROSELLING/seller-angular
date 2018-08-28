@@ -3,7 +3,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { AwsService } from '../../../core/services/aws.service';
 import { select, Store } from '@ngrx/store';
 import * as fromRoot from '../../../core/store/index';
-import * as fromSale from '../store/index';
+import * as fromSale from '../store';
 import { LayoutActions } from '../../../core/store/actions';
 import { Observable } from 'rxjs';
 import { SaleActions } from '../store/actions';
@@ -12,6 +12,12 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { StockService } from '../../../core/services/stock.service';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { SaleService } from '../../../core/services/sale.service';
+import { ProductService } from '../../../core/services/product.service';
+import { ProductsActions } from '../../../product/store/actions';
+import { ObjectModel } from '../../../core/models/meta.model';
+import { ClientCrudService } from '../../../core/services/crud/client-crud.service';
+import { SaleCrudService } from '../../../core/services/crud/sale-crud.service';
+import { ClientService } from '../../../core/services/client.service';
 
 const CLIENT_DATA = [
   {
@@ -50,7 +56,8 @@ const CLIENT_DATA = [
 })
 export class SalesListComponent implements OnInit, AfterViewInit {
   sales$: Observable<SaleModel[]>;
-  displayedColumns = ['seller', 'category', 'client', 'sale', 'status', 'amountBalance', 'deliveryEstimate', 'options'];
+  // displayedColumns = ['seller', 'category', 'client', 'sale', 'status', 'amountBalance', 'deliveryEstimate', 'options'];
+  displayedColumns = ['createdAt', 'stage', 'category', 'client', 'attitude', 'status', 'total', 'origin'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
   selectedRow: any;
 
@@ -80,10 +87,14 @@ export class SalesListComponent implements OnInit, AfterViewInit {
     private awsService: AwsService,
     private store: Store<fromRoot.RootState>,
     private physicalStockService: StockService,
-    private saleService: SaleService
+    private saleService: SaleService,
+    private productService: ProductService,
+    private clientCrudService: ClientCrudService,
+    private saleCrudService: SaleCrudService,
+    private clientService: ClientService
   ) {
     this.sales$ = this.store.pipe(
-      select(fromSale.getAllSales)
+      select(fromSale.getAllSales),
     );
     this.resultsLength$ = this.store.pipe(
       select(fromSale.getTotal)
@@ -92,7 +103,11 @@ export class SalesListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
-    /*this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
+    this.store.dispatch(new ProductsActions.Load({}));
+    this.clientService.getOrigin(5).subscribe(res => console.log('ORIGIN', res));
+    /*this.productService.getProducts().subscribe(res => console.log('PRODUCTS', res));
+    this.productService.getProductsMeta().subscribe(res => console.log('PRODUCTS META', res));
+    this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
     this.physicalStockService.getVirtualStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('VIRTUAL STOCK', res));
     this.saleService.getSaleMeta().subscribe(res => console.log('SALE METADATA', res));*/
   }
@@ -126,6 +141,19 @@ export class SalesListComponent implements OnInit, AfterViewInit {
       select(fromSale.getAllSales)
     );
   }
+
+  getClientCategory(id: number): Observable<ObjectModel> {
+    return this.clientCrudService.getCategory(id);
+  }
+
+  getClientOrigin(id: number): Observable<ObjectModel[]> {
+    return this.clientCrudService.getOrigin(id);
+  }
+
+  getSaleStatus(id: number): Observable<ObjectModel> {
+    return this.saleCrudService.getStatus(id);
+  }
+
 
   /*selectEvent(file: File) {
     this.awsService.singleFileUpload(file, 'imagenes')
