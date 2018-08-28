@@ -18,6 +18,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SalesEffects } from './sale/store/effects/sales.effects';
 import { ProductModule } from '../product/product.module';
 import { SaleStageIconComponent } from './components/sale-stage-icon/sale-stage-icon.component';
+import { ProductInfoComponent } from './components/product-info/product-info.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { SaleStageIconComponent } from './components/sale-stage-icon/sale-stage-
     SaleStepsComponent,
     ClientProfileComponent,
     ClientSidenavComponent,
-    SaleStageIconComponent
+    SaleStageIconComponent,
+    ProductInfoComponent
   ],
   providers: [httpInterceptorProviders]
 })

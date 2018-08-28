@@ -57,7 +57,7 @@ export class LoadMetaFail implements Action {
 export class Select implements Action {
   readonly type = ProductsActionTypes.Select;
 
-  constructor(public payload: string) {
+  constructor(public payload: number) {
   }
 }
 
