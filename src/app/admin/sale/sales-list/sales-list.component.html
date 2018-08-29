@@ -94,6 +94,7 @@
               [routerLink]="['/admin', {outlets: {rightSidenav: ['sale', element.status]}}]"
               class="mat-accent"
               (click)="openRightSidenav()"
+              *ngIf="element.status"
             >
               {{(getSaleStatus(element.status) | async).value}}
             </a>
