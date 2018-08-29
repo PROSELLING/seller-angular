@@ -1,9 +1,11 @@
 import { ClientModel } from './client.model';
 import { BaseModel } from './base.model';
 import { ObjectModel, ResponseModel } from './meta.model';
+import { BudgetModel } from './budget.model';
 
 export interface SaleModel extends BaseModel {
   attend: string;
+  budget_details: BudgetModel[];
   client: ClientModel;
   estado: string;
   id_budget_old: number;

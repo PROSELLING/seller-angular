@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { AwsService } from '../../../core/services/aws.service';
 import { select, Store } from '@ngrx/store';
-import * as fromRoot from '../../../core/store/index';
+import * as fromRoot from '../../../core/store';
 import * as fromSale from '../store';
 import { LayoutActions } from '../../../core/store/actions';
 import { Observable } from 'rxjs';
@@ -57,7 +57,7 @@ const CLIENT_DATA = [
 export class SalesListComponent implements OnInit, AfterViewInit {
   sales$: Observable<SaleModel[]>;
   // displayedColumns = ['seller', 'category', 'client', 'sale', 'status', 'amountBalance', 'deliveryEstimate', 'options'];
-  displayedColumns = ['createdAt', 'stage', 'category', 'client', 'attitude', 'status', 'total', 'origin'];
+  displayedColumns = ['createdAt', 'stage', 'category', 'client', 'empathy', 'product', 'status', 'total', 'origin'];
   dataSource = new MatTableDataSource(CLIENT_DATA);
   selectedRow: any;
 
@@ -104,8 +104,8 @@ export class SalesListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.store.dispatch(new SaleActions.Load({page: '1', filter: ''}));
     this.store.dispatch(new ProductsActions.Load({}));
-    this.clientService.getOrigin(5).subscribe(res => console.log('ORIGIN', res));
-    /*this.productService.getProducts().subscribe(res => console.log('PRODUCTS', res));
+    /* this.clientService.getOrigin(5).subscribe(res => console.log('ORIGIN', res));
+    this.productService.getProducts().subscribe(res => console.log('PRODUCTS', res));
     this.productService.getProductsMeta().subscribe(res => console.log('PRODUCTS META', res));
     this.physicalStockService.getPhysicalStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('PHYSICAL STOCK', res));
     this.physicalStockService.getVirtualStock({page: '1', filter: '', sort: 'desc'}).subscribe(res => console.log('VIRTUAL STOCK', res));

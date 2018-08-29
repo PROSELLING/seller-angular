@@ -6,9 +6,7 @@ import * as fromSales from '../../../admin/sale/store';
 import { map } from 'rxjs/operators';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SaleCrudService {
 
   constructor(private store: Store<fromSales.State>) {

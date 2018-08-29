@@ -17,6 +17,7 @@ import { ClientExistsGuard } from './guards/client-exists.guard';
 import { ProductService } from './services/product.service';
 import { ClientCrudService } from './services/crud/client-crud.service';
 import { SaleCrudService } from './services/crud/sale-crud.service';
+import { ProductCrudService } from './services/crud/product-crud.service';
 
 @NgModule()
 export class CoreModule {
@@ -41,6 +42,7 @@ export class CoreModule {
         ClientStoreGuard,
         FormService,
         PermissionService,
+        ProductCrudService,
         ProductService,
         RoleService,
         SaleCrudService,

@@ -7,7 +7,7 @@ export const adapter: EntityAdapter<ProductModel> = createEntityAdapter<ProductM
 });
 
 export interface State extends EntityState<ProductModel> {
-  selectedProductId: string | null;
+  selectedProductId: number | null;
 }
 
 export const initialState: State = adapter.getInitialState({
