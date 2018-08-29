@@ -1,0 +1,121 @@
+<section class="content">
+  <app-block-header title="Ventas" [breadcrumbs]="breadcrumbs"></app-block-header>
+
+  <div class="component-container">
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="BuscAr">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-menu #appMenu="matMenu" overlapTrigger="false">
+          <button mat-menu-item [routerLink]="['../sale/add']">Nueva Venta</button>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon svgIcon="dots-vertical"></mat-icon>
+        </button>
+      </div>
+    </div>
+
+
+
+    <div class="responsive_table">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="saleDate">
+          <th mat-header-cell *matHeaderCellDef>Fecha Venta</th>
+          <td mat-cell *matCellDef="let element">{{element.saleDate}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="seller">
+          <th mat-header-cell *matHeaderCellDef>Vendedor</th>
+          <td mat-cell *matCellDef="let element">{{element.seller}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="client">
+          <th mat-header-cell *matHeaderCellDef>Cliente</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              [routerLink]="['/admin', {outlets: {rightSidenav: ['client', element.clientId]}}]"
+              class="mat-accent"
+              (click)="openRightSidenav()"
+            >
+              {{element.client}}
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="business">
+          <th mat-header-cell *matHeaderCellDef>Negocio</th>
+          <td mat-cell *matCellDef="let element">{{element.business}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Estatus</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              [routerLink]="['/admin', {outlets: {rightSidenav: ['sale', element.id]}}]"
+              class="mat-accent"
+              (click)="openRightSidenav()"
+            >
+              {{element.status}}
+            </a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Monto Negocio</th>
+          <td mat-cell *matCellDef="let element">{{element.amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="balance">
+          <th mat-header-cell *matHeaderCellDef>Saldo</th>
+          <td mat-cell *matCellDef="let element">{{element.balance}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="deliveryEstimate">
+          <th mat-header-cell *matHeaderCellDef>Entrega Estimada</th>
+          <td mat-cell *matCellDef="let element">{{element.deliveryEstimate}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="delivery">
+          <th mat-header-cell *matHeaderCellDef>Entrega Acordada</th>
+          <td mat-cell *matCellDef="let element">{{element.delivery}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="options">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['../sale', element.id, 'edit']">
+              <mat-icon>edit</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="{'rowHighlight': selectedRow === row}"
+            (mouseenter)="onRowHovered(row)"
+            (mouseleave)="onRowHovered(null)"
+        ></tr>
+      </table>
+    </div>
+  </div>
+  <br/>
+  <td-file-input color="accent" (select)="selectEvent($event)">
+    <mat-icon>attach_file</mat-icon>
+    <span>Choose a file...</span>
+  </td-file-input>
+  <div *ngIf="image">
+    <img [src]="image.Location" class="app-responsive-img">
+    <button mat-button color="primary" (click)="deleteImage()">Borrar</button>
+  </div>
+  <br/>
+</section>
+

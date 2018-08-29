@@ -11,6 +11,61 @@ export interface SellerModel extends BaseModel {
   phone: string;
 }
 
+/*export interface CategoryModel extends BaseModel {
+  category: string;
+  condition: string;
+  icon: string;
+}
+
+export interface ChannelModel extends BaseModel {
+  channel: string;
+  details: string;
+  icon: string;
+  order: string;
+}
+
+export interface SellerEmailModel extends BaseModel {
+  seller_id: number;
+  id: number;
+  id_type_mail: number;
+  mail: string;
+  principal: number;
+}
+
+export interface SellerContactModel extends BaseModel {
+  area_code: number;
+  cliend_id: number;
+  ext_phone: string;
+  id: number;
+  id_paises: number;
+  id_type_phone: number;
+  order: string;
+  phone: string;
+  wsp: string;
+}
+
+export interface OriginModel extends BaseModel {
+  id_brand_origin: number;
+  id_parent: number;
+  order: string;
+  origin: string;
+}
+
+export interface SocialNetworkModel extends BaseModel {
+  facebook: string;
+  google: string;
+  instagram: string;
+  linkedin: string;
+  twitter: string;
+  cellphone: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  gender: string;
+  id_company: number;
+  phone: string;
+}
+*/
 export interface SellersResponseModel {
   current_page: number;
   data: SellerModel[];

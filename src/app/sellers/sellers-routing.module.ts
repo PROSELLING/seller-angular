@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SellersComponent } from './sellers/sellers.component';
-import { AuthGuard } from '../core/guards/auth.guard';
 import {LeadsSidenavComponent} from './components/leads-sidenav/leads-sidenav.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {

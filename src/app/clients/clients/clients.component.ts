@@ -44,7 +44,6 @@ export class ClientsComponent implements AfterViewInit, OnInit {
       })
     );
   }
-
   ngAfterViewInit() {
     this.paginator.page
       .pipe(
