@@ -22,12 +22,12 @@ const routes: Routes = [
   {
     path: 'sellers',
     loadChildren: './sellers/sellers.module#SellersModule',
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'sellers',
     loadChildren: './sellers/sellers.module#SellersModule',
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: '',

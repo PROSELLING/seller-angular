@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SellersComponent } from './sellers/sellers.component';
-import { AuthGuardService } from '../core/services/guards/auth-guard.service';
 import {LeadsSidenavComponent} from './components/leads-sidenav/leads-sidenav.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: SellersComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'lead/:id',

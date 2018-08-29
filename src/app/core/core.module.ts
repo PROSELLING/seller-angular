@@ -11,7 +11,6 @@ import { AwsService } from './services/aws.service';
 import { FormService } from './services/form.service';
 import { SellerService } from './services/seller.service';
 import { ClientStoreGuard } from './guards/client-store.guard';
-import { SellerService } from './services/seller.service';
 import { SaleService } from './services/sale.service';
 import { StockService } from './services/stock.service';
 import { ClientExistsGuard } from './guards/client-exists.guard';
@@ -49,7 +48,6 @@ export class CoreModule {
         SellerService,
         SaleCrudService,
         SaleService,
-        SellerService,
         StockService,
         httpInterceptorProviders
       ]

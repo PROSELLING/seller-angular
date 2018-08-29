@@ -7,8 +7,9 @@ import { ObjectModel } from '../models/meta.model';
 
 const CLIENTS_ENDPOINT = 'clients';
 const CLIENT_SEARCH = 'client_search';
-const SELLER_SEARCH = 'seller_search';
 const METADATA = 'clientmetadata';
+const CLIENT = 'client';
+const CLIENT_ORIGIN = 'sub_origin';
 
 @Injectable()
 export class ClientService {
