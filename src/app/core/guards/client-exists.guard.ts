@@ -27,8 +27,9 @@ export class ClientExistsGuard implements CanActivate {
     );
   }
 
+  
   hasClientInApi(id: string): Observable<boolean> {
-    return this.clientService.getClient(id).pipe(
+    return this.clientService.getClients(id).pipe(
       map(clientResponse => new ClientActions.Load(clientResponse.client[0])),
       tap((action: ClientActions.Load) => this.store.dispatch(action)),
       map(client => !!client),
@@ -38,6 +39,8 @@ export class ClientExistsGuard implements CanActivate {
       })
     );
   }
+
+
 
   hasClient(id: string): Observable<boolean> {
     return this.hasClientInStore(id).pipe(
@@ -50,6 +53,7 @@ export class ClientExistsGuard implements CanActivate {
       })
     );
   }
+
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.hasClient(route.params['id']);
