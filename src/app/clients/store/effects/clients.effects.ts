@@ -25,12 +25,13 @@ import { ClientActionTypes, LoadOrigin, LoadOriginFail, LoadOriginSuccess } from
 export class ClientsEffects {
   @Effect()
   loadClients$ = this.actions$.pipe(
-    ofType<Load>(ClientsActionTypes.Load),
-    map(action => action.payload),
-    switchMap((params: any) =>
+    ofType<Load>(ClientsActionTypes.Load),//primer condicional
+    map(action => action.payload),//de la acción que me entregaron, usaré el payload
+    switchMap((params: any) =>//swtichMap toma la última acción
       this.clientService.getClients(params)
         .pipe(
-          mergeMap((res: ClientPayloadModel) => [
+          mergeMap((res: ClientPayloadModel) => [//quiero ejecutar varias acciones, por eso el mergeMap.
+                                                  // si fuera solo una acción, solo se usaría map
             new LoadPageSuccess(res),
             new LoadClientsSuccess(res.clients.data),
             new LoadClientsMeta()

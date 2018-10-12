@@ -29,11 +29,11 @@ export class SellerService {
       return this.http.get(environment.apiUrl + CLIENT_SEARCH, {params: _params});
     }*/
 
-  getSellers_test() {
-    return this.http.get(environment.apiUrl + SELLER_SEARCH);
-  }
+  // getSellers_test() {
+  //   return this.http.get(environment.apiUrl + SELLER_SEARCH);
+  // }
 
-  getLeads_test() {
-    return this.http.get(environment.apiUrl + GET_LEADS);
-  }
+  // getLeads_test() {
+  //   return this.http.get(environment.apiUrl + GET_LEADS);
+  // }
 }

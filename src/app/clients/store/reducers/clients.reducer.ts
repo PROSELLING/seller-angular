@@ -15,7 +15,10 @@ export const initialState: State = adapter.getInitialState({
   selectedClientId: null
 });
 
-export function reducer(state = initialState, action: ClientsActionsUnion | ClientActionsUnion): State {
+export function reducer(
+  state = initialState, 
+  action: ClientsActionsUnion | ClientActionsUnion
+): State {
   switch (action.type) {
     case ClientsActionTypes.LoadClientsSuccess: {
       return adapter.addMany(action.payload, state);

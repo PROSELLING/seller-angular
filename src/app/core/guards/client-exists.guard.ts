@@ -20,6 +20,11 @@ export class ClientExistsGuard implements CanActivate {
   }
 
   hasClientInStore(id: string): Observable<boolean> {
+    console.log('METODO hasClientInStore', this.store.pipe(
+      select(fromClients.getClientEntities),
+      map(entities => !!entities[id]),
+      take(1)
+    ).subscribe( data => {console.log( 'dato de hasclientinstore:', data )}));
     return this.store.pipe(
       select(fromClients.getClientEntities),
       map(entities => !!entities[id]),
@@ -28,6 +33,16 @@ export class ClientExistsGuard implements CanActivate {
   }
 
   hasClientInApi(id: string): Observable<boolean> {
+    console.log('METODO hasClientInApi', this.clientService.getClient(id).pipe(
+      map(clientResponse => new ClientActions.Load(clientResponse.client[0])),
+      tap((action: ClientActions.Load) => this.store.dispatch(action)),
+      map(client => !!client),
+      catchError(() => {
+        this.router.navigate(['/404']);
+        return of(false);
+      })
+    ).subscribe( data => { console.log(data)}));
+
     return this.clientService.getClient(id).pipe(
       map(clientResponse => new ClientActions.Load(clientResponse.client[0])),
       tap((action: ClientActions.Load) => this.store.dispatch(action)),
@@ -40,18 +55,21 @@ export class ClientExistsGuard implements CanActivate {
   }
 
   hasClient(id: string): Observable<boolean> {
+    console.log('METODO hasClient');
     return this.hasClientInStore(id).pipe(
       switchMap(inStore => {
         if (inStore) {
+          console.log('dentro del switch map: ', of(inStore).subscribe( data => { console.log(' aquí el dato: ',data) }));
           return of(inStore);
         }
-
+        console.log('dentro del swithc map (no inStore): ', this.hasClientInApi(id));
         return this.hasClientInApi(id);
       })
     );
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
+    console.log('METODO canActivate', this.hasClient(route.params['id']));
     return this.hasClient(route.params['id']);
   }
 }

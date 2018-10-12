@@ -18,10 +18,16 @@ export interface ClientsState {
   search: fromSearch.State;
 }
 
+/* 
+  Estado raíz
+*/
 export interface State extends fromRoot.RootState {
   clients: ClientsState;
 }
 
+/*
+  Reductor raíz donde se agregan todos los reductores de la aplicación
+*/
 export const reducers: ActionReducerMap<ClientsState> = {
   client: fromClient.reducer,
   clients: fromClients.reducer,
@@ -30,17 +36,30 @@ export const reducers: ActionReducerMap<ClientsState> = {
   search: fromSearch.reducer,
 };
 
+/*
+  Se selecciona el estado que queremos y se define que el nombre de 
+    ese estado es 'clients'
+ */
 export const selectClientsState = createFeatureSelector<ClientsState>('clients');
 
 
 /** Selectors for Client **/
-export const getClientEntitiesState = createSelector(selectClientsState, state => state.client);
+export const getClientEntitiesState = createSelector(
+  selectClientsState, 
+  state => state.client
+);
 
-export const getClientOrigin = createSelector(getClientEntitiesState, fromClient.getClientOrigin);
+export const getClientOrigin = createSelector(
+  getClientEntitiesState, 
+  fromClient.getClientOrigin
+);
 
 
 /** Selectors for Clients **/
-export const getClientsEntitiesState = createSelector(selectClientsState, state => state.clients);
+export const getClientsEntitiesState = createSelector(
+  selectClientsState, 
+  state => state.clients
+);
 
 export const getSelectedClientId = createSelector(
   getClientsEntitiesState,
@@ -56,8 +75,8 @@ export const {
 } = fromClients.adapter.getSelectors(getClientsEntitiesState);
 
 export const getSelectedClient = createSelector(
-  getClientEntities,
-  getSelectedClientId,
+  getClientEntities,// va a utilizar el estado getClientEntities
+  getSelectedClientId,// el selector que se va a usar
   (entities, selectedId) => {
     return selectedId && entities[selectedId];
   }

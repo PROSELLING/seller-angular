@@ -24,25 +24,28 @@ export class SellersComponent implements OnInit {
 
   @ViewChild('input') input: ElementRef;
 
-  constructor(private store: Store<fromRoot.RootState>, private sellerService: SellerService) {
+  constructor(private store: Store<fromRoot.RootState>, 
+              private sellerService: SellerService) {
   }
 
   ngOnInit() {
-    this.store.dispatch(new SellersActions.Load({page: 1, filter: ''}));
-
-    this.sellerService.getSellers_test().subscribe(data => {
-      console.log('TEST SELLERS 2', data);
-    });
+    const accionLoad = new SellersActions.Load({page: 1, filter: ''});
+    this.store.dispatch( accionLoad );
 
     this.sellers$ = this.store.pipe(
       select(fromSellers.getAllSellers),
       tap(sellers => {
+        console.log( 'DENTRO DEL PIPE DE SELLERS: ' , sellers );
         this.setSellersCopy(sellers);
       })
     );
     this.resultsLength$ = this.store.pipe(
       select(fromSellers.getTotal)
     );
+
+    // this.sellerService.getSellers({page: 1, filter: ''}).subscribe(data =>{ 
+    //   console.log(data);
+    //  });
   }
 
   setSellersCopy(sellers: SellerModel[]) {

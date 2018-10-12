@@ -26,7 +26,8 @@ export class ClientsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('input') input: ElementRef;
 
-  constructor(private store: Store<fromRoot.RootState>, private clientService: ClientService) {
+  constructor(private store: Store<fromRoot.RootState>, 
+              private clientService: ClientService) {
 
   }
 

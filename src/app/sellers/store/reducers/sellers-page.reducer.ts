@@ -38,7 +38,7 @@ export const initialState: State = {
 export function reducer(state = initialState, action: SellersActionsUnion): State {
   switch (action.type) {
     case SellersActionTypes.LoadPageSuccess: {
-      console.log('TESTING LOAD PAGE', action.payload);
+      console.log('REDUCER DE SELLERS-PAGE.REDUCER', action.payload);
       return {
         ...state,
         currentPage: action.payload.sellers.current_page,

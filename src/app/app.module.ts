@@ -9,16 +9,19 @@ import { MatIconRegistry } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { DataTablesModule } from 'angular-datatables';
 
 
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { metaReducers, reducers } from './core/store';
+// import { LeadsComponent } from './leads/leads/leads.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // LeadsComponent
   ],
   imports: [
     AuthModule,
@@ -26,6 +29,7 @@ import { metaReducers, reducers } from './core/store';
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
+    // DataTablesModule,
     CoreModule.forRoot(),
     SharedModule,
     StoreModule.forRoot(reducers, {metaReducers}),

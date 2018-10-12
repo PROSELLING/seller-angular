@@ -17,7 +17,7 @@
 
     <ng-container matColumnDef="phone">
       <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <a href="#">{{element.phone}}</a> </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="celphone">
@@ -65,5 +65,4 @@
   </mat-table>
 
   <mat-paginator [length]="resultsLength$ | async" [pageSize]="15"></mat-paginator>
-
 </div>

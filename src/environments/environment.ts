@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://34.201.39.70/cloud9/workspace/endpoint/public/api/',
+  // apiUrl: 'http://34.201.39.70/cloud9/workspace/endpoint/public/api/',
+  apiUrl: 'http://34.226.121.54/cloud9/workspace/endpoint/public/api/',
   aws: {
     region: 'us-east-1',
     bucketName: 'seller-archivos',

@@ -1,13 +1,85 @@
-<div class="component-container">
-  <mat-selection-list #shoes>
-    <mat-list-option *ngFor="let shoe of typesOfShoes">
-      {{shoe}}
-    </mat-list-option>
-  </mat-selection-list>
+<mat-toolbar color="primary" class="header-toolbar mat-elevation-z4">  
+  <img src="assets/logo-blanco-completo.png" class="header-logo">
+  <span class="spacer"></span>
+  <button mat-button (click)="closeSide()" class="toolbar-toggle">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
 
-  <p>
-    Options selected: {{shoes.selectedOptions.selected.length}}
-  </p>
+<div class="row text-center m-3">
+  <div class="col">
+    <h3>Leads disponibles</h3>
+  </div>
+</div>
 
-  <button mat-stroked-button color="primary">Asignar leads</button>
+
+
+<div class="component-container leads-sidenav" *ngIf="Leads$ | async">    
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="responsive_table">
+      <mat-table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+        <ng-container matColumnDef="select" style="margin-left: 60px !important">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation(); selected_lead(row)"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="id_lead">
+          <mat-header-cell *matHeaderCellDef> Lead id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lead_id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="document_number">
+          <mat-header-cell *matHeaderCellDef> Numero de documento </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.document_nro}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="origin_url">
+          <mat-header-cell *matHeaderCellDef> Url de origen </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lead_url_origin}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="last_name">
+          <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.last_name}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    
+      <mat-paginator [pageSizeOptions]="[4, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    <div class="container">
+      <div class="row">
+        
+      </div>
+      <div class="row text-right">
+        <div class="col">
+          <button class="btn btn-info" (click)="asign_leads()">Asignar</button>
+        </div>
+      </div>
+    </div>  
 </div>

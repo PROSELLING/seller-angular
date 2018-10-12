@@ -4,7 +4,11 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
-import { SellersActionTypes, Load, LoadSellersSuccess, LoadFail, LoadPageSuccess } from '../actions/sellers.actions';
+import { SellersActionTypes, 
+         Load, 
+         LoadSellersSuccess, 
+         LoadFail, 
+         LoadPageSuccess } from '../actions/sellers.actions';
 
 import { SellerService } from '../../../core/services/seller.service';
 import { SellerObjectModel, SellerPayloadModel } from '../../../core/models/seller.model';
@@ -22,6 +26,7 @@ export class SellersEffects {
         .pipe(
           map( (res: SellerPayloadModel) => {
             // this.updateElements(res);
+            console.log('ENTRO EN EFFECT DE SELLER', res);
             return res;
           }),
           mergeMap((res: SellerPayloadModel) => [

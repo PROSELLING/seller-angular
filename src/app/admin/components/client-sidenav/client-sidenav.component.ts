@@ -19,14 +19,15 @@ export class ClientSidenavComponent implements OnInit {
   constructor(private store: Store<fromClients.State>, private route: ActivatedRoute) {
     this.route.params
       .subscribe(
-        params => {
-          this.store.dispatch(new ClientsActions.Select(params.id));
-        }
+        params => {          
+          this.store.dispatch(new ClientsActions.Select(params.id));          
+        }        
       );
   }
 
   ngOnInit() {
-    this.user$ = this.store.pipe(select(fromClients.getSelectedClient), tap(result => console.log('result', result)));
+    this.user$ = this.store.pipe(select(fromClients.getSelectedClient), 
+    tap(result => console.log('Resultado del ngOnInit: ', result)));    
   }
 
   closeSide() {

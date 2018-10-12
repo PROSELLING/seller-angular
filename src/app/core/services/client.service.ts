@@ -22,6 +22,7 @@ export class ClientService {
       .set('page', params.page)
       .set('filter', params.filter)
       .set('sort', 'desc');
+      console.log('Dentro de servicio getCLientes');
     return this.http.get<ClientsResponseModel>(environment.apiUrl + CLIENT_SEARCH, {params: _params});
   }
 

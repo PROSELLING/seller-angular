@@ -30,6 +30,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'leads',
+    loadChildren: './leads/leads.module#LeadsModule',
+    canActivate: [AuthGuard]
+  },
+  {
     path: '',
     redirectTo: 'clients',
     pathMatch: 'full'

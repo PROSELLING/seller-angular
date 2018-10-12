@@ -4,7 +4,7 @@ import {
   ActionReducerMap,
 } from '@ngrx/store';
 import * as fromRoot from '../../core/store/index';
-import * as fromSellers from './reducers/sellers.reducer';
+import * as fromSellers from './reducers/sellers.reducer'; // se difine de cuál store se trae toda la información
 import * as fromSellersPage from './reducers/sellers-page.reducer';
 
 export interface SellersState {
@@ -16,7 +16,7 @@ export interface State extends fromRoot.RootState {
   sellers: SellersState;
 }
 
-export const reducers: ActionReducerMap<SellersState> = {
+export const reducersSellers: ActionReducerMap<SellersState> = {
   sellers: fromSellers.reducer,
   sellersPage: fromSellersPage.reducer
 };
